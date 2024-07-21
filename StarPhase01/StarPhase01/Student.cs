@@ -19,14 +19,10 @@ public class Student
         ScoresSum = 0;
     }
     
+
     public override string ToString()
     {
-        return ToString(CultureInfo.CurrentCulture);
-    }
-
-    public string ToString(IFormatProvider formatProvider)
-    {
-        return String.Format(formatProvider,"{0} {1} {2:F3} ",FirstName,LastName,GetAverage());
+        return String.Format(CultureInfo.CurrentCulture,"{0} {1} {2:F3} ",FirstName,LastName,GetAverage());
     }
 
     public void AddCourse(Course newCourse)

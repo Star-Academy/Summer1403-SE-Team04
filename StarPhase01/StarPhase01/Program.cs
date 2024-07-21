@@ -1,14 +1,17 @@
 ﻿// See https://aka.ms/new-console-template for more information
+
+using System.Xml.Linq;
 using StarPhase01;
 
 class Program
 {
     static void Main()
     {
-        string nameDataFilePath = @"..\..\..\database\data.json";
-        string scoreDstaFilePath = @"..\..\..\database\score.json";
+        string configFilePath = @"..\..\..\database\config.xml";
+        string nameDataFilePath = configReader.ReadFilePathsFromConfig(configFilePath,"nameDataFilePath");
+        string scoreDataFilePath = configReader.ReadFilePathsFromConfig(configFilePath,"scoreDataFilePath");
         var studentsList = Input.ReadStudentListFromJsonFile<Student>(nameDataFilePath);
-        var coursesList = Input.ReadStudentListFromJsonFile<Course>(scoreDstaFilePath);
+        var coursesList = Input.ReadStudentListFromJsonFile<Course>(scoreDataFilePath);
         foreach (var courseItem in coursesList)
         {
             Student selectedStudent = studentsList.Find(s => s.StudentNumber == courseItem.StudentNumber);

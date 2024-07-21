@@ -7,6 +7,8 @@ class Program
 {
     static void Main()
     {
+        try
+        {
         var  configFilePath = @"..\..\..\database\config.xml";
         var  configLoader = new configLoader(configFilePath);
         var  nameDataFilePath = configLoader.ReadFromConfig("nameDataFilePath");
@@ -20,5 +22,11 @@ class Program
         }
         var output =String.Join("\n", TopStudents.GetTopStudents(studentsList, 3).Select(s => s.ToString()));
         Console.WriteLine(output);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine("let it go");
+            throw;
+        }
     }
 }

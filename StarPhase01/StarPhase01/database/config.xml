@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<configuration>
-    <filePaths>
-        <nameDataFilePath>..\..\..\database\data.json</nameDataFilePath>
-        <scoreDataFilePath>..\..\..\database\score.json</scoreDataFilePath>
-    </filePaths>
-</configuration>

@@ -45,9 +45,15 @@ namespace FullTextSearch {
             }
         }
         
-        internal static string databasePath {
+        internal static string documentsPath {
             get {
-                return ResourceManager.GetString("databasePath", resourceCulture);
+                return ResourceManager.GetString("documentsPath", resourceCulture);
+            }
+        }
+        
+        internal static string smallWordsPath {
+            get {
+                return ResourceManager.GetString("smallWordsPath", resourceCulture);
             }
         }
     }

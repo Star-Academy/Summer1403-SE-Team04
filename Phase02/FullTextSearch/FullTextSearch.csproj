@@ -8,7 +8,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="catalyst" Version="1.0.48839" />
+      <PackageReference Include="Porter2Stemmer" Version="1.0.0" />
     </ItemGroup>
 
     <ItemGroup>
@@ -24,6 +24,21 @@
         <AutoGen>True</AutoGen>
         <DependentUpon>Resources.resx</DependentUpon>
       </Compile>
+    </ItemGroup>
+
+    <ItemGroup>
+        <ContentWithTargetPath Include="database\files\**">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+            <TargetPath>%(RecursiveDir)\database\files\%(Filename)%(Extension)</TargetPath>
+        </ContentWithTargetPath>
+        <ContentWithTargetPath Include="database\**">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+            <TargetPath>%(RecursiveDir)\database\%(Filename)%(Extension)</TargetPath>
+        </ContentWithTargetPath>
+        <ContentWithTargetPath Include="Program.cs">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+            <TargetPath>\Program.cs</TargetPath>
+        </ContentWithTargetPath>
     </ItemGroup>
 
 </Project>

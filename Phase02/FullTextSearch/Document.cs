@@ -1,6 +1,6 @@
 namespace FullTextSearch;
 
-public class WordShapeFixer
+public class Document
 {
     
 }

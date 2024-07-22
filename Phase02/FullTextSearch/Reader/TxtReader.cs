@@ -1,9 +1,9 @@
 namespace FullTextSearch;
 
-public class TxtReader: IFileReader
+public class TxtReader: FileReader
 {
-    public static List<string> ReadSingleFile(string path)
+    public List<string> ReadSingleFile(string path)
     {
-        return IFileReader.ReadSingleFile(path, new char[] { '\n' });
+        return ReadSingleFile(path, new char[] { '\n' });
     }
 }

@@ -5,14 +5,14 @@ using System.Linq;
 
 namespace FullTextSearch
 {
-    public class DocReader : IFileReader
+    public class DocReader : FileReader
     {
-        public static List<Document> ReadDocs()
+        public List<Document> ReadDocs()
         {
             try
             {
                 return Directory.GetFiles(Resources.documentsPath, "*.*", SearchOption.AllDirectories)
-                    .Select(s => new Document(s, IFileReader.ReadSingleFile(s, new char[] { ' ', ',', '.', ':', '(', ')', '\n' })))
+                    .Select(s => new Document(s, ReadSingleFile(s, new char[] { ' ', ',', '.', ':', '(', ')', '\n' })))
                     .ToList();
             }
             catch (FileLoadException e)

@@ -1,8 +1,8 @@
 namespace FullTextSearch;
 
-public interface IFileReader
+public abstract class FileReader
 {
-      public static List<string> ReadSingleFile(string path,char[] spilliterChars)
+      public List<string> ReadSingleFile(string path,char[] spilliterChars)
       {
             return File.ReadAllText(path)
                   .Split(spilliterChars,

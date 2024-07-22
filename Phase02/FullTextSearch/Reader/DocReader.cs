@@ -9,9 +9,17 @@ namespace FullTextSearch
     {
         public static List<Document> ReadDocs()
         {
-            return Directory.GetFiles(Resources.documentsPath, "*.*", SearchOption.AllDirectories)
-                .Select(s => new Document(s, IFileReader.ReadSingleFile(s, new char[] { ' ', ',', '.', ':', '(', ')', '\n' })))
-                .ToList();
+            try
+            {
+                return Directory.GetFiles(Resources.documentsPath, "*.*", SearchOption.AllDirectories)
+                    .Select(s => new Document(s, IFileReader.ReadSingleFile(s, new char[] { ' ', ',', '.', ':', '(', ')', '\n' })))
+                    .ToList();
+            }
+            catch (FileLoadException e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
         }
     }
 }

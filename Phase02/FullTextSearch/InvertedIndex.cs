@@ -6,8 +6,11 @@ public class InvertedIndex
 {
     public Dictionary<string, List<string>> InvertedIndexMap { get; } = new Dictionary<string, List<string>>();
 
-    public void 
-        BuildInvertedIndex(List<Document> documents)
+    public InvertedIndex(List<Document> documents)
+    {
+        BuildInvertedIndex(documents);
+    }
+    private void BuildInvertedIndex(List<Document> documents)
     {
         foreach (var doc in documents)
         {
@@ -17,7 +20,7 @@ public class InvertedIndex
             }
         }
     }
-    public void AddToDic(string key, string newDocName)
+    private void AddToDic(string key, string newDocName)
     {
         InvertedIndexMap.TryAdd(key, new List<string>());
         var docNames = InvertedIndexMap.GetValueOrDefault(key);

@@ -13,7 +13,15 @@ public static class WordFormatFixer
 
     private static string ToWordRoot(this string word)
     {
-        return stemmer.Stem(word).Value;
+        try
+        {
+            return stemmer.Stem(word).Value ;
+        }
+        catch (NullReferenceException e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
     }
 
     private static string CheckSmallWords(this string word)

@@ -4,29 +4,18 @@ namespace FullTextSearch;
 
 public class InvertedIndex
 {
-    public Dictionary<string, List<string>> InvertedIndexMap { get; } = new Dictionary<string, List<string>>();
+    public Dictionary<string, List<string>> InvertedIndexMap { get; set; } = new Dictionary<string, List<string>>();
 
     public InvertedIndex(List<Document> documents)
     {
-        BuildInvertedIndex(documents);
+        InvertedIndexMap = documents
+            .SelectMany(doc => doc.DocWords.Select(word => new { word, doc.DocName }))
+            .GroupBy(x => x.word)
+            .ToDictionary(
+                g => g.Key,
+                g => g.Select(x => x.DocName).Distinct().ToList()
+            );    
     }
-    private void BuildInvertedIndex(List<Document> documents)
-    {
-        foreach (var doc in documents)
-        {
-            foreach (var word in doc.DocWords)
-            {
-                AddToDic(word,doc.DocName);
-            }
-        }
-    }
-    private void AddToDic(string key, string newDocName)
-    {
-        InvertedIndexMap.TryAdd(key, new List<string>());
-        var docNames = InvertedIndexMap.GetValueOrDefault(key);
-        if(!docNames.Contains(newDocName)) docNames.Add(newDocName);
-    }
-    
     public override string ToString()
     {
         var sb = new StringBuilder();

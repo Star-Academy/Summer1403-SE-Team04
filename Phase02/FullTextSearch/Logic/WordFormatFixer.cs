@@ -4,7 +4,7 @@ namespace FullTextSearch;
 public static class WordFormatFixer
 {
     private static EnglishPorter2Stemmer stemmer = new EnglishPorter2Stemmer();
-    private static List<String> SmallWordsList = new TxtReader().ReadSingleFile(Resources.smallWordsPath);
+    private static List<String> SmallWordsList = new FileReader().ReadSingleFile(Resources.smallWordsPath);
 
     public static string FixWordFormat(this string word)
     {

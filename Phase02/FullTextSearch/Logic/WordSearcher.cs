@@ -23,16 +23,17 @@ public class WordSearcher
         var atLeastOneExists = (from word in words
             where (word.StartsWith('+'))
             select FindWordInDocuments(word.Remove(0, 1).FixWordFormat())).ToList().Union();
-        return mustExist.Count == 0
-            ? atLeastOneExists.Except(mustNotExist).ToList()
-            : mustExist.Except(mustNotExist).Except(mustExist.Except(atLeastOneExists)).ToList();
+        if (mustExist.Count == 0) return atLeastOneExists.Except(mustNotExist).ToList();
+        else if (atLeastOneExists.Count == 0) return mustExist.Except(mustNotExist).ToList();
+        else return mustExist.Except(mustNotExist).Except(mustExist.Except(atLeastOneExists)).ToList();
     }
     
     private List<string> FindWordInDocuments(string word)
     {
         try
         {
-            return Index.InvertedIndexMap.GetValueOrDefault(word);
+            var result = Index.InvertedIndexMap.GetValueOrDefault(word);
+            return result==null?new List<string>():result;
         }
         catch (NullReferenceException r)
         {

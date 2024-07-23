@@ -12,7 +12,7 @@ namespace FullTextSearch
             try
             {
                 return Directory.GetFiles(Resources.documentsPath, "*.*", SearchOption.AllDirectories)
-                    .Select(s => new Document(s, ReadSingleFile(s, new char[] { ' ', ',', '.', ':', '(', ')', '\n' })))
+                    .Select(s => new Document(s, ReadSingleFile(s)))
                     .ToList();
             }
             catch (FileLoadException e)

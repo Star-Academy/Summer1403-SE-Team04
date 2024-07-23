@@ -1,8 +1,8 @@
 ﻿using FullTextSearch;
-    
-class Program
+
+internal class Program
 {
-    static void Main()
+    private static void Main()
     {
         var listOfTheDocument = new DocReader().ReadDocs()
             .Select(doc => new Document(doc.DocName,
@@ -10,10 +10,8 @@ class Program
                         (w => w.FixWordFormat())
                     .ToList().RemoveEmptyCells())).ToList();
         foreach (var doc in new WordSearcher
-                     (new InvertedIndex(listOfTheDocument))
+                         (new InvertedIndex(listOfTheDocument))
                      .FindDocuments(Console.ReadLine()))
-        {
             Console.WriteLine(doc);
-        }
     }
 }

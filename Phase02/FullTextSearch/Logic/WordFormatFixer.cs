@@ -3,8 +3,8 @@ using Porter2Stemmer;
 namespace FullTextSearch;
 public static class WordFormatFixer
 {
-    private static EnglishPorter2Stemmer stemmer = new EnglishPorter2Stemmer();
-    private static List<String> SmallWordsList = new FileReader().ReadSingleFile(Resources.smallWordsPath);
+    private readonly static EnglishPorter2Stemmer _stemmer = new EnglishPorter2Stemmer();
+    private readonly static List<String> _smallWordsList = new FileReader().ReadSingleFile(Resources.smallWordsPath);
 
     public static string FixWordFormat(this string word)
     {
@@ -15,7 +15,7 @@ public static class WordFormatFixer
     {
         try
         {
-            return stemmer.Stem(word).Value ;
+            return _stemmer.Stem(word).Value ;
         }
         catch (NullReferenceException e)
         {
@@ -26,6 +26,6 @@ public static class WordFormatFixer
 
     private static string CheckSmallWords(this string word)
     {
-        return SmallWordsList.Contains(word) ? string.Empty : word;
+        return _smallWordsList.Contains(word) ? string.Empty : word;
     }
 }

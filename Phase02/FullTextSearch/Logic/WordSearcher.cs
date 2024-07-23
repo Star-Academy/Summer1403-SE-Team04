@@ -13,16 +13,16 @@ public class WordSearcher
 
     public List<string> FindDocuments(string query)
     {
-        var words = query.Split(' ',StringSplitOptions.RemoveEmptyEntries);
+        var words= query.Split(' ',StringSplitOptions.RemoveEmptyEntries).Select(w => w.FixWordFormat());
         var mustExist = (from word in words
             where (!word.StartsWith('+') && !word.StartsWith('-'))
-            select FindWordInDocuments(word.FixWordFormat())).ToList().Intersect();
+            select FindWordInDocuments(word)).ToList().Intersect();
         var mustNotExist =(from word in words
             where (word.StartsWith('-'))
-            select FindWordInDocuments(word.Remove(0, 1).FixWordFormat())).ToList().Union();
+            select FindWordInDocuments(word.Remove(0, 1))).ToList().Union();
         var atLeastOneExists = (from word in words
             where (word.StartsWith('+'))
-            select FindWordInDocuments(word.Remove(0, 1).FixWordFormat())).ToList().Union();
+            select FindWordInDocuments(word.Remove(0, 1))).ToList().Union();
         if (mustExist.Count == 0) return atLeastOneExists.Except(mustNotExist).ToList();
         else if (atLeastOneExists.Count == 0) return mustExist.Except(mustNotExist).ToList();
         else return mustExist.Except(mustNotExist).Except(mustExist.Except(atLeastOneExists)).ToList();

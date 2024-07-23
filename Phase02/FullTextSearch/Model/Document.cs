@@ -2,8 +2,8 @@ namespace FullTextSearch;
 
 public class Document
 {
-    public string DocName { get; set; }
-    public List<string> DocWords { get; set; }
+    public string DocName { get; init; }
+    public List<string> DocWords { get; init; }
 
     public Document(string docName, List<string> docWords)
     {

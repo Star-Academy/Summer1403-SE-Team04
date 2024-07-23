@@ -15,10 +15,20 @@ namespace FullTextSearch
                     .Select(s => new Document(s, ReadSingleFile(s)))
                     .ToList();
             }
+            catch (DirectoryNotFoundException d)
+            {
+                Console.WriteLine(d);
+                throw new FileProcessingException(d.Message);
+            }
             catch (FileLoadException e)
             {
                 Console.WriteLine(e);
-                throw;
+                throw new FileProcessingException(e.Message);
+            }
+            catch (IOException d)
+            {
+                Console.WriteLine(d);
+                throw new FileProcessingException(d.Message);
             }
         }
     }

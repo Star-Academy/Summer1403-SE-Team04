@@ -1,0 +1,18 @@
+<Project>
+  <PropertyGroup>
+    <!-- Set the target framework for all projects -->
+    <TargetFramework>net6.0</TargetFramework>
+
+    <!-- Enable XML documentation file generation -->
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+
+    <!-- Treat all warnings as errors -->
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+
+    <!-- Set the version for all projects -->
+    <Version>1.0.0</Version>
+
+    <!-- Set the output path for all projects -->
+    <OutputPath>$(SolutionDir)bin\$(Configuration)\</OutputPath>
+  </PropertyGroup>
+</Project>

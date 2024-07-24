@@ -1,11 +1,12 @@
+using FullTextSearch.Control.Reader;
 using FullTextSearch.Reader;
 using Porter2Stemmer;
 
-namespace FullTextSearch.Logic;
+namespace FullTextSearch.Control.Logic;
 public static class WordFormatFixer
 {
     private static readonly EnglishPorter2Stemmer Stemmer = new EnglishPorter2Stemmer();
-    private static readonly List<String> SmallWordsList = FileReader.FileReaderInstance.ReadSingleFile(Resources.smallWordsPath);
+    private static readonly List<String> SmallWordsList = FileReader.FileReaderInstance.Read(Resources.smallWordsPath);
 
     public static string FixWordFormat(this string word)
     {

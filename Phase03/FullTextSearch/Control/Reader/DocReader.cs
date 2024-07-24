@@ -1,20 +1,20 @@
 using FullTextSearch.Model;
+using FullTextSearch.Reader;
 
-namespace FullTextSearch.Reader;
+namespace FullTextSearch.Control.Reader;
 
-public class DocReader : FileReader
+public class DocReader : IFileReader
 {
-    private static DocReader _docReaderInstance;
+    private static DocReader? _docReaderInstance;
     public static DocReader DocReaderInstance => _docReaderInstance ??= new DocReader();
     private DocReader(){}
 
-    public List<Document> ReadDocs()
+    public List<Document> ReadDocs(string directoryPath)
     {
-            
         try
         {
-            return Directory.GetFiles(Resources.documentsPath, "*.*", SearchOption.AllDirectories)
-                .Select(s => new Document(s, ReadSingleFile(s)))
+            return Directory.GetFiles(directoryPath, "*.*", SearchOption.AllDirectories)
+                .Select(s => new Document(s, Read(s)))
                 .ToList();
         }
         catch (DirectoryNotFoundException d)
@@ -32,5 +32,10 @@ public class DocReader : FileReader
             Console.WriteLine(d);
             throw new FileProcessingException(d.Message);
         }
+    }
+
+    public List<string> Read(string path)
+    {
+        return FileReader.FileReaderInstance.Read(path);
     }
 }

@@ -1,4 +1,4 @@
-namespace FullTextSearch.Reader;
+namespace FullTextSearch.Control.Reader;
 
 public class FileProcessingException : Exception
 {

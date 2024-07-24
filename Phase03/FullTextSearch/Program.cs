@@ -1,14 +1,10 @@
 ﻿using FullTextSearch;
-using FullTextSearch.DataStructure;
-using FullTextSearch.Logic;
+using FullTextSearch.Control;
 
 internal class Program
 {
     private static void Main()
     {
-        var listOfTheDocument = DocumentLoader.DocumentLoaderInstance.LoadDocuments();
-        foreach (var doc in new WordSearcher
-                         (new InvertedIndex(listOfTheDocument)).FindDocuments(Console.ReadLine()))
-            Console.WriteLine(doc);
+       Initializer.InitializerInstance.Init(new List<string>(){Resources.documentsPath});
     }
 }

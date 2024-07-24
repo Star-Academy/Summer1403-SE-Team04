@@ -1,15 +1,17 @@
 using System.Text;
-using FullTextSearch.Model;
 
-namespace FullTextSearch.DataStructure;
+namespace FullTextSearch.Model.DataStructure;
 
 public class InvertedIndex
 {
+    public static List<InvertedIndex> InvertedIndicesList { get; }=new List<InvertedIndex>();
     public Dictionary<string, List<string>> InvertedIndexMap { get; init; }
-
-    public InvertedIndex(List<Document> documents)
+    public string DirectoryPath { get; init; }
+    public InvertedIndex(List<Document> documents,string directoryPath)
     {
         InvertedIndexMap = BuildInvertedIndex(documents);
+        DirectoryPath = directoryPath;
+        InvertedIndicesList.Add(this);
     }
 
     private Dictionary<string, List<string>>  BuildInvertedIndex(List<Document> documents)

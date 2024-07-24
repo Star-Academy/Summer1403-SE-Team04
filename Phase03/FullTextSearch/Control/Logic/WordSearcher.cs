@@ -1,12 +1,10 @@
-using FullTextSearch.DataStructure;
+using FullTextSearch.Model.DataStructure;
 
-namespace FullTextSearch.Logic;
+namespace FullTextSearch.Control.Logic;
 
 public class WordSearcher
 {
     private readonly InvertedIndex _index;
-    
-
     public WordSearcher(InvertedIndex invertedIndex)
     {
         _index = invertedIndex;

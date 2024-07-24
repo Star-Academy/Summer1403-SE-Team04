@@ -1,7 +1,8 @@
+using FullTextSearch.Control.Reader;
 using FullTextSearch.Model;
 using FullTextSearch.Reader;
 
-namespace FullTextSearch.Logic;
+namespace FullTextSearch.Control.Logic;
 
 public class DocumentLoader
 {
@@ -9,14 +10,14 @@ public class DocumentLoader
     {
         
     }
-    private static DocumentLoader _docLoaderInstance;
+    private static DocumentLoader? _docLoaderInstance;
     public static DocumentLoader DocumentLoaderInstance
     {
         get { return _docLoaderInstance ??= new DocumentLoader(); }
     }
-    public List<Document> LoadDocuments()
+    public List<Document> LoadDocumentsList(string directoryPath)
     {
-        return EditDocumentWords(DocReader.DocReaderInstance.ReadDocs());
+        return EditDocumentWords(DocReader.DocReaderInstance.ReadDocs(directoryPath));
     }
 
     private List<Document> EditDocumentWords(List<Document> listOfDocuments)

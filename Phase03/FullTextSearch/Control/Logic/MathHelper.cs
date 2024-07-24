@@ -1,4 +1,4 @@
-namespace FullTextSearch.Logic;
+namespace FullTextSearch.Control.Logic;
 
 public static class MathHelper
 {

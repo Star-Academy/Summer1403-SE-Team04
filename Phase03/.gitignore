@@ -1,5 +1,5 @@
 FullTextSearch/bin
 FullTextSearch/obj
 .idea
-files/*
-!files/.gitkeep
+FullTextSearch/database/files/*
+!FullTextSearch/database/files/.gitkeep

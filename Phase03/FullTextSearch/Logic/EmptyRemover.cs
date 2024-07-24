@@ -1,4 +1,4 @@
-namespace FullTextSearch;
+namespace FullTextSearch.Logic;
 
 public static class EmptyRemover
 {

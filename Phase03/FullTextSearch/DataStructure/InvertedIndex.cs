@@ -1,14 +1,20 @@
 using System.Text;
+using FullTextSearch.Model;
 
-namespace FullTextSearch;
+namespace FullTextSearch.DataStructure;
 
 public class InvertedIndex
 {
-    public Dictionary<string, List<string>> InvertedIndexMap { get; set; } = new Dictionary<string, List<string>>();
+    public Dictionary<string, List<string>> InvertedIndexMap { get; init; }
 
     public InvertedIndex(List<Document> documents)
     {
-        InvertedIndexMap = documents
+        InvertedIndexMap = BuildInvertedIndex(documents);
+    }
+
+    private Dictionary<string, List<string>>  BuildInvertedIndex(List<Document> documents)
+    {
+        return documents
             .SelectMany(doc => doc.DocWords.Select(word => new { word, doc.DocName }))
             .GroupBy(x => x.word)
             .ToDictionary(

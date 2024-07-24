@@ -1,4 +1,4 @@
-namespace FullTextSearch;
+namespace FullTextSearch.Model;
 
 public class Document
 {

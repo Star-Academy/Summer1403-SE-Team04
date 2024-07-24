@@ -1,44 +1,70 @@
-namespace FullTextSearch;
+using FullTextSearch.DataStructure;
+
+namespace FullTextSearch.Logic;
 
 public class WordSearcher
 {
-    public InvertedIndex Index;
+    private readonly InvertedIndex _index;
+    
 
     public WordSearcher(InvertedIndex invertedIndex)
     {
-        Index = invertedIndex;
+        _index = invertedIndex;
     }
 
     public List<string> FindDocuments(string query)
     {
-        var words = query.Split(' ', StringSplitOptions.RemoveEmptyEntries).Select(w => w.FixWordFormat());
+        var inputWords = QueryHandler(query);
+        var mustExist = GetMustExistWordsList(inputWords);
+        var mustNotExist = GetMustNotExistWordsList(inputWords);
+        var atLeastOneExists = GetAtLeastOneExistsWordsList(inputWords);
+        return GetValidDocuments(mustExist, mustNotExist, atLeastOneExists);
+    }
 
-        var mustExist = words.Where(word => !word.StartsWith('+') && !word.StartsWith('-'))
+    private List<string> GetValidDocuments(List<string> mustExist, List<string> mustNotExist,List<string>  atLeastOneExists)
+    {
+        if (!mustExist.Any())
+            return atLeastOneExists.Except(mustNotExist).ToList();
+        if (!atLeastOneExists.Any())
+            return mustExist.Except(mustNotExist).ToList();
+        return mustExist.Except(mustNotExist).Except(mustExist.Except(atLeastOneExists)).ToList();
+    }
+    private string[] QueryHandler(string query)
+    {
+        var words = query.Split(' ', StringSplitOptions.RemoveEmptyEntries)
+            .Select(w => w.FixWordFormat());
+        var enumerableWords = words as string[] ?? words.ToArray();
+        return enumerableWords;
+    }
+
+    private List<string> GetMustExistWordsList(string[] wordsArray)
+    {
+        return wordsArray.Where(word => !word.StartsWith('+') && !word.StartsWith('-'))
             .Select(FindWordInDocuments)
             .ToList()
             .Intersect();
-
-        var mustNotExist = words.Where(word => word.StartsWith('-'))
-            .Select(word => FindWordInDocuments(word.Substring(1)))
-            .ToList()
-            .Union();
-
-        var atLeastOneExists = words.Where(word => word.StartsWith('+'))
-            .Select(word => FindWordInDocuments(word.Substring(1)))
-            .ToList()
-            .Union();
-
-
-        if (!mustExist.Any()) return atLeastOneExists.Except(mustNotExist).ToList();
-        if (!atLeastOneExists.Any()) return mustExist.Except(mustNotExist).ToList();
-        return mustExist.Except(mustNotExist).Except(mustExist.Except(atLeastOneExists)).ToList();
     }
+    private List<string> GetMustNotExistWordsList(string[] wordsArray)
+    {
+        return wordsArray.Where(word => word.StartsWith('-'))
+            .Select(word => FindWordInDocuments(word.Substring(1)))
+            .ToList()
+            .Union();
 
+    }
+    private List<string> GetAtLeastOneExistsWordsList(string[] wordsArray)
+    {
+        return wordsArray.Where(word => word.StartsWith('+'))
+            .Select(word => FindWordInDocuments(word.Substring(1)))
+            .ToList()
+            .Union();
+    }
+    
     private List<string> FindWordInDocuments(string word)
     {
         try
         {
-            var result = Index.InvertedIndexMap.GetValueOrDefault(word);
+            var result = _index.InvertedIndexMap.GetValueOrDefault(word);
             return result == null ? new List<string>() : result;
         }
         catch (NullReferenceException r)

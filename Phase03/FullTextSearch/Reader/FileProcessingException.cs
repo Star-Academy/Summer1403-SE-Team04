@@ -1,8 +1,8 @@
-namespace FullTextSearch;
+namespace FullTextSearch.Reader;
 
 public class FileProcessingException : Exception
 {
-    public FileProcessingException(string message):base(message)
+    public FileProcessingException(string message) : base(message)
     {
     }
 }

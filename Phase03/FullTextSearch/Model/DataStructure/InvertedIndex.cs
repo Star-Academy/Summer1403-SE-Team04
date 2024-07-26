@@ -17,7 +17,7 @@ public class InvertedIndex
     private Dictionary<string, List<string>>  BuildInvertedIndex(List<Document> documents)
     {
         return documents
-            .SelectMany(doc => doc.DocWords.Select(word => new { word, doc.DocName }))
+            .SelectMany(doc => doc.Select(word => new { word, doc.DocName }))
             .GroupBy(x => x.word)
             .ToDictionary(
                 g => g.Key,

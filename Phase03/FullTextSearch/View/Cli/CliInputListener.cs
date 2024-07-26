@@ -13,7 +13,7 @@ public class CliInputListener : IInputListener
         var query = Console.ReadLine();
         while (query != "exit")
         {
-            Controller.ControllerInstance.GetQuery(query);
+            Controller.Instance.GetQuery(query);
             OutputPrinter.OutputPrinterInstance.Render("Enter your word (if you want to finish the program enter 'exit') : ");
             query = Console.ReadLine();
         }

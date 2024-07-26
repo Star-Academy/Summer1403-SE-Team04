@@ -9,4 +9,8 @@ public class OutputPrinter : IOutputRenderer
     {
         output.ForEach(Console.WriteLine);
     }
+    public void Present(string output)
+    {
+        Present(new List<string>(){output});
+    }
 }

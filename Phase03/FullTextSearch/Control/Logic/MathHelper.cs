@@ -6,11 +6,7 @@ public static class MathHelper
     {
         try
         {
-            if (list.Count == 0) return new List<T>();
-            var initialList = new List<T>();
-            foreach (var item in list) initialList = initialList.Union(item).ToList();
-
-            return initialList;
+            return !list.Any() ? new List<T>() : list.Aggregate((current, next) => current.Union(next).ToList());
         }
         catch (ArgumentNullException e)
         {
@@ -23,10 +19,7 @@ public static class MathHelper
     {
         try
         {
-            if (list.Count == 0) return new List<T>();
-            var initialList = list[0];
-            foreach (var item in list) initialList = initialList.Intersect(item).ToList();
-            return initialList;
+            return !list.Any() ? new List<T>() : list.Aggregate((current, next) => current.Intersect(next).ToList());
         }
         catch (ArgumentNullException e)
         {

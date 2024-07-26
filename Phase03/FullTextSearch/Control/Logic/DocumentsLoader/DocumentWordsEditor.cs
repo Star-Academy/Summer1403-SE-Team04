@@ -2,17 +2,11 @@ using FullTextSearch.Model;
 
 namespace FullTextSearch.Control.Logic.DocumentsLoader;
 
-public class DocumentWordsEditor
+public static class DocumentWordsEditor
 {
-    private DocumentWordsEditor()
-    {
-    }
-    private static DocumentWordsEditor? _docWordsEditorInstance;
-    public static DocumentWordsEditor DocumentWordsEditorInstance => _docWordsEditorInstance ??= new DocumentWordsEditor();
-
-    public List<Document> EditWords(List<Document> listOfDocuments)
+    public static List<Document> EditWords(this List<Document> listOfDocuments)
     {
         return listOfDocuments.Select(doc => new Document(doc.DocName,
-            WordsFormatFixer.WordsFormatFixerInstance.FixWords(doc.DocWords))).ToList();
+            doc.DocWords.FixWordsList())).ToList();
     }
 }

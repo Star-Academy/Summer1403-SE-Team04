@@ -2,5 +2,5 @@ namespace FullTextSearch.View;
 
 public interface IOutputRenderer
 {
-    public void Present(List<string> output);
+    public void Render(List<string> output);
 }

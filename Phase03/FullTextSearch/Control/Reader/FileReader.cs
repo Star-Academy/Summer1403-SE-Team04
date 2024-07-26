@@ -6,12 +6,12 @@ public class FileReader : IFileReader
 {
       private readonly char[] _splitterCharacters;
       private static FileReader? _fileReaderInstance;
+      public static FileReader FileReaderInstance => _fileReaderInstance ??= new FileReader();
 
       private FileReader()
       {
             _splitterCharacters = GetSplitterChars();
       }
-      public static FileReader FileReaderInstance => _fileReaderInstance ??= new FileReader();
 
       private char[] GetSplitterChars()
       {

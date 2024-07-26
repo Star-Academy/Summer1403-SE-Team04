@@ -23,11 +23,11 @@ public class Controller
 
     private void SendOutput(List<string> output)
     {
-        if (output.Count == 0)
+        if (!output.Any())
         {
-            OutputPrinter.OutputPrinterInstance.Present("Nothing was not found for your word");
+            OutputPrinter.OutputPrinterInstance.Render("Nothing was not found for your word");
             return;
         }
-        OutputPrinter.OutputPrinterInstance.Present(output);
+        OutputPrinter.OutputPrinterInstance.Render(output);
     }
 }

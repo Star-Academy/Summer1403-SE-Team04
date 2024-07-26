@@ -9,12 +9,12 @@ public class CliInputListener : IInputListener
     private CliInputListener(){}
     private void GetInputFromCli()
     {
-        OutputPrinter.OutputPrinterInstance.Present("Enter your word (if you want to finish the program enter 'exit') : ");
+        OutputPrinter.OutputPrinterInstance.Render("Enter your word (if you want to finish the program enter 'exit') : ");
         var query = Console.ReadLine();
         while (query != "exit")
         {
             Controller.ControllerInstance.GetQuery(query);
-            OutputPrinter.OutputPrinterInstance.Present("Enter your word (if you want to finish the program enter 'exit') : ");
+            OutputPrinter.OutputPrinterInstance.Render("Enter your word (if you want to finish the program enter 'exit') : ");
             query = Console.ReadLine();
         }
     }

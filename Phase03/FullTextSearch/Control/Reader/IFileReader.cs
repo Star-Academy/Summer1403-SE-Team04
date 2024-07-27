@@ -1,6 +1,8 @@
+using System.Collections;
+
 namespace FullTextSearch.Reader;
 
 public interface IFileReader
 {
-    List<string> Read(string path);
+    IEnumerable<string> Read(string path);
 }

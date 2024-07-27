@@ -1,3 +1,4 @@
+using System.Collections;
 using FullTextSearch.Model;
 using FullTextSearch.Reader;
 
@@ -9,7 +10,7 @@ public class DocReader : IFileReader
     public static DocReader DocReaderInstance => _docReaderInstance ??= new DocReader();
     private DocReader(){}
 
-    public List<Document> ReadDocs(string directoryPath)
+    public IEnumerable<Document> ReadDocs(string directoryPath)
     {
         try
         {
@@ -34,7 +35,7 @@ public class DocReader : IFileReader
         }
     }
 
-    public List<string> Read(string path)
+    public IEnumerable<string> Read(string path)
     {
         return FileReader.FileReaderInstance.Read(path);
     }

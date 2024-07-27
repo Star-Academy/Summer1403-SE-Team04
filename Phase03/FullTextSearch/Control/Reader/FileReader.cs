@@ -21,7 +21,7 @@ public class FileReader : IFileReader
             return characters as char[] ?? characters.ToArray();
       }
 
-      public List<string> Read(string path)
+      public IEnumerable<string> Read(string path)
       {
             return File.ReadAllText(path)
                   .Split(_splitterCharacters,

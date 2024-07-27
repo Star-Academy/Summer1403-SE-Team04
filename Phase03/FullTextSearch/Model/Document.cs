@@ -2,16 +2,10 @@ using System.Collections;
 
 namespace FullTextSearch.Model;
 
-public class Document : IEnumerable<string>
+public class Document(string docName, IEnumerable<string> docWords) : IEnumerable<string>
 {
-    public string DocName { get; init; }
-    public List<string> DocWords { get; init; }
-
-    public Document(string docName, List<string> docWords)
-    {
-        DocName = docName;
-        DocWords = docWords;
-    }
+    public string DocName { get; init; } = docName;
+    public IEnumerable<string> DocWords { get; init; } = docWords;
 
     public IEnumerator<string> GetEnumerator()
     {

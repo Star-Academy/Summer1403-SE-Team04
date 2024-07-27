@@ -1,4 +1,5 @@
 using FullTextSearch.Control;
+using FullTextSearch.Control.Keepers;
 
 namespace FullTextSearch.View.Cli;
 
@@ -9,12 +10,12 @@ public class CliInputListener : IInputListener
     private CliInputListener(){}
     private void GetInputFromCli()
     {
-        OutputPrinter.OutputPrinterInstance.Render("Enter your word (if you want to finish the program enter 'exit') : ");
+        OutputRendererKeeper.Instance.OutputRenderer.Render("Enter your word (if you want to finish the program enter 'exit') : ");
         var query = Console.ReadLine();
         while (query != "exit")
         {
-            Controller.Instance.GetQuery(query);
-            OutputPrinter.OutputPrinterInstance.Render("Enter your word (if you want to finish the program enter 'exit') : ");
+            QueryReceiver.Instance.GetQuery(query);
+            OutputRendererKeeper.Instance.OutputRenderer.Render("Enter your word (if you want to finish the program enter 'exit') : ");
             query = Console.ReadLine();
         }
     }

@@ -1,4 +1,6 @@
 using FullTextSearch.Control.Logic;
+using FullTextSearch.Control.search;
+using FullTextSearch.Control.search.SearchStrategy;
 using FullTextSearch.Model.DataStructure;
 using FullTextSearch.View.Cli;
 
@@ -12,7 +14,8 @@ public class QuerySearcher
     public void ProcessQuery(string query)
     {
         var result = InvertedIndex.InvertedIndicesList.Select(invertedIndex =>
-            new WordSearcher(invertedIndex).FindDocuments(query)).ToList();
+            new WordSearcher(invertedIndex, TargetedStrategy.Instance).Search(query).ToList()).ToList();
+        
         OutputHandler.Instance.SendOutput(result.Union());
     }
 }

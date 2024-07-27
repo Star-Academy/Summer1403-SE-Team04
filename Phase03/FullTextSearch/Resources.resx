@@ -2,11 +2,11 @@
 
 <root>
     <data name="documentsPath">
-        <value>database/files</value>
+        <value>Assets/files</value>
     </data>
 
     <data name="smallWordsPath">
-        <value>database/small_words.txt</value>
+        <value>Assets/small_words.txt</value>
     </data>
     <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
         <xsd:element name="root" msdata:IsDataSet="true">

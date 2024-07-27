@@ -1,4 +1,4 @@
-using FullTextSearch.Control.Logic;
+using FullTextSearch.Control.Logic.StringProcessor;
 
 namespace FullTextSearch.Control.search;
 

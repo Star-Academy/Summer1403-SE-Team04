@@ -27,13 +27,13 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ContentWithTargetPath Include="database\files\**">
+        <ContentWithTargetPath Include="Assets\files\**">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-            <TargetPath>%(RecursiveDir)\database\files\%(Filename)%(Extension)</TargetPath>
+            <TargetPath>%(RecursiveDir)\Assets\files\%(Filename)%(Extension)</TargetPath>
         </ContentWithTargetPath>
-        <ContentWithTargetPath Include="database\**">
+        <ContentWithTargetPath Include="Assets\**">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-            <TargetPath>%(RecursiveDir)\database\%(Filename)%(Extension)</TargetPath>
+            <TargetPath>%(RecursiveDir)\Assets\%(Filename)%(Extension)</TargetPath>
         </ContentWithTargetPath>
         <ContentWithTargetPath Include="Program.cs">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

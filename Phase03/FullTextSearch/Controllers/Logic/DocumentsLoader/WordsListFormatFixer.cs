@@ -1,4 +1,5 @@
 using System.Collections;
+using FullTextSearch.Control.Logic.StringProcessor;
 
 namespace FullTextSearch.Control.Logic.DocumentsLoader;
 

@@ -1,3 +1,4 @@
+using System.Text.RegularExpressions;
 using FullTextSearch.Reader;
 
 namespace FullTextSearch.Control.Reader;
@@ -15,10 +16,8 @@ public class FileReader : IFileReader
 
       private char[] GetSplitterChars()
       {
-            var characters = Enumerable.Range(0, '0')
-                  .Union(Enumerable.Range(':', 'A' - ':').Union(Enumerable.Range('[', 'a' - '[')))
-                  .Select(i => (char)i);
-            return characters as char[] ?? characters.ToArray();
+            var characters = new Regex(@"[0-9:;A-Z\[\\\]a-z]").ToString().ToCharArray();
+            return characters;
       }
 
       public IEnumerable<string> Read(string path)

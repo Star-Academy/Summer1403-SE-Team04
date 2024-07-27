@@ -23,18 +23,11 @@ public class TargetedStrategy : ISearchStrategy
     private IEnumerable<string> GetValidDocuments(InvertedIndex index, string[] words,
         params IStrategySet[] strategySets)
     {
-        try
-        {
             var mustExist = strategySets.FindByName("MustExist").GetValidDocs(words, index);
             var mustNotExist = strategySets.FindByName("MustNotExist").GetValidDocs(words, index);
             var atLeastOneExists = strategySets.FindByName("AtLeastOneExists").GetValidDocs(words, index);
             return CalculateValidDoc(mustExist, mustNotExist, atLeastOneExists);
-        }
-        catch (StrategyNotFoundException e)
-        {
-            Console.WriteLine(e.Message);
-            throw ;
-        }
+
     }
 
     private IEnumerable<string> CalculateValidDoc(IEnumerable<string> mustExist, IEnumerable<string> mustNotExist,

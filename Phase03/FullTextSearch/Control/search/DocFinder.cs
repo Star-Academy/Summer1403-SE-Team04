@@ -12,6 +12,8 @@ public class DocFinder
     private DocFinder(){}
     public IEnumerable<string>? Find(string query,InvertedIndex index)
     {
-        return index.InvertedIndexMap.GetValueOrDefault(query);
+        var result = index.InvertedIndexMap.GetValueOrDefault(query);
+        return result == null ? new List<string>() : result;
+
     }
 }

@@ -4,5 +4,6 @@ public class StrategyNotFoundException : Exception
 { 
     public StrategyNotFoundException() : base("strategy not found pleas check your name")
     {
+        
     }
 }

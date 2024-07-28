@@ -10,6 +10,10 @@ public class Initializer : IInitializer
     private static Initializer? _initializer;
     public static Initializer InitializerInstance => _initializer ??= new Initializer();
 
+    private Initializer()
+    {
+    }
+
     public void Init(List<string> directoryList , IInputListener inputListener, IOutputRenderer outputRenderer)
     {
         directoryList.ForEach(path => InvertedIndexBuilder.InvertedIndexBuilderInstance.BuildInvertedIndex(path));

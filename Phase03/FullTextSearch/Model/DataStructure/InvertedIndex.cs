@@ -1,39 +1,50 @@
 using System.Collections;
 using System.Text;
+using System.Text.Json.Serialization;
 using FullTextSearch.Controllers.Logic.Abstraction;
 
-namespace FullTextSearch.Model.DataStructure;
-
-public class InvertedIndex
+namespace FullTextSearch.Model.DataStructure
 {
-    public Dictionary<string, IEnumerable<string>> InvertedIndexMap { get; init; }
-    public string DirectoryPath { get; init; }
-    public InvertedIndex(IEnumerable<Document> documents,string directoryPath, IInvertedIndexWriter writer)
+    public class InvertedIndex
     {
-        InvertedIndexMap = BuildInvertedIndex(documents);
-        DirectoryPath = directoryPath;
-        writer.Write(this);
-    }
+        [JsonInclude]
+        public Dictionary<string, IEnumerable<string>> InvertedIndexMap { get; private set; }
 
-    private Dictionary<string, IEnumerable<string>>  BuildInvertedIndex(IEnumerable<Document> documents)
-    {
-        return documents
-            .SelectMany(doc => doc.Select(word => new { word, doc.DocName }))
-            .GroupBy(x => x.word)
-            .ToDictionary(
-                g => g.Key,
-                g => g.Select(x => x.DocName).Distinct())
-            ;    
-    }
-    public override string ToString()
-    {
-        var sb = new StringBuilder();
-        sb.AppendLine("Inverted Index:");
-        foreach (var kvp in InvertedIndexMap)
+        [JsonInclude]
+        public string DirectoryPath { get; private set; }
+
+        [JsonConstructor]
+        public InvertedIndex(Dictionary<string, IEnumerable<string>> invertedIndexMap, string directoryPath)
         {
-            sb.AppendLine($"{kvp.Key}: {string.Join(", ", kvp.Value)}");
+            InvertedIndexMap = invertedIndexMap;
+            DirectoryPath = directoryPath;
         }
-        return sb.ToString();
-    }
 
+        public InvertedIndex(IEnumerable<Document> documents, string directoryPath)
+        {
+            InvertedIndexMap = BuildInvertedIndex(documents);
+            DirectoryPath = directoryPath;
+        }
+
+        private Dictionary<string, IEnumerable<string>> BuildInvertedIndex(IEnumerable<Document> documents)
+        {
+            return documents
+                .SelectMany(doc => doc.Select(word => new { word, doc.DocName }))
+                .GroupBy(x => x.word)
+                .ToDictionary(
+                    g => g.Key,
+                    g => g.Select(x => x.DocName).Distinct());
+        }
+
+        public override string ToString()
+        {
+            var sb = new StringBuilder();
+            sb.AppendLine("Inverted Index:");
+            foreach (var kvp in InvertedIndexMap)
+            {
+                sb.AppendLine($"{kvp.Key}: {string.Join(", ", kvp.Value)}");
+            }
+            return sb.ToString();
+        }
+    }
 }

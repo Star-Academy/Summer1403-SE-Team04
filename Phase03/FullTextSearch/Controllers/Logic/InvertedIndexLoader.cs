@@ -11,6 +11,12 @@ public class InvertedIndexLoader : IInvertedIndexLoader
     {
         string filePath = Resources.InvertedIndexDataPath;
         string json = File.ReadAllText(filePath);
-        return JsonSerializer.Deserialize<List<InvertedIndex>>(json);
+        
+        var options = new JsonSerializerOptions
+        {
+            IncludeFields = true
+        };
+        
+        return JsonSerializer.Deserialize<List<InvertedIndex>>(json, options);
     }
 }

@@ -5,25 +5,17 @@ namespace FullTextSearch.Controllers.Reader;
 
 public class TxtReader : ITxtReader 
 {
-      private readonly char[] _splitterCharacters;
+      private readonly string _splitPattern = @"[^a-zA-Z1-9]";
       private static TxtReader? _fileReaderInstance;
       public static TxtReader TxtReaderInstance => _fileReaderInstance ??= new TxtReader();
 
       private TxtReader()
       {
-            _splitterCharacters = GetSplitterChars();
-      }
-
-      private char[] GetSplitterChars()
-      {
-            var characters = new Regex(@"[0-9:;A-Z\[\\\]a-z]").ToString().ToCharArray();
-            return characters;
       }
 
       public IEnumerable<string> Read(string path)
       {
-            return File.ReadAllText(path)
-                  .Split(_splitterCharacters,
-                        StringSplitOptions.RemoveEmptyEntries).ToList();
+            var fileText = File.ReadAllText(path);
+            return Regex.Split(fileText, _splitPattern);
       }
 }

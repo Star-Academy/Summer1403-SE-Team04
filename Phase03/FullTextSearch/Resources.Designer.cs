@@ -57,6 +57,12 @@ namespace FullTextSearch {
             }
         }
         
+        internal static string StrategyExceptionMessage {
+            get {
+                return ResourceManager.GetString("StrategyExceptionMessage", resourceCulture);
+            }
+        }
+        
         internal static string InvertedIndexDataPath {
             get {
                 return ResourceManager.GetString("InvertedIndexDataPath", resourceCulture);

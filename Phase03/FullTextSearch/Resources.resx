@@ -9,6 +9,9 @@
         <value>Assets/small_words.txt</value>
     </data>
 
+    <data name="StrategyExceptionMessage">
+        <value>strategy not found pleas check your name</value>
+    </data>
     <data name="InvertedIndexDataPath">
         <value>Assets/inverted_index.json</value>
     </data>

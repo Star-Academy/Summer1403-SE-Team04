@@ -11,8 +11,9 @@ public class MustExistSet : IStrategySet
     private MustExistSet(){}
     public IEnumerable<string> GetValidDocs(string[] wordsArray , InvertedIndex index)
     {
-        return wordsArray.Where(word => !word.StartsWith('+') && !word.StartsWith('-'))
-            .Select(word => DocFinder.Instance.Find(word ,index).ToList())
+        var mustExistWords = wordsArray.Where(word => !word.StartsWith('+') && !word.StartsWith('-'));
+        
+        return mustExistWords.Select(word => DocFinder.Instance.Find(word ,index).ToList())
             .ToList()
             .Intersect();
     }

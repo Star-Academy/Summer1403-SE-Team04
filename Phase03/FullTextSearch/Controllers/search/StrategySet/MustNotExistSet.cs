@@ -11,8 +11,8 @@ public class MustNotExistSet : IStrategySet
     private MustNotExistSet(){}
     public IEnumerable<string> GetValidDocs(string[] wordsArray , InvertedIndex index)
     {
-        return wordsArray.Where(word => word.StartsWith('-'))
-            .Select(word => DocFinder.Instance.Find(word.Substring(1), index).ToList())
+        var mustNotExistWords = wordsArray.Where(word => word.StartsWith('-')).Select(word => word.Substring(1));
+        return mustNotExistWords.Select(word => DocFinder.Instance.Find(word, index).ToList())
             .ToList().Union();
     }
 

@@ -1,6 +1,6 @@
 using System.Collections;
 
-namespace FullTextSearch.Reader;
+namespace FullTextSearch.Controllers.Reader.Abstraction;
 
 public interface IFileReader
 {

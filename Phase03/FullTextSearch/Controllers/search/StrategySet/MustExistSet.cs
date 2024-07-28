@@ -1,9 +1,9 @@
 using FullTextSearch.Control.Logic;
 using FullTextSearch.Control.search;
-using FullTextSearch.Control.search.StrategySet;
+using FullTextSearch.Controllers.search.Abstraction;
 using FullTextSearch.Model.DataStructure;
 
-namespace FullTextSearch.Control;
+namespace FullTextSearch.Controllers.search.StrategySet;
 
 public class MustExistSet : IStrategySet
 {

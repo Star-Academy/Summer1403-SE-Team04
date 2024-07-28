@@ -1,16 +1,15 @@
-using System.Collections;
+using FullTextSearch.Controllers.Reader.Abstraction;
 using FullTextSearch.Model;
-using FullTextSearch.Reader;
 
-namespace FullTextSearch.Control.Reader;
+namespace FullTextSearch.Controllers.Reader;
 
-public class DocReader : IFileReader
+public class DocReader : IFileReader , IDocReader
 {
     private static DocReader? _docReaderInstance;
     public static DocReader DocReaderInstance => _docReaderInstance ??= new DocReader();
     private DocReader(){}
 
-    public IEnumerable<Document> ReadDocs(string directoryPath)
+    public IEnumerable<Document> ReadFromDoc(string directoryPath)
     {
         try
         {

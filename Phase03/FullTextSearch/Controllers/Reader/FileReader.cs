@@ -1,9 +1,9 @@
 using System.Text.RegularExpressions;
-using FullTextSearch.Reader;
+using FullTextSearch.Controllers.Reader.Abstraction;
 
-namespace FullTextSearch.Control.Reader;
+namespace FullTextSearch.Controllers.Reader;
 
-public class FileReader : IFileReader
+public class FileReader : IFileReader 
 {
       private readonly char[] _splitterCharacters;
       private static FileReader? _fileReaderInstance;

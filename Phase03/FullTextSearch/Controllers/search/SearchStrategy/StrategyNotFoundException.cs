@@ -1,4 +1,4 @@
-namespace FullTextSearch.Control.search.SearchStrategy;
+namespace FullTextSearch.Controllers.search.SearchStrategy;
 
 public class StrategyNotFoundException : Exception
 { 

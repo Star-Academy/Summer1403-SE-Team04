@@ -1,7 +1,6 @@
-using System.Collections;
 using FullTextSearch.Model.DataStructure;
 
-namespace FullTextSearch.Control.search.StrategySet;
+namespace FullTextSearch.Controllers.search.Abstraction;
 
 public interface IStrategySet
 {

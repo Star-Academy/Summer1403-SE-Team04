@@ -1,10 +1,9 @@
-using System.Collections;
-using FullTextSearch.Control.search.SearchStrategy;
+using FullTextSearch.Controllers.search.Abstraction;
 using FullTextSearch.Model.DataStructure;
 
-namespace FullTextSearch.Control.search;
+namespace FullTextSearch.Controllers.search;
 
-public class WordSearcher(InvertedIndex invertedIndex, ISearchStrategy strategy)
+public class WordSearcher(InvertedIndex invertedIndex, ISearchStrategy strategy) : ISearchAble
 {
     public IEnumerable<string> Search( string query)
     {

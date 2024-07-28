@@ -16,7 +16,7 @@ public class DocumentLoader
     }
     public IEnumerable<Document> LoadDocumentsList(string directoryPath)
     {
-        var documents = DocReader.DocReaderInstance.ReadDocs(directoryPath);
+        var documents = DocReader.DocReaderInstance.ReadFromDoc(directoryPath);
         return documents.EditWords();
     }
 

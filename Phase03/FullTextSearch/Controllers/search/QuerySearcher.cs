@@ -1,12 +1,12 @@
+using FullTextSearch.Control;
 using FullTextSearch.Control.Logic;
-using FullTextSearch.Control.search;
-using FullTextSearch.Control.search.SearchStrategy;
+using FullTextSearch.Controllers.search.Abstraction;
+using FullTextSearch.Controllers.search.SearchStrategy;
 using FullTextSearch.Model.DataStructure;
-using FullTextSearch.View.Cli;
 
-namespace FullTextSearch.Control;
+namespace FullTextSearch.Controllers.search;
 
-public class QuerySearcher
+public class QuerySearcher : IProcessor
 {
     private static QuerySearcher? _searcher;
     public static QuerySearcher Instance => _searcher ??= new QuerySearcher();

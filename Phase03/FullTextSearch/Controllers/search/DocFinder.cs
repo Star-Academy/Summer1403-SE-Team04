@@ -1,11 +1,9 @@
-using System.Runtime.InteropServices;
-using FullTextSearch.Control.Reader;
-using FullTextSearch.Control.search.SearchStrategy;
+using FullTextSearch.Controllers.search.Abstraction;
 using FullTextSearch.Model.DataStructure;
 
-namespace FullTextSearch.Control.search;
+namespace FullTextSearch.Controllers.search;
 
-public class DocFinder
+public class DocFinder : IFinder
 {
     private static DocFinder _docFinder;
     public static DocFinder Instance => _docFinder ??= new DocFinder();

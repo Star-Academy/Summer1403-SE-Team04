@@ -1,7 +1,7 @@
 using FullTextSearch.Control.Logic.DocumentsLoader;
 using FullTextSearch.Model.DataStructure;
 
-namespace FullTextSearch.Control.Logic;
+namespace FullTextSearch.Controller.Logic;
 
 public class InvertedIndexBuilder
 {

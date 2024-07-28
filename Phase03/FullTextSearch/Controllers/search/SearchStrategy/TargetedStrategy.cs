@@ -1,11 +1,14 @@
-using FullTextSearch.Control.search.StrategySet;
+
+using FullTextSearch.Control.search;
+using FullTextSearch.Controllers.search.Abstraction;
+using FullTextSearch.Controllers.search.StrategySet;
 using FullTextSearch.Model.DataStructure;
 
-namespace FullTextSearch.Control.search.SearchStrategy;
+namespace FullTextSearch.Controllers.search.SearchStrategy;
 
 public class TargetedStrategy : ISearchStrategy
 {
-    private static TargetedStrategy _targetedStrategy;
+    private static TargetedStrategy? _targetedStrategy;
 
     private TargetedStrategy()
     {
@@ -37,6 +40,6 @@ public class TargetedStrategy : ISearchStrategy
             return atLeastOneExists.Except(mustNotExist).ToList();
         if (!atLeastOneExists.Any())
             return mustExist.Except(mustNotExist).ToList();
-        return mustExist.Except(mustNotExist).Except(mustExist.Except(atLeastOneExists)).ToList();
+        return mustExist.Intersect(atLeastOneExists).Except(mustNotExist);
     }
 }

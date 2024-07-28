@@ -1,6 +1,7 @@
-using FullTextSearch.Control.search.SearchStrategy;
+using FullTextSearch.Controllers.search.Abstraction;
+using FullTextSearch.Controllers.search.SearchStrategy;
 
-namespace FullTextSearch.Control.search.StrategySet;
+namespace FullTextSearch.Controllers.search.StrategySet;
 
 public static class FindSetsByName
 {

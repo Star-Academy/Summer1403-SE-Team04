@@ -6,8 +6,8 @@ namespace FullTextSearch.Controllers.Logic.DocumentsLoader;
 
 public static class WordsListFormatFixer
 {
-    public static IEnumerable<string> FixWordsList(this IEnumerable<string> documentWords,IGarbageRemover remover)
+    public static IEnumerable<string> FixWordsList(this IEnumerable<string> documentWords)
     {
-        return remover.Remove(documentWords.Select(w => w.FixWordFormat())).ToList();
+        return documentWords.Select(w => w.FixWordFormat()).ToList();
     }
 }

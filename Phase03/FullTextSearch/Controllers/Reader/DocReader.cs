@@ -1,3 +1,5 @@
+using FullTextSearch.Controllers.Logic;
+using FullTextSearch.Controllers.Logic.Abstraction;
 using FullTextSearch.Controllers.Reader.Abstraction;
 using FullTextSearch.Model;
 
@@ -14,7 +16,7 @@ public class DocReader : IFileReader , IDocReader
         try
         {
             return Directory.GetFiles(directoryPath, "*.*", SearchOption.AllDirectories)
-                .Select(s => new Document(s, Read(s)))
+                .Select(s => new Document(s, Read(s,new SmallWordsRemover())))
                 .ToList();
         }
         catch (DirectoryNotFoundException d)
@@ -34,8 +36,8 @@ public class DocReader : IFileReader , IDocReader
         }
     }
 
-    public IEnumerable<string> Read(string path)
+    public IEnumerable<string> Read(string path,IGarbageRemover remover)
     {
-        return TxtReader.TxtReaderInstance.Read(path);
+        return remover.Remove(TxtReader.TxtReaderInstance.Read(path));
     }
 }

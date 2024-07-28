@@ -1,9 +1,10 @@
-using FullTextSearch.Control.Logic.DocumentsLoader;
+using FullTextSearch.Controllers.Logic.Abstraction;
+using FullTextSearch.Controllers.Logic.DocumentsLoader;
 using FullTextSearch.Model.DataStructure;
 
-namespace FullTextSearch.Control.Logic;
+namespace FullTextSearch.Controllers.Logic;
 
-public class InvertedIndexBuilder
+public class InvertedIndexBuilder : IInvertedIndexBuilder
 {
     private static InvertedIndexBuilder? _indexBuilder;
     public static InvertedIndexBuilder InvertedIndexBuilderInstance => _indexBuilder ??= new InvertedIndexBuilder();

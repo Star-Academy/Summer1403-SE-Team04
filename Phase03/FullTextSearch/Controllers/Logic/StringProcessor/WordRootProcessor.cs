@@ -1,6 +1,6 @@
 using Porter2Stemmer;
 
-namespace FullTextSearch.Control.Logic;
+namespace FullTextSearch.Controllers.Logic.StringProcessor;
 
 public static class WordRootProcessor
 {

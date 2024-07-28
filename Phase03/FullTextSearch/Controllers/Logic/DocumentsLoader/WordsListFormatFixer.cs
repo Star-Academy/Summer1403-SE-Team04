@@ -1,7 +1,7 @@
-using System.Collections;
-using FullTextSearch.Control.Logic.StringProcessor;
 
-namespace FullTextSearch.Control.Logic.DocumentsLoader;
+using FullTextSearch.Controllers.Logic.StringProcessor;
+
+namespace FullTextSearch.Controllers.Logic.DocumentsLoader;
 
 public static class WordsListFormatFixer
 {

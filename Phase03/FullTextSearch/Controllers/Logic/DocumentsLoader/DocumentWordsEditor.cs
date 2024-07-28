@@ -1,6 +1,7 @@
+
 using FullTextSearch.Model;
 
-namespace FullTextSearch.Control.Logic.DocumentsLoader;
+namespace FullTextSearch.Controllers.Logic.DocumentsLoader;
 public static class DocumentWordsEditor
 {
     public static IEnumerable<Document> EditWords(this IEnumerable<Document> listOfDocuments)

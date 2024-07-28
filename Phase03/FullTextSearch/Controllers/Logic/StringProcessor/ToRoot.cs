@@ -1,12 +1,19 @@
+using FullTextSearch.Controllers.Logic.Abstraction;
 using Porter2Stemmer;
 
 namespace FullTextSearch.Controllers.Logic.StringProcessor;
 
-public static class WordRootProcessor
+public class ToRoot : IStringReformater
 {
     private static readonly EnglishPorter2Stemmer Stemmer = new EnglishPorter2Stemmer();
+    private static ToRoot _root;
+    public static ToRoot Instance = _root ??= new ToRoot(); 
+    public string FixWordFormat(string word)
+    {
+        return ToWordRoot(word);
+    }
 
-    public static string ToWordRoot(this string word)
+    public string ToWordRoot( string word)
     {
         try
         {

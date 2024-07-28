@@ -1,3 +1,4 @@
+using FullTextSearch.Controllers.Logic.Abstraction;
 using FullTextSearch.Controllers.Logic.StringProcessor;
 using FullTextSearch.Controllers.search.Abstraction;
 using FullTextSearch.Controllers.search.StrategySet;
@@ -17,7 +18,7 @@ public class TargetedStrategy : ISearchStrategy
 
     public IEnumerable<string> Search(string query, InvertedIndex index)
     {
-        var inputWords = query.SplitIntoFormattedWords();
+        var inputWords = query.SplitIntoFormattedWords(new List<IStringReformater>(){ToLower.Instance,ToRoot.Instance});
         return GetValidDocuments(index, inputWords, MustExistSet.Instance, MustNotExistSet.Instance,
             AtLeastOneExistSet.Instance);
     }

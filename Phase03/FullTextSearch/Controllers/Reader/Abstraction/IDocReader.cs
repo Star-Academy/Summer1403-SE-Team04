@@ -6,6 +6,4 @@ namespace FullTextSearch.Controllers.Reader.Abstraction;
 public interface IDocReader
 {
     public IEnumerable<string> Read(string path, IGarbageRemover remover);
-    public IEnumerable<Document> ReadFromDoc(string directoryPath);
-
 }

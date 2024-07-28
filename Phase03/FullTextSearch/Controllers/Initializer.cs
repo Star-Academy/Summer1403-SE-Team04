@@ -1,6 +1,7 @@
 using FullTextSearch.Controllers.Keepers;
 using FullTextSearch.Controllers.Abstraction;
 using FullTextSearch.Controllers.Logic;
+using FullTextSearch.Controllers.Logic.DocumentsLoader;
 using FullTextSearch.View;
 
 namespace FullTextSearch.Controllers;
@@ -16,7 +17,7 @@ public class Initializer : IInitializer
 
     public void Init(List<string> directoryList , IInputListener inputListener, IOutputRenderer outputRenderer)
     {
-        directoryList.ForEach(path => InvertedIndexBuilder.InvertedIndexBuilderInstance.BuildInvertedIndex(path, new InvertedIndexWriter()));
+        directoryList.ForEach(path => InvertedIndexBuilder.InvertedIndexBuilderInstance.BuildInvertedIndex(path, new InvertedIndexWriter(),DocumentLoader.Instance));
         InputListenerKeeper.Instance.InputListener = inputListener;
         OutputRendererKeeper.Instance.OutputRenderer = outputRenderer;
         inputListener.InputListenerRegister();

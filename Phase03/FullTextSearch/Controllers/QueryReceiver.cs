@@ -1,6 +1,9 @@
-namespace FullTextSearch.Control;
+using FullTextSearch.Control;
+using FullTextSearch.Controllers.Abstraction;
 
-public class QueryReceiver
+namespace FullTextSearch.Controllers;
+
+public class QueryReceiver : IQueryReceiver
 {
     private static QueryReceiver? _queryReceiver;
     public static QueryReceiver Instance => _queryReceiver ??= new QueryReceiver();

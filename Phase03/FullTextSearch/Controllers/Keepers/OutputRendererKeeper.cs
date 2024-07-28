@@ -1,6 +1,6 @@
 using FullTextSearch.View;
 
-namespace FullTextSearch.Control.Keepers;
+namespace FullTextSearch.Controllers.Keepers;
 
 public class OutputRendererKeeper
 {

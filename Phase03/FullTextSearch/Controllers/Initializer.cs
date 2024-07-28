@@ -1,11 +1,11 @@
-
-using FullTextSearch.Control.Keepers;
-using FullTextSearch.Control.Logic;
+using FullTextSearch.Controllers.Keepers;
+using FullTextSearch.Controllers.Abstraction;
+using FullTextSearch.Controllers.Logic;
 using FullTextSearch.View;
 
-namespace FullTextSearch.Control;
+namespace FullTextSearch.Controllers;
 
-public class Initializer
+public class Initializer : IInitializer
 {
     private static Initializer? _initializer;
     public static Initializer InitializerInstance => _initializer ??= new Initializer();

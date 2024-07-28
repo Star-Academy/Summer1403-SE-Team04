@@ -1,9 +1,9 @@
-using FullTextSearch.Control.Keepers;
-using FullTextSearch.View.Cli;
+using FullTextSearch.Controllers.Abstraction;
+using FullTextSearch.Controllers.Keepers;
 
-namespace FullTextSearch.Control;
+namespace FullTextSearch.Controllers;
 
-public class OutputHandler
+public class OutputHandler : IOutputHandler
 {
     private static OutputHandler? _outputHandler;
     public static OutputHandler Instance => _outputHandler ??= new OutputHandler();

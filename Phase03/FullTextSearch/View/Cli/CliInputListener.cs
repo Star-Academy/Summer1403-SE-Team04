@@ -1,5 +1,6 @@
-using FullTextSearch.Control;
-using FullTextSearch.Control.Keepers;
+
+using FullTextSearch.Controllers;
+using FullTextSearch.Controllers.Keepers;
 
 namespace FullTextSearch.View.Cli;
 

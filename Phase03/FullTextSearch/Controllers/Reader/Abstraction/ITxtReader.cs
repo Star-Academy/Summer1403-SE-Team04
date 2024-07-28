@@ -3,7 +3,7 @@ using FullTextSearch.Controllers.Logic.Abstraction;
 
 namespace FullTextSearch.Controllers.Reader.Abstraction;
 
-public interface IFileReader
+public interface ITxtReader
 {
-    IEnumerable<string> Read(string path,IGarbageRemover remover);
+    IEnumerable<string> Read(string path);
 }

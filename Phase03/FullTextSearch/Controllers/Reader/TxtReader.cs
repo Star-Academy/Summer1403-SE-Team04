@@ -3,7 +3,7 @@ using FullTextSearch.Controllers.Reader.Abstraction;
 
 namespace FullTextSearch.Controllers.Reader;
 
-public class TxtReader : IFileReader 
+public class TxtReader : ITxtReader 
 {
       private readonly char[] _splitterCharacters;
       private static TxtReader? _fileReaderInstance;

@@ -5,7 +5,7 @@ using FullTextSearch.Model;
 
 namespace FullTextSearch.Controllers.Reader;
 
-public class DocReader : IFileReader , IDocReader
+public class DocReader : IDocReader
 {
     private static DocReader? _docReaderInstance;
     public static DocReader DocReaderInstance => _docReaderInstance ??= new DocReader();

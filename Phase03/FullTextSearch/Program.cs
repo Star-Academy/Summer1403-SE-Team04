@@ -6,7 +6,7 @@ internal class Program
 {
     private static void Main()
     {
-       Initializer.InitializerInstance.Init(new List<string>(){Resources.DocumentsPath},
-           CliInputListener.CliInputListenerInstance, OutputPrinter.OutputPrinterInstance);
+        Initializer.InitializerInstance.Init(new List<string> { Resources.DocumentsPath },
+            CliInputListener.CliInputListenerInstance, OutputPrinter.OutputPrinterInstance);
     }
 }

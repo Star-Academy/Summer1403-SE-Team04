@@ -5,19 +5,14 @@ namespace FullTextSearch.Controllers.search.StrategySet;
 
 public static class FindSetsByName
 {
-    public static IStrategySet? FindByName(this IStrategySet[] sets,StrategySetEnum name)
+    public static IStrategySet? FindByName(this IStrategySet[] sets, StrategySetEnum name)
     {
         try
         {
             var result = sets.FirstOrDefault(set => set.GetName() == name);
-            if (result!=null)
-            {
+            if (result != null)
                 return result;
-            }
-            else
-            {
-                throw new StrategyNotFoundException();
-            }
+            throw new StrategyNotFoundException();
         }
         catch (StrategyNotFoundException e)
         {

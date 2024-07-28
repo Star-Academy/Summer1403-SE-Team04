@@ -18,7 +18,8 @@ public class TargetedStrategy : ISearchStrategy
 
     public IEnumerable<string> Search(string query, InvertedIndex index)
     {
-        var inputWords = query.SplitIntoFormattedWords(new List<IStringReformater>(){ToLower.Instance,ToRoot.Instance});
+        var inputWords =
+            query.SplitIntoFormattedWords(new List<IStringReformater> { ToLower.Instance, ToRoot.Instance });
         return GetValidDocuments(index, inputWords, MustExistSet.Instance, MustNotExistSet.Instance,
             AtLeastOneExistSet.Instance);
     }
@@ -26,11 +27,10 @@ public class TargetedStrategy : ISearchStrategy
     private IEnumerable<string> GetValidDocuments(InvertedIndex index, string[] words,
         params IStrategySet[] strategySets)
     {
-            var mustExist = strategySets.FindByName(StrategySetEnum.MustExist).GetValidDocs(words, index);
-            var mustNotExist = strategySets.FindByName(StrategySetEnum.MustNotExist).GetValidDocs(words, index);
-            var atLeastOneExists = strategySets.FindByName(StrategySetEnum.AtLeastOneExist).GetValidDocs(words, index);
-            return CalculateValidDoc(mustExist, mustNotExist, atLeastOneExists);
-
+        var mustExist = strategySets.FindByName(StrategySetEnum.MustExist).GetValidDocs(words, index);
+        var mustNotExist = strategySets.FindByName(StrategySetEnum.MustNotExist).GetValidDocs(words, index);
+        var atLeastOneExists = strategySets.FindByName(StrategySetEnum.AtLeastOneExist).GetValidDocs(words, index);
+        return CalculateValidDoc(mustExist, mustNotExist, atLeastOneExists);
     }
 
     private IEnumerable<string> CalculateValidDoc(IEnumerable<string> mustExist, IEnumerable<string> mustNotExist,

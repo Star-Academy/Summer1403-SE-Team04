@@ -7,13 +7,18 @@ namespace FullTextSearch.Controllers.search.StrategySet;
 public class MustExistSet : IStrategySet
 {
     private static MustExistSet _mustExistSet;
+
+    private MustExistSet()
+    {
+    }
+
     public static MustExistSet Instance => _mustExistSet ??= new MustExistSet();
-    private MustExistSet(){}
-    public IEnumerable<string> GetValidDocs(string[] wordsArray , InvertedIndex index)
+
+    public IEnumerable<string> GetValidDocs(string[] wordsArray, InvertedIndex index)
     {
         var mustExistWords = wordsArray.Where(word => !word.StartsWith('+') && !word.StartsWith('-'));
-        
-        return mustExistWords.Select(word => DocFinder.Instance.Find(word ,index).ToList())
+
+        return mustExistWords.Select(word => DocFinder.Instance.Find(word, index).ToList())
             .ToList()
             .Intersect();
     }

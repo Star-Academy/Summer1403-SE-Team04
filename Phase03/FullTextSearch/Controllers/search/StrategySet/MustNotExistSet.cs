@@ -7,9 +7,14 @@ namespace FullTextSearch.Controllers.search.StrategySet;
 public class MustNotExistSet : IStrategySet
 {
     private static MustNotExistSet _mustNotExistSet;
+
+    private MustNotExistSet()
+    {
+    }
+
     public static MustNotExistSet Instance => _mustNotExistSet ??= new MustNotExistSet();
-    private MustNotExistSet(){}
-    public IEnumerable<string> GetValidDocs(string[] wordsArray , InvertedIndex index)
+
+    public IEnumerable<string> GetValidDocs(string[] wordsArray, InvertedIndex index)
     {
         var mustNotExistWords = wordsArray.Where(word => word.StartsWith('-')).Select(word => word.Substring(1));
         return mustNotExistWords.Select(word => DocFinder.Instance.Find(word, index).ToList())

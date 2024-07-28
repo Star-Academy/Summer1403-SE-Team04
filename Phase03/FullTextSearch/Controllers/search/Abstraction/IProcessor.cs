@@ -4,5 +4,5 @@ namespace FullTextSearch.Controllers.search.Abstraction;
 
 public interface IProcessor
 {
-     void ProcessQuery(string query, IInvertedIndexLoader loader);
+    void ProcessQuery(string query, IInvertedIndexLoader loader);
 }

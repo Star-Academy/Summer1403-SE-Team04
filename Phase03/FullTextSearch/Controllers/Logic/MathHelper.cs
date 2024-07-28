@@ -6,9 +6,9 @@ public static class MathHelper
     {
         try
         {
-            if (!enumberList.Any()) 
+            if (!enumberList.Any())
                 return new List<T>();
-            
+
             return enumberList.Aggregate((current, next) => current.Union(next).ToList());
         }
         catch (ArgumentNullException e)
@@ -24,7 +24,7 @@ public static class MathHelper
         {
             if (!enumerable.Any())
                 return new List<T>();
-            
+
             return enumerable.Aggregate((current, next) => current.Intersect(next).ToList());
         }
         catch (ArgumentNullException e)

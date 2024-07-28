@@ -5,5 +5,5 @@ namespace FullTextSearch.Controllers.Logic.Abstraction;
 
 public interface IDocBuilder
 {
-     Document Builed(string docPath, IDocReader docReader);
+    Document Builed(string docPath, IDocReader docReader);
 }

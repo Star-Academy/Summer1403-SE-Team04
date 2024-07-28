@@ -5,7 +5,7 @@ namespace FullTextSearch.Controllers.Logic.StringProcessor;
 
 public static class QueryHandler
 {
-    public static string[] SplitIntoFormattedWords(this string query,List<IStringReformater> reformaters)
+    public static string[] SplitIntoFormattedWords(this string query, List<IStringReformater> reformaters)
     {
         var words = query.Split(' ', StringSplitOptions.RemoveEmptyEntries)
             .FixWordsList(reformaters);

@@ -2,5 +2,7 @@ namespace FullTextSearch.Controllers.search.StrategySet;
 
 public enum StrategySetEnum
 {
-    MustExist,MustNotExist,AtLeastOneExist
+    MustExist,
+    MustNotExist,
+    AtLeastOneExist
 }

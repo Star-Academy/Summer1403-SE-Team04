@@ -2,7 +2,7 @@ using FullTextSearch.Model.DataStructure;
 
 namespace FullTextSearch.Controllers.search.Abstraction;
 
-public interface ISearchStrategy 
+public interface ISearchStrategy
 {
-    IEnumerable<string> Search(string query,InvertedIndex index);
+    IEnumerable<string> Search(string query, InvertedIndex index);
 }

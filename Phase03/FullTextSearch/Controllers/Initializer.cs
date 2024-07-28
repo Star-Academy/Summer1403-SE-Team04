@@ -16,7 +16,7 @@ public class Initializer : IInitializer
 
     public void Init(List<string> directoryList , IInputListener inputListener, IOutputRenderer outputRenderer)
     {
-        directoryList.ForEach(path => InvertedIndexBuilder.InvertedIndexBuilderInstance.BuildInvertedIndex(path));
+        directoryList.ForEach(path => InvertedIndexBuilder.InvertedIndexBuilderInstance.BuildInvertedIndex(path, new InvertedIndexWriter()));
         InputListenerKeeper.Instance.InputListener = inputListener;
         OutputRendererKeeper.Instance.OutputRenderer = outputRenderer;
         inputListener.InputListenerRegister();

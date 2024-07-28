@@ -8,8 +8,8 @@ public class InvertedIndexBuilder : IInvertedIndexBuilder
 {
     private static InvertedIndexBuilder? _indexBuilder;
     public static InvertedIndexBuilder InvertedIndexBuilderInstance => _indexBuilder ??= new InvertedIndexBuilder();
-    public void BuildInvertedIndex(string directoryPath)
+    public void BuildInvertedIndex(string directoryPath, IInvertedIndexWriter writer)
     {
-        new InvertedIndex(DocumentLoader.DocumentLoaderInstance.LoadDocumentsList(directoryPath),directoryPath);
+        new InvertedIndex(DocumentLoader.DocumentLoaderInstance.LoadDocumentsList(directoryPath),directoryPath, writer);
     }
 }

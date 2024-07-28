@@ -1,18 +1,18 @@
 using System.Collections;
 using System.Text;
+using FullTextSearch.Controllers.Logic.Abstraction;
 
 namespace FullTextSearch.Model.DataStructure;
 
 public class InvertedIndex
 {
-    public static List<InvertedIndex> InvertedIndicesList { get; }=new List<InvertedIndex>();
     public Dictionary<string, IEnumerable<string>> InvertedIndexMap { get; init; }
     public string DirectoryPath { get; init; }
-    public InvertedIndex(IEnumerable<Document> documents,string directoryPath)
+    public InvertedIndex(IEnumerable<Document> documents,string directoryPath, IInvertedIndexWriter writer)
     {
         InvertedIndexMap = BuildInvertedIndex(documents);
         DirectoryPath = directoryPath;
-        InvertedIndicesList.Add(this);
+        writer.Write(this);
     }
 
     private Dictionary<string, IEnumerable<string>>  BuildInvertedIndex(IEnumerable<Document> documents)

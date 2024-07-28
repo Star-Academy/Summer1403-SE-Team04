@@ -1,5 +1,8 @@
 FullTextSearch/bin
 FullTextSearch/obj
 .idea
+FullTextSearch/Assets/files/*
+FullTextSearch/Assets/inverted_index.json
+!FullTextSearch/Assets/files/.gitkeep
 FullTextSearch/database/files/*
 !FullTextSearch/database/files/.gitkeep

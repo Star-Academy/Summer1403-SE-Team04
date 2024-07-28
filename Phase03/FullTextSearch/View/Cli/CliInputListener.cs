@@ -1,6 +1,7 @@
 
 using FullTextSearch.Controllers;
 using FullTextSearch.Controllers.Keepers;
+using FullTextSearch.Controllers.Logic;
 
 namespace FullTextSearch.View.Cli;
 
@@ -15,7 +16,7 @@ public class CliInputListener : IInputListener
         var query = Console.ReadLine();
         while (query != "exit")
         {
-            QueryReceiver.Instance.GetQuery(query);
+            QueryReceiver.Instance.GetQuery(query, new InvertedIndexLoader());
             OutputRendererKeeper.Instance.OutputRenderer.Render("Enter your word (if you want to finish the program enter 'exit') : ");
             query = Console.ReadLine();
         }

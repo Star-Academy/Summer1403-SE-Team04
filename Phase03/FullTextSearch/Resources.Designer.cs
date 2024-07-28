@@ -56,5 +56,11 @@ namespace FullTextSearch {
                 return ResourceManager.GetString("SmallWordsPath", resourceCulture);
             }
         }
+        
+        internal static string InvertedIndexDataPath {
+            get {
+                return ResourceManager.GetString("InvertedIndexDataPath", resourceCulture);
+            }
+        }
     }
 }

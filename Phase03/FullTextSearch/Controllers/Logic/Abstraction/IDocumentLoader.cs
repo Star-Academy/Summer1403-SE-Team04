@@ -1,6 +1,6 @@
 using FullTextSearch.Model;
 
-namespace FullTextSearch.Control.Logic.Abstraction;
+namespace FullTextSearch.Controllers.Logic.Abstraction;
 
 public interface IDocumentLoader
 {

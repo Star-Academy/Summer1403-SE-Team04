@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <root>
-    <data name="documentsPath">
+    <data name="DocumentsPath">
         <value>Assets/files</value>
     </data>
 
-    <data name="smallWordsPath">
+    <data name="SmallWordsPath">
         <value>Assets/small_words.txt</value>
     </data>
     <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">

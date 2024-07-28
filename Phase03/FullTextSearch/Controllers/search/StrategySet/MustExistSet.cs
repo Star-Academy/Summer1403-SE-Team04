@@ -17,8 +17,8 @@ public class MustExistSet : IStrategySet
             .Intersect();
     }
 
-    public string GetName()
+    public StrategySetEnum GetName()
     {
-        return "MustExist";
+        return StrategySetEnum.MustExist;
     }
 }

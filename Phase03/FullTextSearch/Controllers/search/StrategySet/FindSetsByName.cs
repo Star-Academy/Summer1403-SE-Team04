@@ -5,7 +5,7 @@ namespace FullTextSearch.Controllers.search.StrategySet;
 
 public static class FindSetsByName
 {
-    public static IStrategySet? FindByName(this IStrategySet[] sets,string name)
+    public static IStrategySet? FindByName(this IStrategySet[] sets,StrategySetEnum name)
     {
         try
         {

@@ -18,8 +18,8 @@ public class AtLeastOneExistSet : IStrategySet
             .Union();
     }
 
-    public string GetName()
+    public StrategySetEnum GetName()
     {
-        return "AtLeastOneExists";
+        return StrategySetEnum.AtLeastOneExist;
     }
 }

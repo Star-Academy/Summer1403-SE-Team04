@@ -16,8 +16,8 @@ public class MustNotExistSet : IStrategySet
             .ToList().Union();
     }
 
-    public string GetName()
+    public StrategySetEnum GetName()
     {
-        return "MustNotExist";
+        return StrategySetEnum.MustNotExist;
     }
 }

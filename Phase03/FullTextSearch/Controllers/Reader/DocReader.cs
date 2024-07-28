@@ -36,6 +36,6 @@ public class DocReader : IFileReader , IDocReader
 
     public IEnumerable<string> Read(string path)
     {
-        return FileReader.FileReaderInstance.Read(path);
+        return TxtReader.TxtReaderInstance.Read(path);
     }
 }

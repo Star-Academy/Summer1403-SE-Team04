@@ -1,12 +1,13 @@
 
+using FullTextSearch.Controllers.Logic.Abstraction;
 using FullTextSearch.Controllers.Reader;
 
 namespace FullTextSearch.Controllers.Logic;
 
-public static class SmallWordsRemover
+public class SmallWordsRemover : IGarbageRemover
 {
-    private static readonly IEnumerable<String> SmallWordsList = FileReader.FileReaderInstance.Read(Resources.SmallWordsPath);
-    public static IEnumerable<string> RemoveSmallWords(this IEnumerable<string> list)
+    private static readonly IEnumerable<String> SmallWordsList = TxtReader.TxtReaderInstance.Read(Resources.SmallWordsPath);
+    public  IEnumerable<string> Remove(IEnumerable<string> list)
     {
         return list.Where(word => !SmallWordsList.Contains(word));
     }

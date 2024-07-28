@@ -1,13 +1,13 @@
 
+using FullTextSearch.Controllers.Logic.Abstraction;
 using FullTextSearch.Controllers.Logic.StringProcessor;
 
 namespace FullTextSearch.Controllers.Logic.DocumentsLoader;
 
 public static class WordsListFormatFixer
 {
-    public static IEnumerable<string> FixWordsList(this IEnumerable<string> documentWords)
+    public static IEnumerable<string> FixWordsList(this IEnumerable<string> documentWords,IGarbageRemover remover)
     {
-        return documentWords.Select(w => w.FixWordFormat())
-            .RemoveSmallWords().ToList();
+        return remover.Remove(documentWords.Select(w => w.FixWordFormat())).ToList();
     }
 }

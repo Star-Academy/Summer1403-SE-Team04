@@ -3,13 +3,13 @@ using FullTextSearch.Controllers.Reader.Abstraction;
 
 namespace FullTextSearch.Controllers.Reader;
 
-public class FileReader : IFileReader 
+public class TxtReader : IFileReader 
 {
       private readonly char[] _splitterCharacters;
-      private static FileReader? _fileReaderInstance;
-      public static FileReader FileReaderInstance => _fileReaderInstance ??= new FileReader();
+      private static TxtReader? _fileReaderInstance;
+      public static TxtReader TxtReaderInstance => _fileReaderInstance ??= new TxtReader();
 
-      private FileReader()
+      private TxtReader()
       {
             _splitterCharacters = GetSplitterChars();
       }

@@ -1,5 +1,5 @@
 ﻿using FullTextSearch;
-using FullTextSearch.Control;
+using FullTextSearch.Controllers;
 using FullTextSearch.View.Cli;
 
 internal class Program

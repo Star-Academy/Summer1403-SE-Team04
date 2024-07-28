@@ -1,6 +1,7 @@
-using FullTextSearch.Control.Reader;
 
-namespace FullTextSearch.Control.Logic;
+using FullTextSearch.Controllers.Reader;
+
+namespace FullTextSearch.Controllers.Logic;
 
 public static class SmallWordsRemover
 {

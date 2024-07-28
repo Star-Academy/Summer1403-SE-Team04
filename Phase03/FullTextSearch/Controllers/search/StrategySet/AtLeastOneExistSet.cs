@@ -1,5 +1,5 @@
-using FullTextSearch.Control.Logic;
-using FullTextSearch.Control.search;
+
+using FullTextSearch.Controllers.Logic;
 using FullTextSearch.Controllers.search.Abstraction;
 using FullTextSearch.Model.DataStructure;
 

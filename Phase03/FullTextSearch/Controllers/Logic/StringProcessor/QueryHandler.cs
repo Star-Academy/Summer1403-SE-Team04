@@ -1,6 +1,4 @@
-using FullTextSearch.Control.Logic.StringProcessor;
-
-namespace FullTextSearch.Control.search;
+namespace FullTextSearch.Controllers.Logic.StringProcessor;
 
 public static class QueryHandler
 {

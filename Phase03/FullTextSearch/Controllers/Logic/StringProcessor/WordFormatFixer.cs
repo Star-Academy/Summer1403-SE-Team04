@@ -1,5 +1,5 @@
 
-namespace FullTextSearch.Control.Logic.StringProcessor;
+namespace FullTextSearch.Controllers.Logic.StringProcessor;
 public static class WordFormatFixer
 {
 

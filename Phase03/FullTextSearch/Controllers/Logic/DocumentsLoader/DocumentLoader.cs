@@ -1,10 +1,10 @@
-using FullTextSearch.Control.Reader;
+using FullTextSearch.Controllers.Logic.Abstraction;
+using FullTextSearch.Controllers.Reader;
 using FullTextSearch.Model;
-using FullTextSearch.Reader;
 
-namespace FullTextSearch.Control.Logic.DocumentsLoader;
+namespace FullTextSearch.Controllers.Logic.DocumentsLoader;
 
-public class DocumentLoader
+public class DocumentLoader : IDocumentLoader
 {
     private DocumentLoader()
     {

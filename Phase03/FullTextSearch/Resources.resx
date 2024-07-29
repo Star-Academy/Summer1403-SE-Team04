@@ -12,6 +12,17 @@
     <data name="StrategyExceptionMessage">
         <value>strategy not found pleas check your name</value>
     </data>
+
+
+    <data name="WordNotFoundMessage">
+        <value>Nothing was found for your word</value>
+    </data>
+
+
+    <data name="EnterWordMessage">
+        <value>Enter your word (if you want to finish the program enter 'exit') : </value>
+    </data>
+
     <data name="InvertedIndexDataPath">
         <value>Assets/inverted_index.json</value>
     </data>

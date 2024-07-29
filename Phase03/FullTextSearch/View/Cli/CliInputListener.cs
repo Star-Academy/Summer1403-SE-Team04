@@ -6,6 +6,7 @@ namespace FullTextSearch.View.Cli;
 
 public class CliInputListener : IInputListener
 {
+    private const string ExitCommand = "exit";
     private static CliInputListener? _cliInputListener;
 
     private CliInputListener()
@@ -22,13 +23,13 @@ public class CliInputListener : IInputListener
     private void GetInputFromCli()
     {
         OutputRendererKeeper.Instance.OutputRenderer.Render(
-            "Enter your word (if you want to finish the program enter 'exit') : ");
+            Resources.EnterWordMessage);
         var query = Console.ReadLine();
-        while (query != "exit")
+        while (query != ExitCommand)
         {
             QueryReceiver.Instance.GetQuery(query, new InvertedIndexLoader());
             OutputRendererKeeper.Instance.OutputRenderer.Render(
-                "Enter your word (if you want to finish the program enter 'exit') : ");
+                Resources.EnterWordMessage);
             query = Console.ReadLine();
         }
     }

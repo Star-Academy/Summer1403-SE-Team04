@@ -13,6 +13,6 @@ internal class Program
         var indicesList = new List<string> { Resources.DocumentsPath };
         var indexCreator = InvertedIndexCreator.InvertedIndexCreatorInstance;
         var docLoader = DocumentLoader.Instance;
-        Initializer.InitializerInstance.Init(indicesList, inputListener, outputPrinter,indexCreator, docLoader);
+        ServiceStartupInitializer.ServiceStartupInitializerInstance.Init(indicesList, inputListener, outputPrinter,indexCreator, docLoader);
     }
 }

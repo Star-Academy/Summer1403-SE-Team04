@@ -21,7 +21,7 @@ public class DocumentLoader : IDocumentLoader
         List<IStringReformater> reformaters, IDocBuilder builder)
     {
         var documents = Directory.GetFiles(directoryPath, "*.*", SearchOption.AllDirectories)
-            .Select(s => builder.Builed(s, docReader)).ToList();
+            .Select(s => builder.Build(s, docReader)).ToList();
         return documents.EditWords(reformaters);
     }
 }

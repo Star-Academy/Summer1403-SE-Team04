@@ -63,6 +63,18 @@ namespace FullTextSearch {
             }
         }
         
+        internal static string WordNotFoundMessage {
+            get {
+                return ResourceManager.GetString("WordNotFoundMessage", resourceCulture);
+            }
+        }
+        
+        internal static string EnterWordMessage {
+            get {
+                return ResourceManager.GetString("EnterWordMessage", resourceCulture);
+            }
+        }
+        
         internal static string InvertedIndexDataPath {
             get {
                 return ResourceManager.GetString("InvertedIndexDataPath", resourceCulture);

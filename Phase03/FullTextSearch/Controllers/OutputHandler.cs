@@ -17,7 +17,7 @@ public class OutputHandler : IOutputHandler
     {
         if (!output.Any())
         {
-            OutputRendererKeeper.Instance.OutputRenderer.Render("Nothing was found for your word");
+            OutputRendererKeeper.Instance.OutputRenderer.Render(Resources.WordNotFoundMessage);
             return;
         }
 

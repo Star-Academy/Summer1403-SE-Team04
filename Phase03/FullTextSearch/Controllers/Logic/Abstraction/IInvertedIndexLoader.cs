@@ -4,5 +4,5 @@ namespace FullTextSearch.Controllers.Reader.Abstraction;
 
 public interface IInvertedIndexLoader
 {
-    List<InvertedIndex> Load();
+    List<InvertedIndex>? Load();
 }

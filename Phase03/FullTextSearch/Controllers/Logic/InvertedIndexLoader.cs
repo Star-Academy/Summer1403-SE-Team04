@@ -6,16 +6,16 @@ namespace FullTextSearch.Controllers.Logic;
 
 public class InvertedIndexLoader : IInvertedIndexLoader
 {
-    public List<InvertedIndex> Load()
+    
+    private static readonly string FilePath = Resources.InvertedIndexDataPath;
+    
+    private static readonly JsonSerializerOptions? Options = new JsonSerializerOptions
     {
-        var filePath = Resources.InvertedIndexDataPath;
-        var json = File.ReadAllText(filePath);
-
-        var options = new JsonSerializerOptions
-        {
-            IncludeFields = true
-        };
-
-        return JsonSerializer.Deserialize<List<InvertedIndex>>(json, options);
+        IncludeFields = true
+    };
+    public List<InvertedIndex>? Load()
+    {
+        var json = File.ReadAllText(FilePath);
+        return JsonSerializer.Deserialize<List<InvertedIndex>>(json, Options);
     }
 }

@@ -1,6 +1,6 @@
 namespace FullTextSearch.View;
 
 public interface IInputListener
-{
-    public void InputListenerRegister();
+{ 
+    void InputListenerRegister();
 }

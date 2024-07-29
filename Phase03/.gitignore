@@ -1,0 +1,7 @@
+FullTextSearch/bin
+FullTextSearch/obj
+.idea
+FullTextSearch/Assets/files/*
+!FullTextSearch/Assets/files/.gitkeep
+FullTextSearch/database/files/*
+!FullTextSearch/database/files/.gitkeep

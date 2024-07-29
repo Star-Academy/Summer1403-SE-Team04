@@ -1,5 +1,4 @@
 using FullTextSearch.Controllers.search.StrategySet;
-using FullTextSearch.Model.DataStructure;
 
 namespace FullTextSearch.Controllers.search.Abstraction;
 

@@ -1,4 +1,3 @@
-using FullTextSearch.Controllers.Reader.Abstraction;
 using FullTextSearch.Model;
 
 namespace FullTextSearch.Controllers.Logic.Abstraction;

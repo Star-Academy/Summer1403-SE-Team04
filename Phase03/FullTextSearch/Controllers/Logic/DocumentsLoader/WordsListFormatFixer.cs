@@ -10,10 +10,7 @@ public static class WordsListFormatFixer
         foreach (var word in documentWords)
         {
             var result = word;
-            foreach (var format in reformaters)
-            {
-                result = format.FixWordFormat(result);
-            }
+            foreach (var format in reformaters) result = format.FixWordFormat(result);
 
             yield return result;
         }

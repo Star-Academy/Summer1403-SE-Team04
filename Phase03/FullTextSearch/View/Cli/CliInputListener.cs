@@ -8,6 +8,7 @@ namespace FullTextSearch.View.Cli;
 public class CliInputListener : IInputListener
 {
     private const string ExitCommand = "exit";
+
     public void InputListenerRegister()
     {
         GetInputFromCli();
@@ -19,8 +20,8 @@ public class CliInputListener : IInputListener
             Resources.EnterWordMessage);
         var query = Console.ReadLine();
         while (query != ExitCommand)
-        { 
-            new QueryReceiver(new QuerySearcher(new InvertedIndexLoader()) ).GetQuery(query);
+        {
+            new QueryReceiver(new QuerySearcher(new InvertedIndexLoader())).GetQuery(query);
             OutputRendererKeeper.Instance.OutputRenderer.Render(
                 Resources.EnterWordMessage);
             query = Console.ReadLine();

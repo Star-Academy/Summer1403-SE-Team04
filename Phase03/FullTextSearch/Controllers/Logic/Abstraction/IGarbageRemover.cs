@@ -1,5 +1,3 @@
-using System.Collections;
-
 namespace FullTextSearch.Controllers.Logic.Abstraction;
 
 public interface IGarbageRemover

@@ -1,5 +1,3 @@
-using FullTextSearch.Controllers.Reader.Abstraction;
-
 namespace FullTextSearch.Controllers.Abstraction;
 
 public interface IQueryReceiver

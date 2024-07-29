@@ -8,7 +8,6 @@ public static class MathHelper
             return new List<T>();
 
         return enumberList.Aggregate((current, next) => current.Union(next).ToList());
-    
     }
 
     public static List<T> Intersect<T>(this List<List<T>> enumerable)
@@ -17,6 +16,5 @@ public static class MathHelper
             return new List<T>();
 
         return enumerable.Aggregate((current, next) => current.Intersect(next).ToList());
-    
     }
 }

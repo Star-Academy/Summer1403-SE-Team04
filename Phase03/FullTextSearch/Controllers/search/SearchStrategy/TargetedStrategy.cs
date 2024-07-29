@@ -12,15 +12,16 @@ public class TargetedStrategy(InvertedIndex index) : ISearchStrategy
     {
         var inputWords =
             query.SplitIntoFormattedWords(new List<IStringReformater> { new ToLower(), new ToRoot() });
-        return GetValidDocuments(new MustExistSet(inputWords,index), new MustNotExistSet(inputWords,index),
-            new AtLeastOneExistSet(inputWords,index));
+        StrategySetFactory setFactory = new StrategySetFactory(inputWords, index);
+        return GetValidDocuments(inputWords,index);
     }
 
-    private IEnumerable<string> GetValidDocuments(params IStrategySet[] strategySets)
+    private IEnumerable<string> GetValidDocuments(string[] words , InvertedIndex index)
     {
-        var mustExist = strategySets.FindByName(StrategySetEnum.MustExist).GetValidDocs();
-        var mustNotExist = strategySets.FindByName(StrategySetEnum.MustNotExist).GetValidDocs();
-        var atLeastOneExists = strategySets.FindByName(StrategySetEnum.AtLeastOneExist).GetValidDocs();
+        StrategySetFactory factory = new StrategySetFactory(words, index);
+        var mustExist = factory.Create(StrategySetEnum.MustExist).GetValidDocs();
+        var mustNotExist = factory.Create(StrategySetEnum.MustNotExist).GetValidDocs();
+        var atLeastOneExists = factory.Create(StrategySetEnum.AtLeastOneExist).GetValidDocs();
         return CalculateValidDoc(mustExist, mustNotExist, atLeastOneExists);
     }
 

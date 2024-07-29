@@ -20,13 +20,14 @@
 
 
     <data name="EnterWordMessage">
-        <value>Enter your word (if you want to finish the program enter 'exit') : </value>
+        <value>Enter your word (if you want to finish the program enter 'exit') :</value>
     </data>
 
     <data name="InvertedIndexDataPath">
         <value>Assets/inverted_index.json</value>
     </data>
-    <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root"
+    <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata"
+                id="root"
                 xmlns="">
         <xsd:element name="root" msdata:IsDataSet="true">
 

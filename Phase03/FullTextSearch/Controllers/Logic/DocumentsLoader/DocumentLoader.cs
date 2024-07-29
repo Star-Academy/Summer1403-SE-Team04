@@ -4,24 +4,13 @@ using FullTextSearch.Model;
 
 namespace FullTextSearch.Controllers.Logic.DocumentsLoader;
 
-public class DocumentLoader : IDocumentLoader
+public class DocumentLoader(IDocReader docReader, IDocBuilder builder) : IDocumentLoader
 {
-    private static DocumentLoader? _docLoaderInstance;
-
-    private DocumentLoader()
-    {
-    }
-
-    public static DocumentLoader Instance
-    {
-        get { return _docLoaderInstance ??= new DocumentLoader(); }
-    }
-
-    public IEnumerable<Document> LoadDocumentsList(IDocReader docReader, string directoryPath,
-        List<IStringReformater> reformaters, IDocBuilder builder)
+    public IEnumerable<Document> LoadDocumentsList( string directoryPath,
+        List<IStringReformater> reformaters)
     {
         var documents = Directory.GetFiles(directoryPath, "*.*", SearchOption.AllDirectories)
-            .Select(s => builder.Build(s, docReader)).ToList();
+            .Select(s => builder.Build(s)).ToList();
         return documents.EditWords(reformaters);
     }
 }

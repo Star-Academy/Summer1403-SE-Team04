@@ -14,7 +14,7 @@ public class InvertedIndexCreator : IInvertedIndexCreator
     {
         var stringReformaters = new List<IStringReformater> { ToLower.Instance, new ToRoot() };
         var documents = documentLoader
-            .LoadDocumentsList(DocReader.DocReaderInstance, directoryPath, stringReformaters, DocBuilder.Instance);
+            .LoadDocumentsList(directoryPath, stringReformaters);
 
         var newIndex = new InvertedIndex(documents, directoryPath);
         writer.Write(newIndex);

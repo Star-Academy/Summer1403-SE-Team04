@@ -3,18 +3,11 @@ using FullTextSearch.Controllers.Reader.Abstraction;
 
 namespace FullTextSearch.Controllers.Reader;
 
-public class DocReader : IDocReader
+public class DocReader( IGarbageRemover remover, ITxtReader txtReader) : IDocReader
 {
-    private static DocReader? _docReaderInstance;
 
-    private DocReader()
+    public IEnumerable<string> Read(string path)
     {
-    }
-
-    public static DocReader DocReaderInstance => _docReaderInstance ??= new DocReader();
-
-    public IEnumerable<string> Read(string path, IGarbageRemover remover)
-    {
-        return remover.Remove(TxtReader.TxtReaderInstance.Read(path));
+        return remover.Remove(txtReader.Read(path));
     }
 }

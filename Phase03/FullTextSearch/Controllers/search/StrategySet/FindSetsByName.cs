@@ -7,17 +7,10 @@ public static class FindSetsByName
 {
     public static IStrategySet? FindByName(this IStrategySet[] strategies, StrategySetEnum name)
     {
-        try
-        {
-            var result = strategies.FirstOrDefault(set => set.GetName() == name);
-            if (result != null)
-                return result;
-            throw new StrategyNotFoundException();
-        }
-        catch (StrategyNotFoundException e)
-        {
-            Console.WriteLine(e.Message);
-            throw;
-        }
+        var result = strategies.FirstOrDefault(set => set.GetName() == name);
+        if (result != null)
+            return result;
+        throw new StrategyNotFoundException();
+    
     }
 }

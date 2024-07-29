@@ -11,7 +11,7 @@ internal class Program
     {
         var inputListener = new CliInputListener();
         var outputPrinter = new OutputPrinter();
-        var docLoader = new DocumentLoader(new DocBuilder(new DocReader(new SmallWordsRemover(),new TxtReader())));
+        var docLoader = new DocumentLoader(new DocBuilder(new TxtReader()),new SmallWordsRemover());
         var indicesList = new List<string> { Resources.DocumentsPath };
         var indexCreator = new InvertedIndexCreator(new InvertedIndexWriter(),docLoader) ;
         new ServiceStartupInitializer(inputListener, outputPrinter,indexCreator).Init(indicesList);

@@ -4,10 +4,10 @@ using FullTextSearch.Model;
 
 namespace FullTextSearch.Controllers.Logic;
 
-public class DocBuilder(IDocReader docReader) : IDocBuilder
+public class DocBuilder(ITxtReader txtReader ) : IDocBuilder
 {
     public Document Build(string docPath)
     {
-        return new Document(docPath, docReader.Read(docPath));
+        return new Document(docPath, txtReader.Read(docPath));
     }
 }

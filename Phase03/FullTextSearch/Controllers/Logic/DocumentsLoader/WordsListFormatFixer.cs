@@ -7,11 +7,15 @@ public static class WordsListFormatFixer
     public static IEnumerable<string> FixWordsList(this IEnumerable<string> documentWords,
         List<IStringReformater> reformaters)
     {
-        return documentWords.Select(w =>
+        foreach (var word in documentWords)
         {
-            foreach (var format in reformaters) w = format.FixWordFormat(w);
+            var result = word;
+            foreach (var format in reformaters)
+            {
+                result = format.FixWordFormat(result);
+            }
 
-            return w;
-        });
+            yield return result;
+        }
     }
 }

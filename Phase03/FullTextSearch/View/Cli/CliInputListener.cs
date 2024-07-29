@@ -1,6 +1,7 @@
 using FullTextSearch.Controllers;
 using FullTextSearch.Controllers.Keepers;
 using FullTextSearch.Controllers.Logic;
+using FullTextSearch.Controllers.search;
 
 namespace FullTextSearch.View.Cli;
 
@@ -19,7 +20,7 @@ public class CliInputListener : IInputListener
         var query = Console.ReadLine();
         while (query != ExitCommand)
         { 
-            new QueryReceiver(new InvertedIndexLoader()).GetQuery(query);
+            new QueryReceiver(new QuerySearcher(new InvertedIndexLoader()) ).GetQuery(query);
             OutputRendererKeeper.Instance.OutputRenderer.Render(
                 Resources.EnterWordMessage);
             query = Console.ReadLine();

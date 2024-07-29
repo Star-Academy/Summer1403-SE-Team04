@@ -15,6 +15,7 @@ public class ServiceStartupInitializer (
 { 
     public void Init(List<string> directoryList)
     {
+        File.WriteAllText(Resources.InvertedIndexDataPath, string.Empty);
         directoryList.ForEach(path => indexCreator.CreateInvertedIndex(path));
         InputListenerKeeper.Instance.InputListener = inputListener;
         OutputRendererKeeper.Instance.OutputRenderer = outputRenderer;

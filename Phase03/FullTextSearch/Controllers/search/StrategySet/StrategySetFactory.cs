@@ -3,11 +3,11 @@ using FullTextSearch.Model.DataStructure;
 
 namespace FullTextSearch.Controllers.search.StrategySet;
 
-public class StrategySetFactory
+public class StrategySetFactory : IStrategySetFactory
 {
-    private readonly IReadOnlyDictionary<StrategySetEnum, IStrategySet> _strategySets;
+    private IReadOnlyDictionary<StrategySetEnum, IStrategySet> _strategySets;
 
-    public StrategySetFactory(string[] wordsArray, InvertedIndex index)
+    public void SetStrategySets(string[] wordsArray, InvertedIndex index)
     {
         _strategySets = new Dictionary<StrategySetEnum, IStrategySet>
         {

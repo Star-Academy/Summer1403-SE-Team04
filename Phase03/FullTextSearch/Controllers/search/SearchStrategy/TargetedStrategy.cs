@@ -6,19 +6,18 @@ using FullTextSearch.Model.DataStructure;
 
 namespace FullTextSearch.Controllers.search.SearchStrategy;
 
-public class TargetedStrategy(InvertedIndex index) : ISearchStrategy
+public class TargetedStrategy(InvertedIndex index, IStrategySetFactory factory) : ISearchStrategy
 {
     public IEnumerable<string> Search(string query)
     {
         var inputWords =
             query.SplitIntoFormattedWords(new List<IStringReformater> { new ToLower(), new ToRoot() });
-        var setFactory = new StrategySetFactory(inputWords, index);
         return GetValidDocuments(inputWords, index);
     }
 
     private IEnumerable<string> GetValidDocuments(string[] words, InvertedIndex index)
     {
-        var factory = new StrategySetFactory(words, index);
+        factory.SetStrategySets(words, index);
         var mustExist = factory.Create(StrategySetEnum.MustExist).GetValidDocs();
         var mustNotExist = factory.Create(StrategySetEnum.MustNotExist).GetValidDocs();
         var atLeastOneExists = factory.Create(StrategySetEnum.AtLeastOneExist).GetValidDocs();

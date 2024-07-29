@@ -6,7 +6,7 @@ namespace FullTextSearch.Controllers.Reader;
 public class TxtReader : ITxtReader
 {
     private static TxtReader? _fileReaderInstance;
-    private readonly string _splitPattern = @"[^a-zA-Z1-9]";
+    private const string SplitPattern = @"[^a-zA-Z1-9]";
 
     private TxtReader()
     {
@@ -14,9 +14,9 @@ public class TxtReader : ITxtReader
 
     public static TxtReader TxtReaderInstance => _fileReaderInstance ??= new TxtReader();
 
-    public IEnumerable<string> Read(string path)
+    public IReadOnlyList<string> Read(string path)
     {
         var fileText = File.ReadAllText(path);
-        return Regex.Split(fileText, _splitPattern);
+        return Regex.Split(fileText, SplitPattern);
     }
 }

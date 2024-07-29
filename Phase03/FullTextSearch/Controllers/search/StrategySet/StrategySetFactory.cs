@@ -6,6 +6,7 @@ namespace FullTextSearch.Controllers.search.StrategySet;
 public class StrategySetFactory
 {
     private readonly IReadOnlyDictionary<StrategySetEnum, IStrategySet> _strategySets;
+
     public StrategySetFactory(string[] wordsArray, InvertedIndex index)
     {
         _strategySets = new Dictionary<StrategySetEnum, IStrategySet>
@@ -21,6 +22,7 @@ public class StrategySetFactory
             }
         };
     }
+
     public IStrategySet Create(StrategySetEnum setName)
     {
         return _strategySets.GetValueOrDefault(setName);

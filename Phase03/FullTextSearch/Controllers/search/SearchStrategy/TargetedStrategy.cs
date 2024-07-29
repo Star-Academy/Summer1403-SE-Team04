@@ -12,13 +12,13 @@ public class TargetedStrategy(InvertedIndex index) : ISearchStrategy
     {
         var inputWords =
             query.SplitIntoFormattedWords(new List<IStringReformater> { new ToLower(), new ToRoot() });
-        StrategySetFactory setFactory = new StrategySetFactory(inputWords, index);
-        return GetValidDocuments(inputWords,index);
+        var setFactory = new StrategySetFactory(inputWords, index);
+        return GetValidDocuments(inputWords, index);
     }
 
-    private IEnumerable<string> GetValidDocuments(string[] words , InvertedIndex index)
+    private IEnumerable<string> GetValidDocuments(string[] words, InvertedIndex index)
     {
-        StrategySetFactory factory = new StrategySetFactory(words, index);
+        var factory = new StrategySetFactory(words, index);
         var mustExist = factory.Create(StrategySetEnum.MustExist).GetValidDocs();
         var mustNotExist = factory.Create(StrategySetEnum.MustNotExist).GetValidDocs();
         var atLeastOneExists = factory.Create(StrategySetEnum.AtLeastOneExist).GetValidDocs();

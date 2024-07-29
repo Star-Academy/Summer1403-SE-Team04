@@ -1,3 +1,4 @@
+using FullTextSearch.Controllers.Keepers;
 using FullTextSearch.Controllers.Logic;
 using FullTextSearch.Controllers.Reader.Abstraction;
 using FullTextSearch.Controllers.search.Abstraction;
@@ -12,6 +13,6 @@ public class QuerySearcher(IInvertedIndexLoader invertedIndexLoader) : IProcesso
         var result = invertedIndexLoader.Load().Select(invertedIndex =>
             new WordSearcher(new TargetedStrategy(invertedIndex)).Search(query).ToList()).ToList();
 
-        OutputHandler.Instance.SendOutput(result.Union());
+        new OutputHandler(OutputRendererKeeper.Instance.OutputRenderer).SendOutput(result.Union());
     }
 }

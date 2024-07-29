@@ -1,26 +1,19 @@
 using FullTextSearch.Controllers.Abstraction;
 using FullTextSearch.Controllers.Keepers;
+using FullTextSearch.View;
 
 namespace FullTextSearch.Controllers;
 
-public class OutputHandler : IOutputHandler
-{
-    private static OutputHandler? _outputHandler;
-
-    private OutputHandler()
-    {
-    }
-
-    public static OutputHandler Instance => _outputHandler ??= new OutputHandler();
-
+public class OutputHandler(IOutputRenderer renderer) : IOutputHandler
+{ 
     public void SendOutput(List<string> output)
     {
         if (!output.Any())
         {
-            OutputRendererKeeper.Instance.OutputRenderer.Render(Resources.WordNotFoundMessage);
+            renderer.Render(Resources.WordNotFoundMessage);
             return;
         }
 
-        OutputRendererKeeper.Instance.OutputRenderer.Render(output);
+        renderer.Render(output);
     }
 }

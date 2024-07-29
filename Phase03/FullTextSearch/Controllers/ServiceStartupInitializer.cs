@@ -7,23 +7,15 @@ using FullTextSearch.View;
 
 namespace FullTextSearch.Controllers;
 
-public class ServiceStartupInitializer : IInitializer
-{
-    private static ServiceStartupInitializer? _initializer;
-
-    private ServiceStartupInitializer()
+public class ServiceStartupInitializer (
+    IInputListener inputListener,
+    IOutputRenderer outputRenderer,
+    IInvertedIndexCreator indexCreator
+    ) :  IInitializer
+{ 
+    public void Init(List<string> directoryList)
     {
-    }
-
-    public static ServiceStartupInitializer ServiceStartupInitializerInstance => _initializer ??= new ServiceStartupInitializer();
-
-    public void Init(List<string> directoryList, IInputListener inputListener,
-        IOutputRenderer outputRenderer, IInvertedIndexCreator indexCreator, IDocumentLoader docLoader)
-    {
-        directoryList.ForEach(path =>
-            indexCreator.CreateInvertedIndex(path, new InvertedIndexWriter(),
-                docLoader));
-        
+        directoryList.ForEach(path => indexCreator.CreateInvertedIndex(path));
         InputListenerKeeper.Instance.InputListener = inputListener;
         OutputRendererKeeper.Instance.OutputRenderer = outputRenderer;
         inputListener.InputListenerRegister();

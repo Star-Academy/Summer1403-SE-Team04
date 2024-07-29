@@ -5,15 +5,12 @@ using FullTextSearch.Controllers.search.SearchStrategy;
 
 namespace FullTextSearch.Controllers.search;
 
-public class QuerySearcher : IProcessor
-{
-    private static QuerySearcher? _searcher;
-    public static QuerySearcher Instance => _searcher ??= new QuerySearcher();
-
-    public void ProcessQuery(string query, IInvertedIndexLoader loader)
+public class QuerySearcher(IInvertedIndexLoader invertedIndexLoader) : IProcessor
+{ 
+    public void ProcessQuery(string query)
     {
-        var result = loader.Load().Select(invertedIndex =>
-            new WordSearcher(invertedIndex, TargetedStrategy.Instance).Search(query).ToList()).ToList();
+        var result = invertedIndexLoader.Load().Select(invertedIndex =>
+            new WordSearcher(new TargetedStrategy(invertedIndex)).Search(query).ToList()).ToList();
 
         OutputHandler.Instance.SendOutput(result.Union());
     }

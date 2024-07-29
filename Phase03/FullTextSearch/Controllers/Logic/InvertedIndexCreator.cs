@@ -5,14 +5,11 @@ using FullTextSearch.Model.DataStructure;
 
 namespace FullTextSearch.Controllers.Logic;
 
-public class InvertedIndexCreator : IInvertedIndexCreator
-{
-    private static InvertedIndexCreator? _indexCreator;
-    public static InvertedIndexCreator InvertedIndexCreatorInstance => _indexCreator ??= new InvertedIndexCreator();
-
-    public void CreateInvertedIndex(string directoryPath, IInvertedIndexWriter writer, IDocumentLoader documentLoader)
+public class InvertedIndexCreator(InvertedIndexWriter writer,IDocumentLoader documentLoader) : IInvertedIndexCreator
+{ 
+    public void CreateInvertedIndex(string directoryPath)
     {
-        var stringReformaters = new List<IStringReformater> { ToLower.Instance, new ToRoot() };
+        var stringReformaters = new List<IStringReformater> { new ToLower(), new ToRoot() };
         var documents = documentLoader
             .LoadDocumentsList(directoryPath, stringReformaters);
 

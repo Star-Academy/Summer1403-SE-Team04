@@ -4,20 +4,12 @@ using FullTextSearch.Model.DataStructure;
 
 namespace FullTextSearch.Controllers.search.StrategySet;
 
-public class MustNotExistSet : IStrategySet
+public class MustNotExistSet(string[] wordsArray, InvertedIndex index) : IStrategySet
 {
-    private static MustNotExistSet _mustNotExistSet;
-
-    private MustNotExistSet()
-    {
-    }
-
-    public static MustNotExistSet Instance => _mustNotExistSet ??= new MustNotExistSet();
-
-    public IEnumerable<string> GetValidDocs(string[] wordsArray, InvertedIndex index)
+    public IEnumerable<string> GetValidDocs()
     {
         var mustNotExistWords = wordsArray.Where(word => word.StartsWith('-')).Select(word => word.Substring(1));
-        return mustNotExistWords.Select(word => DocFinder.Instance.Find(word, index).ToList())
+        return mustNotExistWords.Select(word => new DocFinder(index).Find(word).ToList())
             .ToList().Union();
     }
 

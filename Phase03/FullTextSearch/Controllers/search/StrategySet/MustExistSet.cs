@@ -4,21 +4,13 @@ using FullTextSearch.Model.DataStructure;
 
 namespace FullTextSearch.Controllers.search.StrategySet;
 
-public class MustExistSet : IStrategySet
+public class MustExistSet(string[] wordsArray, InvertedIndex index) : IStrategySet
 {
-    private static MustExistSet _mustExistSet;
-
-    private MustExistSet()
-    {
-    }
-
-    public static MustExistSet Instance => _mustExistSet ??= new MustExistSet();
-
-    public IEnumerable<string> GetValidDocs(string[] wordsArray, InvertedIndex index)
+    public IEnumerable<string> GetValidDocs()
     {
         var mustExistWords = wordsArray.Where(word => !word.StartsWith('+') && !word.StartsWith('-'));
 
-        return mustExistWords.Select(word => DocFinder.Instance.Find(word, index).ToList())
+        return mustExistWords.Select(word => new DocFinder(index).Find(word).ToList())
             .ToList()
             .Intersect();
     }

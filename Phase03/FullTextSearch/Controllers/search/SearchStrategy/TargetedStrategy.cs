@@ -6,30 +6,21 @@ using FullTextSearch.Model.DataStructure;
 
 namespace FullTextSearch.Controllers.search.SearchStrategy;
 
-public class TargetedStrategy : ISearchStrategy
+public class TargetedStrategy(InvertedIndex index) : ISearchStrategy
 {
-    private static TargetedStrategy? _targetedStrategy;
-
-    private TargetedStrategy()
-    {
-    }
-
-    public static TargetedStrategy Instance => _targetedStrategy ??= new TargetedStrategy();
-
-    public IEnumerable<string> Search(string query, InvertedIndex index)
+    public IEnumerable<string> Search(string query)
     {
         var inputWords =
-            query.SplitIntoFormattedWords(new List<IStringReformater> { ToLower.Instance, ToRoot.Instance });
-        return GetValidDocuments(index, inputWords, MustExistSet.Instance, MustNotExistSet.Instance,
-            AtLeastOneExistSet.Instance);
+            query.SplitIntoFormattedWords(new List<IStringReformater> { new ToLower(), new ToRoot() });
+        return GetValidDocuments(new MustExistSet(inputWords,index), new MustNotExistSet(inputWords,index),
+            new AtLeastOneExistSet(inputWords,index));
     }
 
-    private IEnumerable<string> GetValidDocuments(InvertedIndex index, string[] words,
-        params IStrategySet[] strategySets)
+    private IEnumerable<string> GetValidDocuments(params IStrategySet[] strategySets)
     {
-        var mustExist = strategySets.FindByName(StrategySetEnum.MustExist).GetValidDocs(words, index);
-        var mustNotExist = strategySets.FindByName(StrategySetEnum.MustNotExist).GetValidDocs(words, index);
-        var atLeastOneExists = strategySets.FindByName(StrategySetEnum.AtLeastOneExist).GetValidDocs(words, index);
+        var mustExist = strategySets.FindByName(StrategySetEnum.MustExist).GetValidDocs();
+        var mustNotExist = strategySets.FindByName(StrategySetEnum.MustNotExist).GetValidDocs();
+        var atLeastOneExists = strategySets.FindByName(StrategySetEnum.AtLeastOneExist).GetValidDocs();
         return CalculateValidDoc(mustExist, mustNotExist, atLeastOneExists);
     }
 

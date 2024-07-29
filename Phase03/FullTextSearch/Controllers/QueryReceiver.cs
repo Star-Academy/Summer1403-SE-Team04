@@ -1,16 +1,14 @@
 using FullTextSearch.Controllers.Abstraction;
 using FullTextSearch.Controllers.Reader.Abstraction;
 using FullTextSearch.Controllers.search;
+using FullTextSearch.Model.DataStructure;
 
 namespace FullTextSearch.Controllers;
 
-public class QueryReceiver : IQueryReceiver
+public class QueryReceiver(IInvertedIndexLoader loader) : IQueryReceiver
 {
-    private static QueryReceiver? _queryReceiver;
-    public static QueryReceiver Instance => _queryReceiver ??= new QueryReceiver();
-
-    public void GetQuery(string query, IInvertedIndexLoader loader)
-    {
-        QuerySearcher.Instance.ProcessQuery(query, loader);
+    public void GetQuery(string query)
+    { 
+        new QuerySearcher(loader).ProcessQuery(query);
     }
 }

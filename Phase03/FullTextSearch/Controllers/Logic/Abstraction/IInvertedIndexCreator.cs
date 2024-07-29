@@ -2,5 +2,5 @@ namespace FullTextSearch.Controllers.Logic.Abstraction;
 
 public interface IInvertedIndexCreator
 {
-    void CreateInvertedIndex(string directoryPath, IInvertedIndexWriter writer, IDocumentLoader documentLoader);
+    void CreateInvertedIndex(string directoryPath);
 }

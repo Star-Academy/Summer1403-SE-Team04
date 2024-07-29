@@ -2,17 +2,18 @@
 using FullTextSearch.Controllers;
 using FullTextSearch.Controllers.Logic;
 using FullTextSearch.Controllers.Logic.DocumentsLoader;
+using FullTextSearch.Controllers.Reader;
 using FullTextSearch.View.Cli;
 
 internal class Program
 {
     private static void Main()
     {
-        var inputListener = CliInputListener.CliInputListenerInstance;
-        var outputPrinter = OutputPrinter.OutputPrinterInstance;
+        var inputListener = new CliInputListener();
+        var outputPrinter = new OutputPrinter();
+        var docLoader = new DocumentLoader(new DocBuilder(new DocReader(new SmallWordsRemover(),new TxtReader())));
         var indicesList = new List<string> { Resources.DocumentsPath };
-        var indexCreator = InvertedIndexCreator.InvertedIndexCreatorInstance;
-        var docLoader = DocumentLoader.Instance;
-        ServiceStartupInitializer.ServiceStartupInitializerInstance.Init(indicesList, inputListener, outputPrinter,indexCreator, docLoader);
+        var indexCreator = new InvertedIndexCreator(new InvertedIndexWriter(),docLoader) ;
+        new ServiceStartupInitializer(inputListener, outputPrinter,indexCreator).Init(indicesList);
     }
 }

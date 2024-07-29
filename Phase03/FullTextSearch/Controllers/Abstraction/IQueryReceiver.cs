@@ -4,5 +4,5 @@ namespace FullTextSearch.Controllers.Abstraction;
 
 public interface IQueryReceiver
 {
-    void GetQuery(string query, IInvertedIndexLoader loader);
+    void GetQuery(string query);
 }

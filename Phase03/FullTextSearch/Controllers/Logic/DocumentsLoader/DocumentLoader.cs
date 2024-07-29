@@ -4,7 +4,7 @@ using FullTextSearch.Model;
 
 namespace FullTextSearch.Controllers.Logic.DocumentsLoader;
 
-public class DocumentLoader(IDocReader docReader, IDocBuilder builder) : IDocumentLoader
+public class DocumentLoader(IDocBuilder builder) : IDocumentLoader
 {
     public IEnumerable<Document> LoadDocumentsList( string directoryPath,
         List<IStringReformater> reformaters)

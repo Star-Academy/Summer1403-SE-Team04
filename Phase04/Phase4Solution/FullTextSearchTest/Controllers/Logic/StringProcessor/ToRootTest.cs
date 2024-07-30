@@ -1,5 +1,6 @@
 using FullTextSearch.Controllers.Logic.StringProcessor;
-namespace FullTextSearchTest.Controllers.Logic;
+
+namespace FullTextSearchTest.Controllers.Logic.StringProcessor;
 
 public class ToRootTest
 { 

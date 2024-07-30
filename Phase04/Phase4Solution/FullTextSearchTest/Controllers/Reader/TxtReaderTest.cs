@@ -1,5 +1,7 @@
 using FullTextSearch.Controllers.Reader;
 
+namespace FullTextSearchTest.Controllers.Reader;
+
 public class TxtReaderTest
 {
     [Theory]

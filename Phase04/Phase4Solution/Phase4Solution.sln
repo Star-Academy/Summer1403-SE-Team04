@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FullTextSearch", "..\..\Phase03\FullTextSearch\FullTextSearch.csproj", "{7C306A49-82E2-42AC-BA73-11498B0016C9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FullTextSearchTest", "FullTextSearchTest\FullTextSearchTest.csproj", "{37C8A043-994E-47DD-8FCE-6984361D693E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7C306A49-82E2-42AC-BA73-11498B0016C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C306A49-82E2-42AC-BA73-11498B0016C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C306A49-82E2-42AC-BA73-11498B0016C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C306A49-82E2-42AC-BA73-11498B0016C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37C8A043-994E-47DD-8FCE-6984361D693E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37C8A043-994E-47DD-8FCE-6984361D693E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37C8A043-994E-47DD-8FCE-6984361D693E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37C8A043-994E-47DD-8FCE-6984361D693E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

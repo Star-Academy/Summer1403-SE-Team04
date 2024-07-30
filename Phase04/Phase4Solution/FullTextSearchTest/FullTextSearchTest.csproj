@@ -20,4 +20,8 @@
         <Using Include="Xunit"/>
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\..\..\Phase03\FullTextSearch\FullTextSearch.csproj" />
+    </ItemGroup>
+
 </Project>

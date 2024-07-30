@@ -7,8 +7,12 @@ public class TxtReader : ITxtReader
 {
     private const string SplitPattern = @"[^a-zA-Z1-9]";
 
-    public IReadOnlyList<string> Read(string path)
+    public IReadOnlyList<string> Read(string? path)
     {
+        if (path==null||path==string.Empty)
+        {
+            return new List<string>();
+        }
         var fileText = File.ReadAllText(path);
         return Regex.Split(fileText, SplitPattern);
     }

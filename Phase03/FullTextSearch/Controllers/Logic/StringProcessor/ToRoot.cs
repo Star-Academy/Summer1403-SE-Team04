@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using FullTextSearch.Controllers.Logic.Abstraction;
 using Porter2Stemmer;
 
@@ -14,6 +15,7 @@ public class ToRoot : IStringReformater
 
     private string ToWordRoot(string word)
     {
+        if (string.IsNullOrEmpty(word)) return string.Empty;
         return Stemmer.Stem(word).Value;
     }
 }

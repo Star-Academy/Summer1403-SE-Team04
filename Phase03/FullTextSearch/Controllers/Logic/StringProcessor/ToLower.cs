@@ -6,6 +6,7 @@ public class ToLower : IStringReformater
 {
     public string FixWordFormat(string word)
     {
+        if (string.IsNullOrEmpty(word)) return string.Empty;
         return word.ToLower();
     }
 }

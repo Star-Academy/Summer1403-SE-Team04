@@ -1,5 +1,3 @@
-namespace FullTextSearchTest;
-
 public class UnitTest1
 {
     [Fact]

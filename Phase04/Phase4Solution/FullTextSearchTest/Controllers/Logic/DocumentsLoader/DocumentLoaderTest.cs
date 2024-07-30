@@ -14,6 +14,8 @@ public class DocumentLoaderTest
     [Fact]
     public void Read_ShouldBeSpilitedList_IfPathIsNormal()
     {
+        
+        
         Assert.Equal(new TxtReader().Read("D:\\Desktop\\programing\\C#\\Summer1403-SE-Team04\\Phase04\\Phase4Solution\\FullTextSearchTest\\AssetTest\\TxtReadFileTest.txt"),new string[]{"ali","reza"});
     }
 }

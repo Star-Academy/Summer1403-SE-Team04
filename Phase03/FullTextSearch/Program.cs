@@ -1,9 +1,10 @@
-﻿using FullTextSearch;
-using FullTextSearch.Controllers;
+﻿using FullTextSearch.Controllers;
 using FullTextSearch.Controllers.Logic;
 using FullTextSearch.Controllers.Logic.DocumentsLoader;
 using FullTextSearch.Controllers.Reader;
 using FullTextSearch.View.Cli;
+
+namespace FullTextSearch;
 
 internal class Program
 {

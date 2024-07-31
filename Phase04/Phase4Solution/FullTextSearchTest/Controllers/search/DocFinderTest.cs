@@ -14,7 +14,8 @@ public class DocFinderTest
     public DocFinderTest()
     {
         var path = "/home/sadq/RiderProjects/Star/Summer1403-SE-Team04/Phase03/FullTextSearch/Assets/files";
-        new InvertedIndexCreator(new InvertedIndexWriter(), new DocumentLoader(new DocBuilder(new TxtReader()), new SmallWordsRemover())).CreateInvertedIndex(path);
+        new InvertedIndexCreator(new InvertedIndexWriter(),
+            new DocumentLoader(new DocBuilder(new TxtReader()), new SmallWordsRemover())).CreateInvertedIndex(path);
         _index = new InvertedIndexLoader().Load()?.Last();
         _docFinder = new DocFinder(_index);
     }

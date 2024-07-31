@@ -7,15 +7,17 @@ using FullTextSearch.Model.DataStructure;
 public class AtLeastOneExistSetTest
 {
     private readonly InvertedIndex _index;
+
     public AtLeastOneExistSetTest()
     {
         var path = "/home/sadq/RiderProjects/Star/Summer1403-SE-Team04/Phase03/FullTextSearch/Assets/files";
-        new InvertedIndexCreator(new InvertedIndexWriter(), new DocumentLoader(new DocBuilder(new TxtReader()), new SmallWordsRemover())).CreateInvertedIndex(path);
+        new InvertedIndexCreator(new InvertedIndexWriter(),
+            new DocumentLoader(new DocBuilder(new TxtReader()), new SmallWordsRemover())).CreateInvertedIndex(path);
         _index = new InvertedIndexLoader().Load()?.Last();
     }
 
     [Theory]
-    [InlineData(new string[] { "+nonexistent", "+invalidword" }, new string[] { })]
+    [InlineData(new[] { "+nonexistent", "+invalidword" }, new string[] { })]
     [InlineData(new string[] { }, new string[] { })]
     public void GetValidDocs_ShouldReturnEmpty_WhereArgumentsAreInvalid(string[] wordsArray, string[] expectedDocs)
     {

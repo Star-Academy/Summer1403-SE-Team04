@@ -9,8 +9,9 @@ namespace FullTextSearchTest.Controllers.search;
 
 public class QuerySearcherTest
 {
-    private QuerySearcher _sut;
-    private IInvertedIndexLoader _invertedIndexLoader;
+    private readonly IInvertedIndexLoader _invertedIndexLoader;
+    private readonly QuerySearcher _sut;
+
     public QuerySearcherTest()
     {
         _invertedIndexLoader = Substitute.For<IInvertedIndexLoader>();
@@ -29,5 +30,4 @@ public class QuerySearcherTest
         // Assert
         _invertedIndexLoader.Received(1).Load();
     }
-    
 }

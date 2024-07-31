@@ -13,10 +13,12 @@ public class WordSearcherTest
     public WordSearcherTest()
     {
         var path = "/home/sadq/RiderProjects/Star/Summer1403-SE-Team04/Phase03/FullTextSearch/Assets/files";
-        new InvertedIndexCreator(new InvertedIndexWriter(), new DocumentLoader(new DocBuilder(new TxtReader()), new SmallWordsRemover())).CreateInvertedIndex(path);
+        new InvertedIndexCreator(new InvertedIndexWriter(),
+            new DocumentLoader(new DocBuilder(new TxtReader()), new SmallWordsRemover())).CreateInvertedIndex(path);
         var index = new InvertedIndexLoader().Load().Last();
         _sut = new WordSearcher(new TargetedStrategy(index));
     }
+
     [Theory]
     [InlineData("")]
     [InlineData(null)]

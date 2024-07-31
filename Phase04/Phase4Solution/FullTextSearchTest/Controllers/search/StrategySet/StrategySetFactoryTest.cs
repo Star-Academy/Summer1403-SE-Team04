@@ -12,10 +12,12 @@ public class StrategySetFactoryTest
     public StrategySetFactoryTest()
     {
         var path = "/home/sadq/RiderProjects/Star/Summer1403-SE-Team04/Phase03/FullTextSearch/Assets/files";
-        new InvertedIndexCreator(new InvertedIndexWriter(), new DocumentLoader(new DocBuilder(new TxtReader()), new SmallWordsRemover())).CreateInvertedIndex(path);
+        new InvertedIndexCreator(new InvertedIndexWriter(),
+            new DocumentLoader(new DocBuilder(new TxtReader()), new SmallWordsRemover())).CreateInvertedIndex(path);
         var index = new InvertedIndexLoader().Load().Last();
-        _sut = new StrategySetFactory(new []{"hey"}, index);
+        _sut = new StrategySetFactory(new[] { "hey" }, index);
     }
+
     [Theory]
     [InlineData(StrategySetEnum.MustExist)]
     [InlineData(StrategySetEnum.MustNotExist)]

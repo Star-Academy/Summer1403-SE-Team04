@@ -8,18 +8,20 @@ public class TargetedStrategyTest
 {
     private readonly InvertedIndex _index;
     private readonly TargetedStrategy _sut;
+
     public TargetedStrategyTest()
     {
         var path = "/home/sadq/RiderProjects/Star/Summer1403-SE-Team04/Phase03/FullTextSearch/Assets/files";
-        new InvertedIndexCreator(new InvertedIndexWriter(), new DocumentLoader(new DocBuilder(new TxtReader()), new SmallWordsRemover())).CreateInvertedIndex(path);
+        new InvertedIndexCreator(new InvertedIndexWriter(),
+            new DocumentLoader(new DocBuilder(new TxtReader()), new SmallWordsRemover())).CreateInvertedIndex(path);
         _index = new InvertedIndexLoader().Load()?.Last();
         _sut = new TargetedStrategy(_index);
     }
-    
-    
+
+
     [Theory]
     [InlineData("nonexistent")]
-    [InlineData( "invalidword")]
+    [InlineData("invalidword")]
     [InlineData(null)]
     [InlineData("")]
     public void GetValidDocs_ShouldReturnEmpty_WhereArgumentsAreInvalid(string query)
@@ -30,16 +32,11 @@ public class TargetedStrategyTest
 
     [Theory]
     [InlineData("love")]
-    [InlineData( "dream")]
+    [InlineData("dream")]
     [InlineData("make")]
     public void GetValidDocs_ShouldReturnNonEmpty_WhereArgumentsAreValid(string query)
     {
         var result = _sut.Search(query);
         Assert.NotEmpty(result);
     }
-
-
-
-    
-
 }

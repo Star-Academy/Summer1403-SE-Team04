@@ -1,3 +1,4 @@
+using FullTextSearch.Controllers.Abstraction;
 using FullTextSearch.Controllers.Keepers;
 using FullTextSearch.Controllers.Logic;
 using FullTextSearch.Controllers.Logic.Abstraction;
@@ -7,7 +8,7 @@ using FullTextSearch.Controllers.search.SearchStrategy;
 
 namespace FullTextSearch.Controllers.search;
 
-public class QuerySearcher(IInvertedIndexLoader? invertedIndexLoader) : IProcessor
+public class QuerySearcher(IInvertedIndexCacher invertedIndexLoader) : IProcessor
 {
     public void ProcessQuery(string query)
     {

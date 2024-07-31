@@ -1,3 +1,4 @@
+using FullTextSearch.Controllers.Abstraction;
 using FullTextSearch.Controllers.Keepers;
 using FullTextSearch.Controllers.Logic.Abstraction;
 using FullTextSearch.Controllers.search;
@@ -9,12 +10,12 @@ namespace FullTextSearchTest.Controllers.search;
 
 public class QuerySearcherTest
 {
-    private readonly IInvertedIndexLoader _invertedIndexLoader;
+    private readonly IInvertedIndexCacher _invertedIndexLoader;
     private readonly QuerySearcher _sut;
 
     public QuerySearcherTest()
     {
-        _invertedIndexLoader = Substitute.For<IInvertedIndexLoader>();
+        _invertedIndexLoader = Substitute.For<IInvertedIndexCacher>();
         _invertedIndexLoader.Load().Returns(new List<InvertedIndex>());
         _sut = new QuerySearcher(_invertedIndexLoader);
     }

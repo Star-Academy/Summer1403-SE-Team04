@@ -1,11 +1,8 @@
-using FullTextSearch.Controllers.Logic;
-using FullTextSearch.Controllers.Logic.DocumentsLoader;
-using FullTextSearch.Controllers.Reader;
+
 using FullTextSearch.Controllers.search;
 using FullTextSearch.Controllers.search.StrategySet;
 using FullTextSearch.Model.DataStructure;
-using Microsoft.VisualStudio.TestPlatform.CommunicationUtilities.Resources;
-using Microsoft.VisualStudio.RpcContracts.Caching;
+
 namespace FullTextSearchTest.Controllers.search;
 
 public class DocFinderTest

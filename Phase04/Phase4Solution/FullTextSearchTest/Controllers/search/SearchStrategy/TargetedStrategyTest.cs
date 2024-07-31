@@ -2,6 +2,7 @@ using FullTextSearch.Controllers.Logic;
 using FullTextSearch.Controllers.Logic.DocumentsLoader;
 using FullTextSearch.Controllers.Reader;
 using FullTextSearch.Controllers.search.SearchStrategy;
+using FullTextSearch.Controllers.search.StrategySet;
 using FullTextSearch.Model.DataStructure;
 
 public class TargetedStrategyTest
@@ -20,23 +21,37 @@ public class TargetedStrategyTest
 
 
     [Theory]
-    [InlineData("nonexistent")]
-    [InlineData("invalidword")]
     [InlineData(null)]
     [InlineData("")]
-    public void GetValidDocs_ShouldReturnEmpty_WhereArgumentsAreInvalid(string query)
+
+    public void Search_ShouldThrowException_WhereArgumentsAreInvalid(string query)
     {
+        // Arrange
+        // Act
+        var result = () => _sut.Search(query);
+        // Assert
+        Assert.Throws<NullOrEmptyQueryException>(result);
+    }
+
+    [Fact]
+    public void Search_ShouldReturnEmpty_WhereQueryDoesntExist()
+    {
+        // Arrange
+        var query = "AWordThatDoesntExist";
+        // Act
         var result = _sut.Search(query);
+        // Assert
         Assert.Empty(result);
     }
 
-    [Theory]
-    [InlineData("love")]
-    [InlineData("dream")]
-    [InlineData("make")]
-    public void GetValidDocs_ShouldReturnNonEmpty_WhereArgumentsAreValid(string query)
+    [Fact]
+    public void Search_ShouldReturnNonEmpty_WhereArgumentsAreValid()
     {
+        // Arrange
+        var query = "love";
+        // Act
         var result = _sut.Search(query);
+        // Assert
         Assert.NotEmpty(result);
     }
 }

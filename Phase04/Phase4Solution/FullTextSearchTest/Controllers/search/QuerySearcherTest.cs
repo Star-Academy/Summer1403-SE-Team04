@@ -20,7 +20,7 @@ public class QuerySearcherTest
     }
 
     [Fact]
-    public void ProcessQuery_WhenCalled_CallsLoadOnInvertedIndexLoader()
+    public void ProcessQuery_ShouldCallLoadOnInvertedIndexLoader_WhenCalled()
     {
         // Arrange
         var query = "test query";

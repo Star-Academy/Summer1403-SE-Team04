@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <root>
+    
+    <data name="NullOrEmptyQueryExceptionMessage">
+        <value>The Query Is not processable since it's null or empty</value>
+    </data>
     <data name="DocumentsPath">
         <value>Assets/files</value>
     </data>

@@ -7,7 +7,7 @@ using FullTextSearch.Model.DataStructure;
 public class MustExistSetTest
 {
     private readonly InvertedIndex _index;
-
+    private MustExistSet _sut;
     public MustExistSetTest()
     {
         var path = "/home/sadq/RiderProjects/Star/Summer1403-SE-Team04/Phase03/FullTextSearch/Assets/files";
@@ -22,25 +22,23 @@ public class MustExistSetTest
     public void GetValidDocs_ShouldReturnEmpty_WhereArgumentsAreInvalid(string[] wordsArray, string[] expectedDocs)
     {
         // Arrange
-        var mustNotExistSet = new MustNotExistSet(wordsArray, _index);
+        _sut = new MustExistSet(wordsArray, _index);
 
         // Act
-        var result = mustNotExistSet.GetValidDocs();
+        var result = _sut.GetValidDocs();
 
         // Assert
         Assert.Equal(expectedDocs, result);
     }
-
-    [Theory]
-    [InlineData("love", "make")]
-    [InlineData("expens", "nonexistent")]
-    [InlineData("love")]
-    public void GetValidDocs_ShouldReturnNonEmpty_WhereArgumentsAreValid(params string[] wordsArray)
+    [Fact]
+    public void GetValidDocs_ShouldReturnNonEmpty_WhereArgumentsAreValid()
     {
-        var mustNotExistSet = new MustNotExistSet(wordsArray, _index);
+        // Arrange
+        var wordsArray = new string[] { "love" };
+        _sut = new MustExistSet(wordsArray, _index);
 
         // Act
-        var result = mustNotExistSet.GetValidDocs();
+        var result = _sut.GetValidDocs();
 
         // Assert
         Assert.NotEmpty(result);

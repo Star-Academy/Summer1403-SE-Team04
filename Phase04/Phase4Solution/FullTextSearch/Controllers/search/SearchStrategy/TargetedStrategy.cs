@@ -10,6 +10,7 @@ public class TargetedStrategy(InvertedIndex index) : ISearchStrategy
 {
     public IEnumerable<string> Search(string query)
     {
+        if (string.IsNullOrEmpty(query)) throw new NullOrEmptyQueryException();
         var inputWords =
             query.SplitIntoFormattedWords(new List<IStringReformater> { new ToLower(), new ToRoot() });
         var setFactory = new StrategySetFactory(inputWords, index);

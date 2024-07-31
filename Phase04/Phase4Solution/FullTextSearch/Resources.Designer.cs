@@ -45,6 +45,12 @@ namespace FullTextSearch {
             }
         }
         
+        internal static string NullOrEmptyQueryExceptionMessage {
+            get {
+                return ResourceManager.GetString("NullOrEmptyQueryExceptionMessage", resourceCulture);
+            }
+        }
+        
         internal static string DocumentsPath {
             get {
                 return ResourceManager.GetString("DocumentsPath", resourceCulture);

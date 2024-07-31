@@ -21,6 +21,7 @@ public class InvertedIndexWriter : IInvertedIndexWriter
 
     public void Write(InvertedIndex index)
     {
+        File.WriteAllText(FilePath, "");
         var json = File.ReadAllText(FilePath);
         var indices = json == string.Empty
             ? new List<InvertedIndex>()

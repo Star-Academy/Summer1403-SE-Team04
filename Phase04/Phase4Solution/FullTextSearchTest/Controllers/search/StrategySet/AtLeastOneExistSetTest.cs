@@ -10,10 +10,12 @@ public class AtLeastOneExistSetTest
     private AtLeastOneExistSet _sut;
     public AtLeastOneExistSetTest()
     {
-        var path = "/home/sadq/RiderProjects/Star/Summer1403-SE-Team04/Phase03/FullTextSearch/Assets/files";
-        new InvertedIndexCreator(new InvertedIndexWriter(),
-            new DocumentLoader(new DocBuilder(new TxtReader()), new SmallWordsRemover())).CreateInvertedIndex(path);
-        _index = new InvertedIndexLoader().Load()?.Last();
+        
+        Dictionary<string, IEnumerable<string>> testDic = new Dictionary<string, IEnumerable<string>>()
+        {
+            {"love", new List<string>() { "location" }}
+        };
+        _index = new InvertedIndex(testDic, "location");
     }
 
     [Theory]

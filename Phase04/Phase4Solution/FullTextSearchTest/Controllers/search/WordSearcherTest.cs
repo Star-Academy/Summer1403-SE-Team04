@@ -1,9 +1,11 @@
+using FullTextSearch;
 using FullTextSearch.Controllers.Logic;
 using FullTextSearch.Controllers.Logic.DocumentsLoader;
 using FullTextSearch.Controllers.Reader;
 using FullTextSearch.Controllers.search;
 using FullTextSearch.Controllers.search.SearchStrategy;
 using FullTextSearch.Controllers.search.StrategySet;
+using FullTextSearch.Model.DataStructure;
 
 namespace FullTextSearchTest.Controllers.search;
 
@@ -13,10 +15,12 @@ public class WordSearcherTest
 
     public WordSearcherTest()
     {
-        var path = "/home/sadq/RiderProjects/Star/Summer1403-SE-Team04/Phase03/FullTextSearch/Assets/files";
-        new InvertedIndexCreator(new InvertedIndexWriter(),
-            new DocumentLoader(new DocBuilder(new TxtReader()), new SmallWordsRemover())).CreateInvertedIndex(path);
-        var index = new InvertedIndexLoader().Load()?.Last();
+        
+        Dictionary<string, IEnumerable<string>> testDic = new Dictionary<string, IEnumerable<string>>()
+        {
+            {"love", new List<string>() { "location" }}
+        };
+        var index = new InvertedIndex(testDic, "location");
         _sut = new WordSearcher(new TargetedStrategy(index));
     }
 

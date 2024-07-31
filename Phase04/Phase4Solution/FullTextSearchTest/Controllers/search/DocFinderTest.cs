@@ -5,7 +5,7 @@ using FullTextSearch.Controllers.search;
 using FullTextSearch.Controllers.search.StrategySet;
 using FullTextSearch.Model.DataStructure;
 using Microsoft.VisualStudio.TestPlatform.CommunicationUtilities.Resources;
-
+using Microsoft.VisualStudio.RpcContracts.Caching;
 namespace FullTextSearchTest.Controllers.search;
 
 public class DocFinderTest
@@ -16,10 +16,11 @@ public class DocFinderTest
     public DocFinderTest()
     {
         
-        var path = "/home/sadq/RiderProjects/Star/Summer1403-SE-Team04/Phase03/FullTextSearch/Assets/files";
-        new InvertedIndexCreator(new InvertedIndexWriter(),
-            new DocumentLoader(new DocBuilder(new TxtReader()), new SmallWordsRemover())).CreateInvertedIndex(path);
-        _index = new InvertedIndexLoader().Load()?.Last();
+        Dictionary<string, IEnumerable<string>> testDic = new Dictionary<string, IEnumerable<string>>()
+        {
+            {"love", new List<string>() { "location" }}
+        };
+        _index = new InvertedIndex(testDic, "location");
         _sut = new DocFinder(_index);
     }
 

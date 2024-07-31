@@ -24,8 +24,7 @@ public class DocumentLoaderTest
     public void LoadDocumentsList_ShouldBeLoadedDoc_IfPathIsNormal()
     {
         //arrange
-        var testPath =
-            "D:\\Desktop\\programing\\C#\\Summer1403-SE-Team04\\Phase04\\Phase4Solution\\FullTextSearchTest\\AssetTest";
+        var testPath = "AssetTest";
         var result = new List<Document>
         {
             new("mahdi", new[] { "ali", "alii" }), new("mahdi", new[] { "ali", "alii" })

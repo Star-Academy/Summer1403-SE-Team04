@@ -7,26 +7,31 @@ namespace FullTextSearchTest.Controllers.Logic.DocumentsLoader;
 
 public class DocumentWordsEditorTest
 {
-    private readonly IStringReformater test;
-    private readonly IGarbageRemover testq;
+    private readonly IStringReformater _stringReformater;
+    private readonly IGarbageRemover _garbageRemover;
 
     public DocumentWordsEditorTest()
     {
-        testq = Substitute.For<IGarbageRemover>();
-        test = Substitute.For<IStringReformater>();
+        _garbageRemover = Substitute.For<IGarbageRemover>();
+        _stringReformater = Substitute.For<IStringReformater>();
     }
 
     [Fact]
     public void EditWords_ShouldBeEdited_IfPathIsNormal()
     {
+        //arrange 
+        var check = new List<Document> { new("test", new[] { "a" }) };
         var testDoc = new List<Document>
         {
             new("test", new[] { "a" })
         };
-        test.FixWordFormat(Arg.Any<string>()).Returns("a");
-        testq.Remove(Arg.Any<IEnumerable<string>>()).Returns(new[] { "a" });
-        testDoc = testDoc.EditWords(new List<IStringReformater> { test }, testq).ToList();
-        var check = new List<Document> { new("test", new[] { "a" }) };
+        _stringReformater.FixWordFormat(Arg.Any<string>()).Returns("a");
+        _garbageRemover.Remove(Arg.Any<IEnumerable<string>>()).Returns(new[] { "a" });
+        
+        //act
+        testDoc = testDoc.EditWords(new List<IStringReformater> { _stringReformater }, _garbageRemover).ToList();
+
+        //assert
         Assert.Equivalent(check, testDoc);
     }
 }

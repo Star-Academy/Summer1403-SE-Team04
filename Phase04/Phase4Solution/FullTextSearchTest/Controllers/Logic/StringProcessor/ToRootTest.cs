@@ -4,22 +4,32 @@ namespace FullTextSearchTest.Controllers.Logic.StringProcessor;
 
 public class ToRootTest
 {
+    private ToRoot _toRoot;
+
+    public ToRootTest()
+    {
+        _toRoot = new ToRoot();
+    }
     [Theory]
     [InlineData(null)]
     [InlineData("")]
     public void FixWordsFormat_ShouldBeNull_IfWordIsNullOrEmpty(string word)
     {
-        var to = new ToRoot();
-        Assert.Empty(to.FixWordFormat(word));
+        //arrange 
+        //act
+        //assert
+        Assert.Empty(_toRoot.FixWordFormat(word));
     }
 
     [Theory]
     [InlineData("expensive", "expens")]
     [InlineData("dreaming", "dream")]
     [InlineData("died", "die")]
-    public void FixWordsFormat_ShouldBeRootedWord_IfNormalInput(string word, string root)
+    public void FixWordsFormat_ShouldBeRootedWord_IfNormalInput(string word, string rootedWord)
     {
-        var to = new ToRoot();
-        Assert.Equal(root, to.FixWordFormat(word));
+        //arrange 
+        //act
+        //assert
+        Assert.Equal(rootedWord, _toRoot.FixWordFormat(word));
     }
 }

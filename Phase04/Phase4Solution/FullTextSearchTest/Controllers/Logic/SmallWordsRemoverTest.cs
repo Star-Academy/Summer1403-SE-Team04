@@ -15,7 +15,11 @@ public class SmallWordsRemoverTest
     [Fact]
     public void Read_ShouldBeSpilitedList_IfPathIsNormal()
     {
-        Assert.Equal(new[] { "ali", "mamad", "is" },
-            new SmallWordsRemover().Remove(new[] { "ali", "mamad", "doing", "is" }));
+        //arrange
+        var check = new[] { "ali", "mamad", "is" };
+        //act
+        var result = new SmallWordsRemover().Remove(new[] { "ali", "mamad", "doing", "is" });
+        //assert
+        Assert.Equal(check,result);
     }
 }

@@ -9,10 +9,8 @@ public class TxtReader : ITxtReader
 
     public IReadOnlyList<string> Read(string? path)
     {
-        if (path==null||path==string.Empty)
-        {
-            return new List<string>();
-        }
+        if (string.IsNullOrEmpty(path)) return new List<string>();
+        
         var fileText = File.ReadAllText(path);
         return Regex.Split(fileText, SplitPattern);
     }

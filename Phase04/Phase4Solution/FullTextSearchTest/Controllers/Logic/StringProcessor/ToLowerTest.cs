@@ -4,13 +4,20 @@ namespace FullTextSearchTest.Controllers.Logic.StringProcessor;
 
 public class ToLowerTest
 {
+    private ToLower _toLower;
+    public ToLowerTest()
+    {
+        _toLower = new ToLower();
+    }
     [Theory]
     [InlineData(null)]
     [InlineData("")]
     public void FixWordsFormat_ShouldBeNull_IfWordIsNullOrEmpty(string word)
     {
-        var to = new ToLower();
-        Assert.Empty(to.FixWordFormat(word));
+        //arrange 
+        //act
+        //assert
+        Assert.Empty(_toLower.FixWordFormat(word));
     }
 
     [Theory]
@@ -19,7 +26,9 @@ public class ToLowerTest
     [InlineData("Died", "died")]
     public void FixWordsFormat_ShouldBeRootedWord_IfNormalInput(string word, string root)
     {
-        var to = new ToLower();
-        Assert.Equal(root, to.FixWordFormat(word));
+        //arrange 
+        //act
+        //assert
+        Assert.Equal(root, _toLower.FixWordFormat(word));
     }
 }

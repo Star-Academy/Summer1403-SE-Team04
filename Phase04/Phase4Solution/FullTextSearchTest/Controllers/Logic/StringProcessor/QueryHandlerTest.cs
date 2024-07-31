@@ -9,19 +9,26 @@ public class QueryHandlerTest
     [InlineData(null)]
     [InlineData("")]
     public void SplitIntoFormattedWords_ShouldBeNull_IfWordIsNullOrEmpty(string word)
-    {
-        var reformaters = new List<IStringReformater>
-        {
-            new ToLower(), new ToRoot()
-        };
+    { var reformaters = new List<IStringReformater>
+              {
+                  new ToLower(), new ToRoot()
+              };
+        //arrange 
+        //act
         Assert.Empty(word.SplitIntoFormattedWords(reformaters));
+        //assert
     }
 
     [Fact]
     public void SplitIntoFormattedWords_ShouldBeTheWord_IfReformatersAreNullOrEmpty()
     {
-        Assert.Equal(new[] { "mamad", "ali", "taha" },
-            "mamad ali taha".SplitIntoFormattedWords(new List<IStringReformater>()));
+        //arrange 
+                var resault = new[] { "mamad", "ali", "taha" };
+                var checkString ="mamad ali taha" ;
+        //act
+        var check = checkString.SplitIntoFormattedWords(new List<IStringReformater>());
+        //assert
+        Assert.Equal(resault,check);
     }
 
     [Theory]
@@ -29,10 +36,13 @@ public class QueryHandlerTest
     [InlineData("Dreaming die", "dream", "die")]
     public void SplitIntoFormattedWords_ShouldBeRootedWord_IfNormalInputAndReformatersIsRoot(params string[] result)
     {
+        //arrange 
         var word = result[0];
         var outPut = new string[result.Length - 1];
-        for (var i = 0; i < outPut.Length; i++) outPut[i] = result[i + 1];
         var list = new List<IStringReformater> { new ToRoot() };
+        //act
+        for (var i = 0; i < outPut.Length; i++) outPut[i] = result[i + 1];
+        //assert
         Assert.Equal(outPut, word.SplitIntoFormattedWords(list));
     }
 
@@ -41,10 +51,13 @@ public class QueryHandlerTest
     [InlineData("Dreaming died", "dreaming", "died")]
     public void SplitIntoFormattedWords_ShouldBeLowerWord_IfNormalInputAndReformatersIsLower(params string[] result)
     {
+        //arrange 
         var word = result[0];
         var outPut = new string[result.Length - 1];
-        for (var i = 0; i < outPut.Length; i++) outPut[i] = result[i + 1];
         var list = new List<IStringReformater> { new ToLower() };
+        //act
+        for (var i = 0; i < outPut.Length; i++) outPut[i] = result[i + 1];
+        //assert
         Assert.Equal(outPut, word.SplitIntoFormattedWords(list));
     }
 
@@ -54,10 +67,13 @@ public class QueryHandlerTest
     public void SplitIntoFormattedWords_ShouldBeRootedAndLowerWord_IfNormalInputAndReformatersIsRootAndLower(
         params string[] result)
     {
+        //arrange 
         var word = result[0];
         var outPut = new string[result.Length - 1];
-        for (var i = 0; i < outPut.Length; i++) outPut[i] = result[i + 1];
         var list = new List<IStringReformater> { new ToRoot(), new ToLower() };
+        //act
+        for (var i = 0; i < outPut.Length; i++) outPut[i] = result[i + 1];
+        //assert
         Assert.Equal(outPut, word.SplitIntoFormattedWords(list));
     }
 }

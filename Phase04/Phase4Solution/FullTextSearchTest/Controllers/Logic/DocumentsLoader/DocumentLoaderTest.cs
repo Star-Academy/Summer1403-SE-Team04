@@ -23,6 +23,7 @@ public class DocumentLoaderTest
     [Fact]
     public void LoadDocumentsList_ShouldBeLoadedDoc_IfPathIsNormal()
     {
+        //arrange
         var testPath =
             "D:\\Desktop\\programing\\C#\\Summer1403-SE-Team04\\Phase04\\Phase4Solution\\FullTextSearchTest\\AssetTest";
         var result = new List<Document>
@@ -30,8 +31,11 @@ public class DocumentLoaderTest
             new("mahdi", new[] { "ali", "alii" }), new("mahdi", new[] { "ali", "alii" })
         };
         _garbageRemover.Remove(new[] { "ali", "alii" }).Returns(new[] { "ali", "alii" });
-        _docBuilder.Build(testPath + "\\DocBuildTest.txt").Returns(new Document("mahdi", new[] { "ali", "alii" }));
-        _docBuilder.Build(testPath + "\\TxtReadFileTest.txt").Returns(new Document("mahdi", new[] { "ali", "alii" }));
-        Assert.Equal(result, _sut.LoadDocumentsList(testPath, null));
+        _docBuilder.Build(Arg.Any<string>()).Returns(new Document("mahdi", new[] { "ali", "alii" }));
+        _docBuilder.Build(Arg.Any<string>()).Returns(new Document("mahdi", new[] { "ali", "alii" }));
+        //act
+        var check = _sut.LoadDocumentsList(testPath, null);
+        //assert
+        Assert.Equal(result,check);
     }
 }

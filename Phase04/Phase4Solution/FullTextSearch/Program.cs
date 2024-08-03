@@ -13,12 +13,12 @@ internal class Program
     {
         // var cacher = new InvertedIndexCatcher();
         var docCatcher = new DocCatcher();
-        var AdvIndexcatcher = new AdvanceInvertedIndexCatcher();
+        var advIndexcatcher = new AdvanceInvertedIndexCatcher();
         var docLoader = new DocumentLoader(new DocBuilder(new TxtReader(),docCatcher), new SmallWordsRemover());
         var indicesList = new List<string> { Resources.DocumentsPath };
         // var indexCreator = new InvertedIndexCreator(cacher, docLoader);
-        var inputListener = new CliInputListener(AdvIndexcatcher);
+        var inputListener = new CliInputListener(advIndexcatcher);
         var outputPrinter = new OutputPrinter();
-        new ServiceStartupInitializer(inputListener, outputPrinter, new AdvanceInvertedIndexCreator(docCatcher)).Init(indicesList);
+        new ServiceStartupInitializer(inputListener, outputPrinter, new AdvanceInvertedIndexCreator(docCatcher,advIndexcatcher)).Init(indicesList);
     }
 }

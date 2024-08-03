@@ -1,14 +1,15 @@
+using FluentAssertions;
 using FullTextSearch.Controllers.Logic.Creator_Loader;
 using FullTextSearch.Model;
 using FullTextSearch.Model.DataStructure;
 
 namespace FullTextSearchTest.Controllers.Logic;
 
-public class TestAdvanceInvertedIndexCatcher
+public class AdvanceInvertedIndexCatcherTest
 {
     private readonly AdvanceInvertedIndexCatcher _sut;
 
-    public TestAdvanceInvertedIndexCatcher()
+    public AdvanceInvertedIndexCatcherTest()
     {
         _sut = new AdvanceInvertedIndexCatcher();
     }
@@ -48,6 +49,8 @@ public class TestAdvanceInvertedIndexCatcher
         _sut.AdvanceInvertedIndices.Add(advInvert);
         var actual = _sut.Load();
         //assert
-        Assert.Equivalent(expected, actual);
+        actual.
+            Should().
+            BeEquivalentTo(expected);
     }
 }

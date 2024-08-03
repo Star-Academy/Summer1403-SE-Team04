@@ -1,8 +1,10 @@
+using FullTextSearch.Model.Abstraction;
+
 namespace FullTextSearch.Model.DataStructure;
 
 public class AdvancedInvertedIndex
 {
-    public Dictionary<string, IEnumerable<DocumentWordsStorage>> InvertedIndexMap { get; init; }
+    public Dictionary<string, IEnumerable<IWordInformation>> InvertedIndexMap { get; init; }
     public string DirectoryPath { get; init; }
     
     public AdvancedInvertedIndex(IEnumerable<Document> documents, string directoryPath)
@@ -11,7 +13,7 @@ public class AdvancedInvertedIndex
         DirectoryPath = directoryPath;
     }
     
-    private Dictionary<string, IEnumerable<DocumentWordsStorage>> BuildInvertedIndex(IEnumerable<Document> documents)
+    private Dictionary<string, IEnumerable<IWordInformation>> BuildInvertedIndex(IEnumerable<Document> documents)
     {
         var map = documents
             .SelectMany(doc => doc.Select(word => new { word, doc.DocName }))

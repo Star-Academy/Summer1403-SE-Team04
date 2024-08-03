@@ -1,6 +1,6 @@
 namespace FullTextSearch.Controllers.Logic.Abstraction;
 
-public interface IAdvanceInvertedIndexCreator
+public interface IAdvancedInvertedIndexCreator
 {
-    void CreateAdvanceInvertedIndex(string directoryPath);
+    void CreateAdvancedInvertedIndex(string directoryPath);
 }

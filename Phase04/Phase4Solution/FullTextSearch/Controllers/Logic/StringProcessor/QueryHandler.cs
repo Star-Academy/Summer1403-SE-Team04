@@ -31,16 +31,32 @@ public static class QueryHandler
                 int index = query.IndexOf(match.Value);
                 if (index > 0 && (query[index - 1] == '+' || query[index - 1] == '-'))
                 {
-                    result.Add(query[index - 1] + match.Groups[2].Value);
+                    var resultWord = query[index - 1] + match.Groups[2].Value;
+                    foreach (var stringReformater in reformaters)
+                    {
+                        resultWord = stringReformater.FixWordFormat(resultWord);
+                    }
+                    result.Add(resultWord);
                 }
                 else
                 {
+                    var resultWord = match.Groups[2].Value;
+                    foreach (var stringReformater in reformaters)
+                    {
+                        resultWord = stringReformater.FixWordFormat(resultWord);
+                    }
                     result.Add(match.Groups[2].Value);
                 }
             }
             else
             {
                 if(match.Value is "+" or "-")continue;
+                
+                var resultWord =  match.Value;
+                foreach (var stringReformater in reformaters)
+                {
+                    resultWord = stringReformater.FixWordFormat(resultWord);
+                }
                 result.Add(match.Value);
             }
         }

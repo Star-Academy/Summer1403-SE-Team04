@@ -1,4 +1,4 @@
-using FullTextSearch.Model.DataStructure.AbstractClass;
+using FullTextSearch.Model.AbstractClass;
 
 namespace FullTextSearch.Model.DataStructure;
 

@@ -3,10 +3,11 @@ using FullTextSearch.Controllers.Abstraction;
 using FullTextSearch.Controllers.Keepers;
 using FullTextSearch.Controllers.Logic;
 using FullTextSearch.Controllers.search;
+using FullTextSearch.Model.DataStructure;
 
 namespace FullTextSearch.View.Cli;
 
-public class CliInputListener(IInvertedIndexCacher invertedIndexCacher) : IInputListener
+public class CliInputListener(IAdvancedInvertedIndexCatcher invertedIndexCatcher) : IInputListener
 {
     private const string ExitCommand = "exit";
 
@@ -22,7 +23,7 @@ public class CliInputListener(IInvertedIndexCacher invertedIndexCacher) : IInput
         var query = Console.ReadLine();
         while (query != ExitCommand)
         {
-            new QueryReceiver(new QuerySearcher(invertedIndexCacher)).GetQuery(query);
+            new QueryReceiver(new AdvanceQuerySearcher(invertedIndexCatcher)).GetQuery(query);
             OutputRendererKeeper.Instance.OutputRenderer.Render(
                 Resources.EnterWordMessage);
             query = Console.ReadLine();

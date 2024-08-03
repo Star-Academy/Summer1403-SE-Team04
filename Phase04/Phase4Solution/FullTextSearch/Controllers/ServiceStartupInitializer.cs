@@ -8,13 +8,13 @@ namespace FullTextSearch.Controllers;
 public class ServiceStartupInitializer(
     IInputListener inputListener,
     IOutputRenderer outputRenderer,
-    IInvertedIndexCreator indexCreator
+    IAdvancedInvertedIndexCreator indexCreator
 ) : IInitializer
 {
     public void Init(List<string> directoryList)
     {
         File.WriteAllText(Resources.InvertedIndexDataPath, string.Empty);
-        directoryList.ForEach(path => indexCreator.CreateInvertedIndex(path));
+        directoryList.ForEach(path => indexCreator.CreateAdvancedInvertedIndex(path));
         InputListenerKeeper.Instance.InputListener = inputListener;
         OutputRendererKeeper.Instance.OutputRenderer = outputRenderer;
         inputListener.InputListenerRegister();

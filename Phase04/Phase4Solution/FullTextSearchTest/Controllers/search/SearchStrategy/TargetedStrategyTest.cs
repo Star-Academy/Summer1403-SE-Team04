@@ -1,9 +1,8 @@
-using FullTextSearch.Controllers.Logic;
-using FullTextSearch.Controllers.Logic.DocumentsLoader;
-using FullTextSearch.Controllers.Reader;
 using FullTextSearch.Controllers.search.SearchStrategy;
 using FullTextSearch.Controllers.search.StrategySet;
 using FullTextSearch.Model.DataStructure;
+
+namespace FullTextSearchTest.Controllers.search.SearchStrategy;
 
 public class TargetedStrategyTest
 {

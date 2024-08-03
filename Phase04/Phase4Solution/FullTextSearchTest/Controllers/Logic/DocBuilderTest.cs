@@ -1,4 +1,5 @@
 using FullTextSearch.Controllers.Logic;
+using FullTextSearch.Controllers.Logic.Creator_Loader;
 using FullTextSearch.Controllers.Reader.Abstraction;
 using NSubstitute;
 using Document = FullTextSearch.Model.Document;
@@ -13,7 +14,7 @@ public class DocBuilderTest
     public DocBuilderTest()
     {
         _txtReader = Substitute.For<ITxtReader>();
-        _docBuilder = new DocBuilder(_txtReader);
+        _docBuilder = new DocBuilder(_txtReader , new DocCatcher());
     }
 
     [Theory]

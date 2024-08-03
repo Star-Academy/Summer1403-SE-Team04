@@ -3,9 +3,9 @@ using FullTextSearch.Controllers.Logic.Abstraction;
 using FullTextSearch.Controllers.Logic.StringProcessor;
 using FullTextSearch.Model.DataStructure;
 
-namespace FullTextSearch.Controllers.Logic;
+namespace FullTextSearch.Controllers.Logic.Creator_Loader;
 
-public class InvertedIndexCreator(IInvertedIndexCacher cacher, IDocumentLoader documentLoader) : IInvertedIndexCreator
+public class InvertedIndexCreator(IInvertedIndexCatcher catcher, IDocumentLoader documentLoader) : IInvertedIndexCreator
 {
     public void CreateInvertedIndex(string directoryPath)
     {
@@ -13,7 +13,7 @@ public class InvertedIndexCreator(IInvertedIndexCacher cacher, IDocumentLoader d
         var documents = documentLoader
             .LoadDocumentsList(directoryPath, stringReformaters);
         var newIndex = new InvertedIndex(documents, directoryPath); 
-        cacher.Write(newIndex);
+        catcher.Write(newIndex);
     }
     
 }

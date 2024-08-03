@@ -1,12 +1,10 @@
 using System.Text.Json;
 using FullTextSearch.Controllers.Abstraction;
-using FullTextSearch.Controllers.Logic.Abstraction;
-using FullTextSearch.Controllers.Reader.Abstraction;
 using FullTextSearch.Model.DataStructure;
 
-namespace FullTextSearch.Controllers.Logic;
+namespace FullTextSearch.Controllers.Logic.Creator_Loader;
 
-public class InvertedIndexChather : IInvertedIndexCacher
+public class InvertedIndexCatcher : IInvertedIndexCatcher
 {
     public List<InvertedIndex> InvertedIndices = new List<InvertedIndex>();
     private static readonly string FilePath = Resources.InvertedIndexDataPath;

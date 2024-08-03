@@ -8,7 +8,7 @@ using FullTextSearch.Controllers.search.SearchStrategy;
 
 namespace FullTextSearch.Controllers.search;
 
-public class QuerySearcher(IInvertedIndexCacher invertedIndexLoader) : IBasicProcessor
+public class QuerySearcher(IInvertedIndexCatcher invertedIndexLoader) : IBasicProcessor
 {
     public void ProcessQuery(string query)
     {

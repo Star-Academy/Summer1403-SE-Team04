@@ -10,12 +10,12 @@ namespace FullTextSearchTest.Controllers.search;
 
 public class QuerySearcherTest
 {
-    private readonly IInvertedIndexCacher _invertedIndexLoader;
+    private readonly IInvertedIndexCatcher _invertedIndexLoader;
     private readonly QuerySearcher _sut;
 
     public QuerySearcherTest()
     {
-        _invertedIndexLoader = Substitute.For<IInvertedIndexCacher>();
+        _invertedIndexLoader = Substitute.For<IInvertedIndexCatcher>();
         _invertedIndexLoader.Load().Returns(new List<InvertedIndex>());
         _sut = new QuerySearcher(_invertedIndexLoader);
     }

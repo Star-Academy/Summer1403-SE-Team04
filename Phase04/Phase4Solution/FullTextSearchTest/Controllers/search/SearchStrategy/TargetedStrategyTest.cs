@@ -1,3 +1,4 @@
+using FullTextSearch.Controllers.search;
 using FullTextSearch.Controllers.search.SearchStrategy;
 using FullTextSearch.Controllers.search.StrategySet;
 using FullTextSearch.Model.DataStructure;
@@ -16,7 +17,7 @@ public class TargetedStrategyTest
             {"love", new List<string>() { "location" }}
         };
         _index = new InvertedIndex(testDic, "location");
-        _sut = new TargetedStrategy(_index);
+        _sut = new TargetedStrategy(new DocFinder(_index));
     }
 
 

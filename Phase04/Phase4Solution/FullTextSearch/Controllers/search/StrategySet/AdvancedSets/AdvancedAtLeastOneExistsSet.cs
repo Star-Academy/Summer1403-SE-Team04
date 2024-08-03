@@ -4,7 +4,7 @@ using FullTextSearch.Model.DataStructure;
 
 namespace FullTextSearch.Controllers.search.StrategySet.AdvancedSets;
 
-public class AdvancedAtLeastOneExistsSet(string[] phrasesArray, IAdvancedFinder finder) : IStrategySet
+public class AdvancedAtLeastOneExistsSet(string[] phrasesArray, IFinder finder) : IStrategySet
 {
     public IEnumerable<string> GetValidDocs()
     {

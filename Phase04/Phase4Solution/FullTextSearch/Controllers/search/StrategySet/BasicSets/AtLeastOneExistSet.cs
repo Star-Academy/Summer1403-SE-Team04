@@ -4,7 +4,7 @@ using FullTextSearch.Model.DataStructure;
 
 namespace FullTextSearch.Controllers.search.StrategySet.BasicSets;
 
-public class AtLeastOneExistSet(string[] wordsArray, InvertedIndex index) : IStrategySet
+public class AtLeastOneExistSet(string[] wordsArray, IFinder finder) : IStrategySet
 {
     public IEnumerable<string> GetValidDocs()
     {
@@ -12,7 +12,7 @@ public class AtLeastOneExistSet(string[] wordsArray, InvertedIndex index) : IStr
             .Select(word => word.Substring(1));
 
         return atLeastOneExistsWords
-            .Select(word => new DocFinder(index).Find(word).ToList())
+            .Select(word => finder.Find(word).ToList())
             .ToList()
             .Union();
     }

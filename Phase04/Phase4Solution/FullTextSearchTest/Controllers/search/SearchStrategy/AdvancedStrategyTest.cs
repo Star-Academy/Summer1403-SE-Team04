@@ -1,3 +1,5 @@
+using FullTextSearch.Controllers.Logic.Creator_Loader;
+using FullTextSearch.Controllers.search;
 using FullTextSearch.Controllers.search.SearchStrategy;
 using FullTextSearch.Controllers.search.StrategySet;
 using FullTextSearch.Model.AbstractClass;
@@ -18,7 +20,7 @@ public class AdvancedStrategyTest
             {"you", new List<WordInformation>() { new DocumentWordsStorage("location", new List<int>(){1})}}
         };
         _index = new AdvancedInvertedIndex(testDic, "location");
-        _sut = new AdvancedStrategy(_index);
+        _sut = new AdvancedStrategy(new AdvancedDocFinder(_index, new DocCatcher()));
     }
 
 

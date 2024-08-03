@@ -2,6 +2,7 @@ using FullTextSearch;
 using FullTextSearch.Controllers.Logic;
 using FullTextSearch.Controllers.Logic.DocumentsLoader;
 using FullTextSearch.Controllers.Reader;
+using FullTextSearch.Controllers.search;
 using FullTextSearch.Controllers.search.StrategySet;
 using FullTextSearch.Model.DataStructure;
 
@@ -18,7 +19,7 @@ public class StrategySetFactoryTest
             {"love", new List<string>() { "location" }}
         };
          var index = new InvertedIndex(testDic, "location");
-        _sut = new StrategySetFactory(new[] { "hey" }, index);
+        _sut = new StrategySetFactory(new[] { "hey" }, new DocFinder(index));
     }
 
     [Theory]

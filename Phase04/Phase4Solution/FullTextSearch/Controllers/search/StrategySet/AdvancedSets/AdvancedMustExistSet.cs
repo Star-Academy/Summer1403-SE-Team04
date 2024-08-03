@@ -5,7 +5,7 @@ using FullTextSearch.Model.DataStructure;
 namespace FullTextSearch.Controllers.search.StrategySet.AdvancedSets;
 
 
-public class AdvancedMustExistSet(string[] phrasesArray, IAdvancedFinder finder) : IStrategySet
+public class AdvancedMustExistSet(string[] phrasesArray, IFinder finder) : IStrategySet
 {
     public IEnumerable<string> GetValidDocs()
     {

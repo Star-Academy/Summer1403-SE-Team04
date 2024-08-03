@@ -1,3 +1,4 @@
+using FullTextSearch.Controllers.search;
 using FullTextSearch.Controllers.search.StrategySet;
 using FullTextSearch.Controllers.search.StrategySet.BasicSets;
 using FullTextSearch.Model.DataStructure;
@@ -27,7 +28,7 @@ public class MustNotExistSetTest
     public void GetValidDocs_ShouldReturnEmpty_WhereArgumentsAreInvalid(string[] wordsArray, string[] expectedDocs)
     {
         // Arrange
-        _sut = new MustNotExistSet(wordsArray, _index);
+        _sut = new MustNotExistSet(wordsArray, new DocFinder(_index));
 
         // Act
         var result = _sut.GetValidDocs();
@@ -40,7 +41,7 @@ public class MustNotExistSetTest
     {
         // Arrange
         var wordsArray = new string[] { "-love" };
-        _sut = new MustNotExistSet(wordsArray, _index);
+        _sut = new MustNotExistSet(wordsArray, new DocFinder(_index));
         var expected = new List<string>() { "location" };
         // Act
         var actual = _sut.GetValidDocs();

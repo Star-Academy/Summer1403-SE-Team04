@@ -6,7 +6,7 @@ using FullTextSearch.Model.DataStructure;
 
 namespace FullTextSearch.Controllers.search.SearchStrategy;
 
-public class AdvancedStrategy(AdvancedInvertedIndex index) : ISearchStrategy
+public class AdvancedStrategy(IFinder finder) : ISearchStrategy
 {
     
     public IEnumerable<string> Search(string query)
@@ -20,16 +20,26 @@ public class AdvancedStrategy(AdvancedInvertedIndex index) : ISearchStrategy
 
     private IEnumerable<string> GetValidDocuments(string[] phrases)
     {
-        var factory = new StrategySetFactory(phrases, index);
+        var factory = new AdvancedStrategySetFactory(phrases, finder);
+        
         var mustExist = factory.Create(StrategySetEnum.MustExist).GetValidDocs();
         var mustNotExist = factory.Create(StrategySetEnum.MustNotExist).GetValidDocs();
         var atLeastOneExists = factory.Create(StrategySetEnum.AtLeastOneExist).GetValidDocs();
-        return CalculateValidDoc(mustExist, mustNotExist, atLeastOneExists);
+        var advancedMustExist = factory.Create(StrategySetEnum.AdvancedMustExist).GetValidDocs();
+        var advancedMustNotExist = factory.Create(StrategySetEnum.AdvancedMustNotExist).GetValidDocs();
+        var advancedAtLeastOneExists = factory.Create(StrategySetEnum.AdvancedAtLeastOneExist).GetValidDocs();
+
+        return CalculateValidDoc(mustExist, mustNotExist, atLeastOneExists, advancedMustExist, advancedMustNotExist, advancedAtLeastOneExists);
     }
 
     private IEnumerable<string> CalculateValidDoc(IEnumerable<string> mustExist, IEnumerable<string> mustNotExist,
-        IEnumerable<string> atLeastOneExists)
+        IEnumerable<string> atLeastOneExists, IEnumerable<string> advancedMustExist, IEnumerable<string> advancedMustNotExist,
+        IEnumerable<string> advancedAtLeastOneExists)
     {
+        mustExist = mustExist.Union(advancedMustExist);
+        mustNotExist = mustNotExist.Union(advancedMustNotExist);
+        atLeastOneExists = atLeastOneExists.Union(advancedAtLeastOneExists);
+        
         if (!mustExist.Any())
             return atLeastOneExists.Except(mustNotExist).ToList();
         if (!atLeastOneExists.Any())

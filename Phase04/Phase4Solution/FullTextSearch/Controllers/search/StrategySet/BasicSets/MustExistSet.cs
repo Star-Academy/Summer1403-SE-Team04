@@ -5,13 +5,13 @@ using FullTextSearch.Model.DataStructure;
 namespace FullTextSearch.Controllers.search.StrategySet.BasicSets;
 
 
-public class MustExistSet(string[] wordsArray, InvertedIndex index) : IStrategySet
+public class MustExistSet(string[] wordsArray, IFinder finder) : IStrategySet
 {
     public IEnumerable<string> GetValidDocs()
     {
         var mustExistWords = wordsArray.Where(word => !word.StartsWith('+') && !word.StartsWith('-'));
 
-        return mustExistWords.Select(word => new DocFinder(index).Find(word).ToList())
+        return mustExistWords.Select(word => finder.Find(word).ToList())
             .ToList()
             .Intersect();
     }

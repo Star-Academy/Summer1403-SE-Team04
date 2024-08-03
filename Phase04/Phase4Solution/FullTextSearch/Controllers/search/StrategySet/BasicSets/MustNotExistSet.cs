@@ -5,12 +5,12 @@ using FullTextSearch.Model.DataStructure;
 namespace FullTextSearch.Controllers.search.StrategySet.BasicSets;
 
 
-public class MustNotExistSet(string[] wordsArray, InvertedIndex index) : IStrategySet
+public class MustNotExistSet(string[] wordsArray, IFinder finder) : IStrategySet
 {
     public IEnumerable<string> GetValidDocs()
     {
         var mustNotExistWords = wordsArray.Where(word => word.StartsWith('-')).Select(word => word.Substring(1));
-        return mustNotExistWords.Select(word => new DocFinder(index).Find(word).ToList())
+        return mustNotExistWords.Select(word => finder.Find(word).ToList())
             .ToList().Union();
     }
 

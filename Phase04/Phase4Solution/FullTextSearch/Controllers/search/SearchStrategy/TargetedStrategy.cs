@@ -6,7 +6,7 @@ using FullTextSearch.Model.DataStructure;
 
 namespace FullTextSearch.Controllers.search.SearchStrategy;
 
-public class TargetedStrategy(InvertedIndex index) : ISearchStrategy
+public class TargetedStrategy(IFinder finder) : ISearchStrategy
 {
     public IEnumerable<string> Search(string query)
     {
@@ -18,7 +18,7 @@ public class TargetedStrategy(InvertedIndex index) : ISearchStrategy
 
     private IEnumerable<string> GetValidDocuments(string[] words)
     {
-        var factory = new StrategySetFactory(words, index);
+        var factory = new StrategySetFactory(words, finder);
         var mustExist = factory.Create(StrategySetEnum.MustExist).GetValidDocs();
         var mustNotExist = factory.Create(StrategySetEnum.MustNotExist).GetValidDocs();
         var atLeastOneExists = factory.Create(StrategySetEnum.AtLeastOneExist).GetValidDocs();

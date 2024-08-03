@@ -21,7 +21,7 @@ public class WordSearcherTest
             {"love", new List<string>() { "location" }}
         };
         var index = new InvertedIndex(testDic, "location");
-        _sut = new WordSearcher(new TargetedStrategy(index));
+        _sut = new WordSearcher(new TargetedStrategy(new DocFinder(index)));
     }
 
     [Theory]

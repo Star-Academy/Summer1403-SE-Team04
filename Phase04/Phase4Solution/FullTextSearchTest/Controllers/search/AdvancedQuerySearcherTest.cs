@@ -11,12 +11,12 @@ namespace FullTextSearchTest.Controllers.search;
 public class AdvancedQuerySearcherTest
 {
     
-    private readonly IAdvancedInvertedIndexCacher _invertedIndexLoader;
+    private readonly IAdvancedInvertedIndexCatcher _invertedIndexLoader;
     private readonly AdvancedQuerySearcher _sut;
 
     public AdvancedQuerySearcherTest()
     {
-        _invertedIndexLoader = Substitute.For<IAdvancedInvertedIndexCacher>();
+        _invertedIndexLoader = Substitute.For<IAdvancedInvertedIndexCatcher>();
         _invertedIndexLoader.Load().Returns(new List<AdvancedInvertedIndex>());
         _sut = new AdvancedQuerySearcher(_invertedIndexLoader);
     }

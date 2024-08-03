@@ -12,7 +12,7 @@ public class AdvancedInvertedIndex
         InvertedIndexMap = BuildInvertedIndex(documents);
         DirectoryPath = directoryPath;
     }
-    public AdvancedInvertedIndex(Dictionary<string, IEnumerable<DocumentWordsStorage>> invertedIndexMap, string directoryPath)
+    public AdvancedInvertedIndex(Dictionary<string, IEnumerable<WordInformation>> invertedIndexMap, string directoryPath)
     {
         InvertedIndexMap = invertedIndexMap;
         DirectoryPath = directoryPath;

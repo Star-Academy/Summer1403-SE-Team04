@@ -4,12 +4,12 @@ using FullTextSearch.Model.DataStructure;
 
 namespace FullTextSearch.Controllers.search;
 
-public class DocFinder(InvertedIndex index) : IFinder
+public class DocFinder(InvertedIndex index) : IBasicFinder
 {
-    public IEnumerable<string>? Find(string query)
+    public IEnumerable<string>? Find(string word)
     {
-        if (string.IsNullOrEmpty(query)) throw new NullOrEmptyQueryException();
-        var result = index.InvertedIndexMap.GetValueOrDefault(query);
+        if (string.IsNullOrEmpty(word)) throw new NullOrEmptyQueryException();
+        var result = index.InvertedIndexMap.GetValueOrDefault(word);
         return result == null ? new List<string>() : result;
     }
 }

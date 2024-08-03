@@ -1,5 +1,5 @@
 namespace FullTextSearch.Controllers.search.Abstraction;
 
-public interface IFinder
+public interface IBasicProcessor : IProcessor
 {
 }

@@ -1,8 +1,8 @@
 using FullTextSearch.Model.DataStructure;
 
-namespace FullTextSearch.Controllers.Logic.Abstraction;
+namespace FullTextSearch.Controllers.Abstraction;
 
-public interface IAdvancedInvertedIndexCatcher
+public interface IAdvancedInvertedIndexCacher
 {
     void Write(AdvancedInvertedIndex index);
     List<AdvancedInvertedIndex>? Load();

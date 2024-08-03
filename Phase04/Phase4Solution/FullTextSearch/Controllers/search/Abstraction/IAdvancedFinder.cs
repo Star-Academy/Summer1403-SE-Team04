@@ -1,6 +1,6 @@
 namespace FullTextSearch.Controllers.search.Abstraction;
 
-public interface IAdvanceFinder : IFinder
+public interface IAdvancedFinder : IFinder
 {
     
 }

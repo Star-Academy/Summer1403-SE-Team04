@@ -12,14 +12,13 @@ public class AdvancedInvertedIndex
         InvertedIndexMap = BuildInvertedIndex(documents);
         DirectoryPath = directoryPath;
     }
-    
     private Dictionary<string, IEnumerable<IWordInformation>> BuildInvertedIndex(IEnumerable<Document> documents)
     {
-        var map = documents
+        return documents
             .SelectMany(doc => doc.Select(word => new { word, doc.DocName }))
             .GroupBy(x => x.word)
             .ToDictionary(
                 g => g.Key,
-                g => g.Select(x => new DocumentWordsStorage(x.DocName, new List<int>())).Distinct());
+                g => g.Select(x => (IWordInformation) new DocumentWordsStorage(x.DocName, new List<int>())).Distinct());
     }
 }

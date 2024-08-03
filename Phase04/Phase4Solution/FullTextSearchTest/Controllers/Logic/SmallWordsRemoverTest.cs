@@ -1,3 +1,4 @@
+using FluentAssertions;
 using FullTextSearch.Controllers.Logic;
 
 namespace FullTextSearchTest.Controllers.Logic;

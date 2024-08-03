@@ -4,5 +4,8 @@ public enum StrategySetEnum
 {
     MustExist,
     MustNotExist,
-    AtLeastOneExist
+    AtLeastOneExist,
+    AdvancedMustExist,
+    AdvancedMustNotExist,
+    AdvancedAtLeastOneExist,
 }

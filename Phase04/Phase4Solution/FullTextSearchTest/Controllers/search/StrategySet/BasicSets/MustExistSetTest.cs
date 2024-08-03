@@ -1,7 +1,9 @@
 using FullTextSearch.Controllers.search.StrategySet;
+using FullTextSearch.Controllers.search.StrategySet.BasicSets;
 using FullTextSearch.Model.DataStructure;
 
-namespace FullTextSearchTest.Controllers.search.StrategySet;
+namespace FullTextSearchTest.Controllers.search.StrategySet.BasicSets;
+
 
 public class MustExistSetTest
 {
@@ -19,8 +21,8 @@ public class MustExistSetTest
 
     [Theory]
     [InlineData(new[] { "nonexistent", "invalidword" }, new string[] { })]
-    [InlineData(new[] { "+love" }, new string[] { })]
-    [InlineData(new[] { "-love" }, new string[] { })]
+    [InlineData(new[] { "+invalidword" }, new string[] { })]
+    [InlineData(new[] { "-invalidword" }, new string[] { })]
     [InlineData(new string[] { }, new string[] { })]
     public void GetValidDocs_ShouldReturnEmpty_WhereArgumentsAreInvalid(string[] wordsArray, string[] expectedDocs)
     {

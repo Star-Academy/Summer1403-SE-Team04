@@ -1,6 +1,8 @@
+using FullTextSearch.Model.DataStructure;
+
 namespace FullTextSearch.Controllers.Logic.Abstraction;
 
 public interface IAdvancedInvertedIndexCreator
 {
-    void CreateAdvancedInvertedIndex(string directoryPath);
+    AdvancedInvertedIndex CreateAdvancedInvertedIndex(string directoryPath);
 }

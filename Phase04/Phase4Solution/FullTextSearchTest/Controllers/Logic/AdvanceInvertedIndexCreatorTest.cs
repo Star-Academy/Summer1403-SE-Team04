@@ -1,6 +1,7 @@
 using FullTextSearch.Controllers.Abstraction;
 using FullTextSearch.Controllers.Logic.Abstraction;
 using FullTextSearch.Controllers.Logic.Creator_Loader;
+using FullTextSearch.Model;
 using FullTextSearch.Model.DataStructure;
 using NSubstitute;
 
@@ -10,18 +11,20 @@ public class AdvanceInvertedIndexCreatorTest
 {
     private readonly AdvanceInvertedIndexCreator _sut;
     private IDocCatcher _docCatcher;
-    private IAdvancedInvertedIndexCatcher _advancedInverted;
+    private IAdvancedInvertedIndexCatcher _advancedInvertedIndexCatcher;
     public AdvanceInvertedIndexCreatorTest()
     {
         _docCatcher = Substitute.For<IDocCatcher>();
-        _advancedInverted = new AdvanceInvertedIndexCatcher();
-        _sut = new AdvanceInvertedIndexCreator(_docCatcher,_advancedInverted);
+        _advancedInvertedIndexCatcher = Substitute.For<IAdvancedInvertedIndexCatcher>();
+        _sut = new AdvanceInvertedIndexCreator(_docCatcher,_advancedInvertedIndexCatcher);
     }
     [Fact]
     public void CreateAdvancedInvertedIndex_shouldCallDocCatcherLoad_ifCallTheMethod()
     {
         //arrange
         string path = "testPath";
+        _docCatcher.Load().Returns(new List<Document>());
+        _advancedInvertedIndexCatcher.Write(Arg.Any<AdvancedInvertedIndex>()).Returns(true);
         //action
         _sut.CreateAdvancedInvertedIndex(path);
         //assert
@@ -31,10 +34,12 @@ public class AdvanceInvertedIndexCreatorTest
     public void CreateAdvancedInvertedIndex_shouldCallAdvInvetedIndexWriteMethod_ifCallTheMethod()
     {
         //arrange
-        string path = "testPath";
+        var path = "testPath";
+        _docCatcher.Load().Returns(new List<Document>());
+        _advancedInvertedIndexCatcher.Write(Arg.Any<AdvancedInvertedIndex>()).Returns(true);
         //action
         _sut.CreateAdvancedInvertedIndex(path);
         //assert
-        _advancedInverted.Received(1).Write(Arg.Any<AdvancedInvertedIndex>());
+        _advancedInvertedIndexCatcher.Received(1).Write(Arg.Any<AdvancedInvertedIndex>());
     }
 }

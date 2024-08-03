@@ -53,4 +53,7 @@
             PublicKeyToken=b77a5c561934e089
         </value>
     </resheader>
+    <data name="AdvanceInverIndexPath" xml:space="preserve">
+        <value>Assets/advance_inverted_index.json</value>
+    </data>
 </root>

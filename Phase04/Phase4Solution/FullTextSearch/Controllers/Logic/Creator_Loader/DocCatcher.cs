@@ -8,8 +8,8 @@ public class DocCatcher : IDocCatcher
     private List<Document> _documentList = new List<Document>();
     public void Write(Document document)
     {
-        //todo
-        throw new NotImplementedException();
+        if (document==null)return;
+        _documentList.Add(document);
     }
 
     public List<Document> Load()

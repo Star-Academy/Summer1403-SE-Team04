@@ -4,6 +4,6 @@ namespace FullTextSearch.Controllers.Abstraction;
 
 public interface IAdvancedInvertedIndexCatcher
 {
-    void Write(AdvancedInvertedIndex index);
+    bool Write(AdvancedInvertedIndex index);
     List<AdvancedInvertedIndex>? Load();
 }

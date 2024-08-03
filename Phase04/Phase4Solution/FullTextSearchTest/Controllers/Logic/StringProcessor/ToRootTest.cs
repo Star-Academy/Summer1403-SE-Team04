@@ -13,23 +13,25 @@ public class ToRootTest
     [Theory]
     [InlineData(null)]
     [InlineData("")]
-    public void FixWordsFormat_ShouldBeNull_IfWordIsNullOrEmpty(string word)
+    public void FixWordsFormat_ShouldReturnNull_IfWordIsNullOrEmpty(string word)
     {
-        //arrange 
-        //act
-        //assert
-        Assert.Empty(_toRoot.FixWordFormat(word));
+        // Arrange 
+        // Act
+        var result = _toRoot.FixWordFormat(word);
+        // Assert
+        Assert.Empty(result);
     }
 
     [Theory]
     [InlineData("expensive", "expens")]
     [InlineData("dreaming", "dream")]
     [InlineData("died", "die")]
-    public void FixWordsFormat_ShouldBeRootedWord_IfNormalInput(string word, string rootedWord)
+    public void FixWordsFormat_ShouldReturnRootedWord_IfNormalInput(string word, string rootedWord)
     {
-        //arrange 
-        //act
-        //assert
-        Assert.Equal(rootedWord, _toRoot.FixWordFormat(word));
+        // Arrange 
+        // Act
+        var actual = _toRoot.FixWordFormat(word);
+        // Assert
+        Assert.Equal(rootedWord, actual);
     }
 }

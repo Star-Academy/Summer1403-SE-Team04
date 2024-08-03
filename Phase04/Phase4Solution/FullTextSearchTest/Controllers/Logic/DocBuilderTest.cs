@@ -1,6 +1,4 @@
-using System.Reflection.Metadata;
 using FullTextSearch.Controllers.Logic;
-using FullTextSearch.Controllers.Reader;
 using FullTextSearch.Controllers.Reader.Abstraction;
 using NSubstitute;
 using Document = FullTextSearch.Model.Document;
@@ -17,26 +15,28 @@ public class DocBuilderTest
         _txtReader = Substitute.For<ITxtReader>();
         _docBuilder = new DocBuilder(_txtReader);
     }
+
     [Theory]
     [InlineData(null)]
     [InlineData("")]
-    public void Build_ShouldBeNull_IfPathIsNullOrEmpty(string path)
+    public void Build_ShouldReturnNull_IfPathIsNullOrEmpty(string path)
     {
-        //arrange 
-        //act
-        //assert
-        Assert.Null(_docBuilder.Build(path));
+        // Arrange 
+        // Act
+        var result = _docBuilder.Build(path);
+        // Assert
+        Assert.Null(result);
     }
 
     [Fact]
-    public void Build_ShouldBeNormalDoc_IfNormalInput()
+    public void Build_ShouldReturnNormalDoc_IfNormalInput()
     {
-        //arrange 
-        _txtReader.Read(Arg.Any<string>()).Returns(new []{"ali"});
-        //act
-        var check = _docBuilder.Build("mamad");
-        var result = new Document("mamad", new[] { "ali" });
-        //assert
-        Assert.Equal(check,result);
+        // Arrange 
+        _txtReader.Read("mamad").Returns(new[] { "ali" });
+        var expected = new Document("mamad", new[] { "ali" });
+        // Act
+        var actual = _docBuilder.Build("mamad");
+        // Assert
+        Assert.Equal(expected, actual);
     }
 }

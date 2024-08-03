@@ -5,53 +5,64 @@ namespace FullTextSearchTest.Controllers.Logic;
 public class MathHelperTest
 {
     [Fact]
-    public void Union_ShouldBeStringEmpty_IfListIsEmpty()
+    public void Union_ShouldReturnStringEmpty_IfListIsEmpty()
     {
+        // Arrange
         var list = new List<List<int>>();
-        Assert.Equal(Array.Empty<int>(), list.Union());
+        var expected = Array.Empty<int>();
+        // Act
+        var actual = list.Union();
+        // Assert
+        Assert.Equal(expected, actual);
     }
 
     [Fact]
-    public void Union_ShouldBeUnionedList_IfNormalInput()
+    public void Union_ShouldReturnUnionedList_IfNormalInput()
     {
         
-        //arrange
-        var checkList = new List<List<int>>
+        // Arrange
+        var actualList = new List<List<int>>
         {
             new() { 1, 2, 3 },
             new() { 2, 3, 4 },
             new() { 3, 4, 5 }
         };
-        var result = new List<int> { 1, 2, 3, 4, 5 };
-        //act
-        var check = checkList.Union();
-        //assert
+        var expected = new List<int> { 1, 2, 3, 4, 5 };
+        // Act
+        var actual = actualList.Union();
+        // Assert
         
-        Assert.Equal(new List<int> { 1, 2, 3, 4, 5 }, check);
+        Assert.Equal(new List<int> { 1, 2, 3, 4, 5 }, actual);
     }
 
     [Fact]
-    public void InterSect_ShouldBeStringEmpty_IfListIsEmpty()
+    public void InterSect_ShouldReturnStringEmpty_IfListIsEmpty()
     {
+        
+        // Arrange
         var list = new List<List<int>>();
-        Assert.Equal(Array.Empty<int>(), list.Intersect());
+        var expected = Array.Empty<int>();
+        // Act
+        var actual = list.Intersect();
+        // Assert
+        Assert.Equal(expected, actual);
     }
 
     [Fact]
-    public void Intersect_ShouldBeIntersectedList_IfNormalInput()
+    public void Intersect_ShouldReturnIntersectedList_IfNormalInput()
     {
-        //arrange
-        var checkList = new List<List<int>>
+        // Arrange
+        var actualList = new List<List<int>>
         {
             new() { 1, 2, 3 },
             new() { 2, 3, 4 },
             new() { 3, 4, 5 }
         };
-        var result = new List<int> { 3 };
-        //act
-        var check = checkList.Intersect();
-        //assert
+        var expected = new List<int> { 3 };
+        // Act
+        var actual = actualList.Intersect();
+        // Assert
         
-        Assert.Equal(result, check);
+        Assert.Equal(expected, actual);
     }
 }

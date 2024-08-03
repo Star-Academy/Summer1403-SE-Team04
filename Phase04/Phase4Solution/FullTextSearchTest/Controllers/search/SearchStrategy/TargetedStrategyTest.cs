@@ -29,9 +29,9 @@ public class TargetedStrategyTest
     {
         // Arrange
         // Act
-        var result = () => _sut.Search(query);
+        var actual = () => _sut.Search(query);
         // Assert
-        Assert.Throws<NullOrEmptyQueryException>(result);
+        Assert.Throws<NullOrEmptyQueryException>(actual);
     }
 
     [Fact]
@@ -40,9 +40,9 @@ public class TargetedStrategyTest
         // Arrange
         var query = "AWordThatDoesntExist";
         // Act
-        var result = _sut.Search(query);
+        var actual = _sut.Search(query);
         // Assert
-        Assert.Empty(result);
+        Assert.Empty(actual);
     }
 
     [Fact]
@@ -51,8 +51,8 @@ public class TargetedStrategyTest
         // Arrange
         var query = "love";
         // Act
-        var result = _sut.Search(query);
+        var actual = _sut.Search(query);
         // Assert
-        Assert.NotEmpty(result);
+        Assert.Equal(new List<string>(){"location"}, actual);
     }
 }

@@ -7,19 +7,24 @@ public class SmallWordsRemoverTest
     [Theory]
     [InlineData(null)]
     [InlineData("")]
-    public void Read_ShouldBeStringEmpty_IfPathIsNullOrEmpty(params string[] list)
+    public void Read_ShouldReturnStringEmpty_IfPathIsNullOrEmpty(params string[] list)
     {
-        Assert.Equal(new SmallWordsRemover().Remove(list), new List<string>());
+        // Arrange
+        var expected = new List<string>();
+        // Act
+        var actual = new SmallWordsRemover().Remove(list);
+        // Assert
+        Assert.Equal(expected, actual);
     }
 
     [Fact]
-    public void Read_ShouldBeSpilitedList_IfPathIsNormal()
+    public void Read_ShouldReturnSpilitedList_IfPathIsNormal()
     {
-        //arrange
-        var check = new[] { "ali", "mamad", "is" };
-        //act
-        var result = new SmallWordsRemover().Remove(new[] { "ali", "mamad", "doing", "is" });
-        //assert
-        Assert.Equal(check,result);
+        // Arrange
+        var expected = new[] { "ali", "mamad", "is" };
+        // Act
+        var actual = new SmallWordsRemover().Remove(new[] { "ali", "mamad", "doing", "is" });
+        // Assert
+        Assert.Equal(expected, actual);
     }
 }

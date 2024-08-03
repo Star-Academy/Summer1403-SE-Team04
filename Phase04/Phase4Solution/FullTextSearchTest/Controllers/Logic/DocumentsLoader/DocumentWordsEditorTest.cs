@@ -17,10 +17,10 @@ public class DocumentWordsEditorTest
     }
 
     [Fact]
-    public void EditWords_ShouldBeEdited_IfPathIsNormal()
+    public void EditWords_ShouldReturnValidList_IfPathIsValid()
     {
-        //arrange 
-        var check = new List<Document> { new("test", new[] { "a" }) };
+        // Arrange 
+        var expected = new List<Document> { new("test", new[] { "a" }) };
         var testDoc = new List<Document>
         {
             new("test", new[] { "a" })
@@ -28,10 +28,10 @@ public class DocumentWordsEditorTest
         _stringReformater.FixWordFormat(Arg.Any<string>()).Returns("a");
         _garbageRemover.Remove(Arg.Any<IEnumerable<string>>()).Returns(new[] { "a" });
         
-        //act
+        // Act
         testDoc = testDoc.EditWords(new List<IStringReformater> { _stringReformater }, _garbageRemover).ToList();
 
-        //assert
-        Assert.Equivalent(check, testDoc);
+        // Assert
+        Assert.Equivalent(expected, testDoc);
     }
 }

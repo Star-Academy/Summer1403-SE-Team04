@@ -21,20 +21,20 @@ public class DocumentLoaderTest
     }
 
     [Fact]
-    public void LoadDocumentsList_ShouldBeLoadedDoc_IfPathIsNormal()
+    public void LoadDocumentsList_ShouldReturnLoadedDoc_IfPathIsNormal()
     {
-        //arrange
+        // Arrange
         var testPath = "AssetTest";
-        var result = new List<Document>
+        var expected = new List<Document>
         {
             new("mahdi", new[] { "ali", "alii" }), new("mahdi", new[] { "ali", "alii" })
         };
         _garbageRemover.Remove(new[] { "ali", "alii" }).Returns(new[] { "ali", "alii" });
         _docBuilder.Build(Arg.Any<string>()).Returns(new Document("mahdi", new[] { "ali", "alii" }));
         _docBuilder.Build(Arg.Any<string>()).Returns(new Document("mahdi", new[] { "ali", "alii" }));
-        //act
-        var check = _sut.LoadDocumentsList(testPath, null);
-        //assert
-        Assert.Equal(result,check);
+        // Act
+        var actual = _sut.LoadDocumentsList(testPath, null);
+        // Assert
+        Assert.Equivalent(expected,actual);
     }
 }

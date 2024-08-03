@@ -4,7 +4,7 @@ namespace FullTextSearchTest.Controllers.Reader;
 
 public class TxtReaderTest
 {
-    private TxtReader _sut;
+    private readonly TxtReader _sut;
 
     public TxtReaderTest()
     {
@@ -14,25 +14,24 @@ public class TxtReaderTest
     [Theory]
     [InlineData(null)]
     [InlineData("")]
-
-    public void Read_ShouldBeStringEmpty_IfPathIsNullOrEmpty(string path)
+    public void Read_ShouldReturnStringEmpty_IfPathIsNullOrEmpty(string path)
     {
-        //arrange 
-        var result = new List<string>();
-        //act
-        var check = _sut.Read(path);
-        //assert
-        Assert.Equal(result,check);
+        // Arrange 
+        var expected = new List<string>();
+        // Act
+        var actual = _sut.Read(path);
+        // Assert
+        Assert.Equal(expected, actual);
     }
 
     [Fact]
-    public void Read_ShouldBeSpilitedList_IfPathIsNormal()
+    public void Read_ShouldReturnSpilitedList_IfPathIsNormal()
     {
-        //arrange 
-        var result = new[] { "ali", "reza" };
-        //act
-        var check = _sut.Read("AssetTest\\TxtReadFileTest.txt");
-        //assert
-        Assert.Equal(result, check);
+        // Arrange 
+        var expected = new[] { "ali", "reza" };
+        // Act
+        var actual = _sut.Read("AssetTest\\TxtReadFileTest.txt");
+        // Assert
+        Assert.Equal(expected, actual);
     }
 }

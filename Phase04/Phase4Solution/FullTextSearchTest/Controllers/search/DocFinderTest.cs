@@ -26,7 +26,7 @@ public class DocFinderTest
     [InlineData("")]
     public void Find_ShouldThrowsException_WhenQueryIsInvalid(string query)
     {
-        //Arrange
+        // Arrange
         // Act
         var action = () => _sut.Find(query);
         // Assert
@@ -36,23 +36,24 @@ public class DocFinderTest
     [Fact]
     public void Find_ShouldReturnEmpty_WhenQueryDoesntExist()
     {
-        //Arrange
+        // Arrange
         var query = "AWordThatDoesntExist";
-        //Act
+        // Act
         var result = _sut.Find(query);
-        //Assert
+        // Assert
         Assert.Empty(result);
     }
     
     [Fact]
     public void Find_ShouldReturnList_WhenQueryExists()
     {
-        //Arrange
-        var query = "make";
-        //Act
-        var result = _sut.Find(query);
-        //Assert
-        Assert.NotEmpty(result);
+        // Arrange
+        var query = "love";
+        var expected = new List<string>() { "location" };
+        // Act
+        var actual = _sut.Find(query);
+        // Assert
+        Assert.Equal(expected, actual);
     }
     
 }

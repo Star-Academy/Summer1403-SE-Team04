@@ -14,18 +14,18 @@ public class WordsListFormatFixerTest
     }
 
     [Fact]
-    public void EditWords_ShouldBeEdited_IfPathIsNormal()
+    public void EditWords_ShouldReturnValidList_IfPathIsValid()
     {   
-    //arrange 
-    var testList = new List<string>
-    {
-        "ali", "Mahdi"
-    };
-    _reformaters.FixWordFormat(Arg.Any<string>()).Returns("ali");
-    var check = new List<string> { "ali", "ali" };
-    //act
-    testList = testList.FixWordsList(new List<IStringReformater> { _reformaters }).ToList();
-    //assert
-        Assert.Equal(check, testList);
+        // Arrange 
+        var actual = new List<string>
+        {
+            "ali", "Mahdi"
+        };
+        _reformaters.FixWordFormat(Arg.Any<string>()).Returns("ali");
+        var expected = new List<string> { "ali", "ali" };
+        // Act
+        actual = actual.FixWordsList(new List<IStringReformater> { _reformaters }).ToList();
+        // Assert
+        Assert.Equal(expected, actual);
     }
 }

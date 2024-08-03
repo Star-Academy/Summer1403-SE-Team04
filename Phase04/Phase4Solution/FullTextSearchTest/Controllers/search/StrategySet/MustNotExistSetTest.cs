@@ -20,6 +20,8 @@ public class MustNotExistSetTest
 
     [Theory]
     [InlineData(new[] { "-nonexistent", "-invalidword" }, new string[] { })]
+    [InlineData(new[] { "+love" }, new string[] { })]
+    [InlineData(new[] { "love" }, new string[] { })]
     [InlineData(new string[] { }, new string[] { })]
     public void GetValidDocs_ShouldReturnEmpty_WhereArgumentsAreInvalid(string[] wordsArray, string[] expectedDocs)
     {
@@ -38,9 +40,10 @@ public class MustNotExistSetTest
         // Arrange
         var wordsArray = new string[] { "-love" };
         _sut = new MustNotExistSet(wordsArray, _index);
+        var expected = new List<string>() { "location" };
         // Act
-        var result = _sut.GetValidDocs();
+        var actual = _sut.GetValidDocs();
         // Assert
-        Assert.NotEmpty(result);
+        Assert.Equal(expected, actual);
     }
 }

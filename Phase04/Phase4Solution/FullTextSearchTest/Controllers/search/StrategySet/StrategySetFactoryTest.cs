@@ -27,10 +27,10 @@ public class StrategySetFactoryTest
     [InlineData(StrategySetEnum.AtLeastOneExist)]
     public void Create_ShouldReturnValidStrategySet_WhereTheSetNameIsSame(StrategySetEnum setName)
     {
-        //Arrange
-        //Act
+        // Arrange
+        // Act
         var name = _sut.Create(setName).GetName();
-        //Assert
+        // Assert
         Assert.Equal(setName, name);
     }
 }

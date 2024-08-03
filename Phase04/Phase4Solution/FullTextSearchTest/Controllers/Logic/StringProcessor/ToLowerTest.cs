@@ -12,23 +12,25 @@ public class ToLowerTest
     [Theory]
     [InlineData(null)]
     [InlineData("")]
-    public void FixWordsFormat_ShouldBeNull_IfWordIsNullOrEmpty(string word)
+    public void FixWordsFormat_ShouldReturnNull_IfWordIsNullOrEmpty(string word)
     {
-        //arrange 
-        //act
-        //assert
-        Assert.Empty(_toLower.FixWordFormat(word));
+        // Arrange 
+        // Act
+        var result = _toLower.FixWordFormat(word);
+        // Assert
+        Assert.Empty(result);
     }
 
     [Theory]
     [InlineData("Expensive", "expensive")]
     [InlineData("Dreaming", "dreaming")]
     [InlineData("Died", "died")]
-    public void FixWordsFormat_ShouldBeRootedWord_IfNormalInput(string word, string root)
+    public void FixWordsFormat_ShouldReturnRootedWord_IfNormalInput(string word, string root)
     {
-        //arrange 
-        //act
-        //assert
-        Assert.Equal(root, _toLower.FixWordFormat(word));
+        // Arrange 
+        // Act
+        var actual = _toLower.FixWordFormat(word);
+        // Assert
+        Assert.Equal(root, actual);
     }
 }

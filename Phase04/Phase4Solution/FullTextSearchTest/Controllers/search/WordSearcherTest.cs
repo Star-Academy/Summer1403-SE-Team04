@@ -29,30 +29,31 @@ public class WordSearcherTest
     [InlineData(null)]
     public void Search_ShouldThrowException_WhenQueryIsInvalid(string query)
     {
-        //Arrange
-        //Act
+        // Arrange
+        // Act
         var result = () => _sut.Search(query);
-        //Assert
+        // Assert
         Assert.Throws<NullOrEmptyQueryException>(result);
     }
     [Fact]
     public void Search_ShouldReturnEmpty_WhenQueryDoesntExist()
     {
-        //Arrange
+        // Arrange
         var query = "AWordThatDoesntExist";
-        //Act
+        // Act
         var result = _sut.Search(query);
-        //Assert
+        // Assert
         Assert.Empty(result);
     }
     [Fact]
     public void Search_ShouldReturnList_WhereQueryIsNormal()
     {
-        //Arrange
-        var query = "make";
-        //Act
+        // Arrange
+        var query = "love";
+        var expected = new List<string>() { "location" };
+        // Act
         var result = _sut.Search(query);
-        //Assert
-        Assert.NotEmpty(result);
+        // Assert
+        Assert.Equal(expected, result);
     }
 }

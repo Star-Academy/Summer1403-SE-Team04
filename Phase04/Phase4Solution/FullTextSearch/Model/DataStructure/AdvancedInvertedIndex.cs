@@ -12,6 +12,11 @@ public class AdvancedInvertedIndex
         InvertedIndexMap = BuildInvertedIndex(documents);
         DirectoryPath = directoryPath;
     }
+    public AdvancedInvertedIndex(Dictionary<string, IEnumerable<DocumentWordsStorage>> invertedIndexMap, string directoryPath)
+    {
+        InvertedIndexMap = invertedIndexMap;
+        DirectoryPath = directoryPath;
+    }
     private Dictionary<string, IEnumerable<WordInformation>> BuildInvertedIndex(IEnumerable<Document> documents)
     {
         return documents

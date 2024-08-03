@@ -23,7 +23,7 @@ public class CliInputListener(IAdvancedInvertedIndexCatcher invertedIndexCatcher
         var query = Console.ReadLine();
         while (query != ExitCommand)
         {
-            new QueryReceiver(new AdvanceQuerySearcher(invertedIndexCatcher)).GetQuery(query);
+            new QueryReceiver(new AdvancedQuerySearcher(invertedIndexCatcher)).GetQuery(query);
             OutputRendererKeeper.Instance.OutputRenderer.Render(
                 Resources.EnterWordMessage);
             query = Console.ReadLine();

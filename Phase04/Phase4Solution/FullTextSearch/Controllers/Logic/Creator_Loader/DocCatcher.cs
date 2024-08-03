@@ -5,7 +5,7 @@ namespace FullTextSearch.Controllers.Logic.Creator_Loader;
 
 public class DocCatcher : IDocCatcher
 {
-    public List<Document> DocumentList = new List<Document>();
+    private List<Document> _documentList = new List<Document>();
     public void Write(Document document)
     {
         //todo
@@ -14,6 +14,6 @@ public class DocCatcher : IDocCatcher
 
     public List<Document> Load()
     {
-        return DocumentList;
+        return _documentList;
     }
 }

@@ -1,4 +1,6 @@
+
 using FullTextSearch.Controllers.Logic.Creator_Loader;
+using FullTextSearch.Model;
 
 namespace FullTextSearchTest.Controllers.Logic;
 
@@ -14,10 +16,10 @@ public class DocCatcherTest
     public void Write_ShouldBeTheSame_IfNullAdded()
     {
         //arrange
-        var expected = _sut.;
+        var expected = new List<Document>();
         //action
         _sut.Write(null);
-        var actual = _sut.AdvanceInvertedIndices;
+        var actual = _sut.Load();
         //assert
         Assert.Equivalent(expected,actual);
     }
@@ -25,12 +27,11 @@ public class DocCatcherTest
     public void Write_ShouldBeAddTheObj_IfNotNullAdded()
     {
         //arrange
-        var docList = new List<Document>() { new Document("ali", new List<string>() { "mamad" }) };
-        var advInvert = new AdvancedInvertedIndex(docList, "mahdi");
-        var expected = new List<AdvancedInvertedIndex>(){advInvert};
+        var document =  new Document("ali", new List<string>() { "mamad" });
+        var expected = new List<Document>(){document};
         //action
-        _sut.Write(advInvert);
-        var actual = _sut.AdvanceInvertedIndices;
+        _sut.Write(document);
+        var actual = _sut.Load();
         //assert
         Assert.Equivalent(expected,actual);
     }
@@ -39,11 +40,10 @@ public class DocCatcherTest
     public void Load_ShouldBeLoadTheObj_IfNotNullAdded()
     {
         //arrange
-        var docList = new List<Document>() { new Document("ali", new List<string>() { "mamad" }) };
-        var advInvert = new AdvancedInvertedIndex(docList, "mahdi");
-        var expected = new List<AdvancedInvertedIndex>() { advInvert };
+        var doc = new Document("ali",new []{"mahdi"});
+        var expected = new List<Document>() { doc };
         //action
-        _sut.AdvanceInvertedIndices.Add(advInvert);
+        _sut.Write(doc);
         var actual = _sut.Load();
         //assert
         Assert.Equivalent(expected, actual);

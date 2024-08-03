@@ -13,9 +13,10 @@ public class ToRoot : IStringReformater
         return ToWordRoot(word);
     }
 
-    private string ToWordRoot(string word)
+    private string ToWordRoot(string phrase)
     {
-        if (string.IsNullOrEmpty(word)) return string.Empty;
-        return Stemmer.Stem(word).Value;
+        if (string.IsNullOrEmpty(phrase)) return string.Empty;
+        var splittedWords = phrase.Split(' ');
+        return String.Join(' ', splittedWords.Select(w => Stemmer.Stem(w).Value));
     }
 }

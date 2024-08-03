@@ -23,7 +23,7 @@ public class ToRootTest
     }
 
     [Theory]
-    [InlineData("+expensive", "+expens")]
+    [InlineData("+expensive dreaming", "+expens dream")]
     [InlineData("dreaming", "dream")]
     [InlineData("died", "die")]
     public void FixWordsFormat_ShouldReturnRootedWord_IfNormalInput(string word, string rootedWord)

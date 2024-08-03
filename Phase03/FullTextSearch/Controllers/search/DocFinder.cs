@@ -7,6 +7,7 @@ public class DocFinder(InvertedIndex index) : IFinder
 {
     public IEnumerable<string>? Find(string query)
     {
+        if (string.IsNullOrEmpty(query)) return new List<string>();
         var result = index.InvertedIndexMap.GetValueOrDefault(query);
         return result == null ? new List<string>() : result;
     }

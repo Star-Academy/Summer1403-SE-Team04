@@ -1,0 +1,22 @@
+using System.Diagnostics;
+using FullTextSearch.Controllers.Logic.Abstraction;
+using Porter2Stemmer;
+
+namespace FullTextSearch.Controllers.Logic.StringProcessor;
+
+public class ToRoot : IStringReformater
+{
+    private static readonly EnglishPorter2Stemmer Stemmer = new();
+
+    public string FixWordFormat(string word)
+    {
+        return ToWordRoot(word);
+    }
+
+    private string ToWordRoot(string phrase)
+    {
+        if (string.IsNullOrEmpty(phrase)) return string.Empty;
+        var splittedWords = phrase.Split(' ');
+        return String.Join(' ', splittedWords.Select(w => Stemmer.Stem(w).Value));
+    }
+}

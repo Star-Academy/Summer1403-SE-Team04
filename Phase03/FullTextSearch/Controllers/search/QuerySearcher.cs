@@ -1,5 +1,6 @@
 using FullTextSearch.Controllers.Keepers;
 using FullTextSearch.Controllers.Logic;
+using FullTextSearch.Controllers.Logic.Abstraction;
 using FullTextSearch.Controllers.Reader.Abstraction;
 using FullTextSearch.Controllers.search.Abstraction;
 using FullTextSearch.Controllers.search.SearchStrategy;

@@ -1,4 +1,5 @@
 using System.Text.Json;
+using FullTextSearch.Controllers.Logic.Abstraction;
 using FullTextSearch.Controllers.Reader.Abstraction;
 using FullTextSearch.Model.DataStructure;
 

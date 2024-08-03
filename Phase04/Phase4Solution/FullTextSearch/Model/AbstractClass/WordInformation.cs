@@ -1,6 +1,11 @@
 namespace FullTextSearch.Model.DataStructure.AbstractClass;
 
-public class WordInformation
+public abstract class WordInformation
 {
-    
+   private string DocName { get; init; }
+
+   protected WordInformation(string docName)
+   {
+      DocName = docName;
+   }
 }

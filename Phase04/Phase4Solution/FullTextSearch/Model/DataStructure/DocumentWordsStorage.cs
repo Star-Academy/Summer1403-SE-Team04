@@ -1,30 +1,14 @@
-using FullTextSearch.Model.Abstraction;
+
+using FullTextSearch.Model.DataStructure.AbstractClass;
 
 namespace FullTextSearch.Model.DataStructure;
 
-public class DocumentWordsStorage : IWordInformation
+public class DocumentWordsStorage : WordInformation
 {
-    public string DocumentName { get; init; }
+    public IEnumerable<int> WordOccurences { get; init; }
 
-    public IEnumerable<int> WordOccurences;
-    public DocumentWordsStorage(string documentName, IEnumerable<int> wordOccurences)
+    public DocumentWordsStorage(string docName, IEnumerable<int> wordOccurences) : base(docName)
     {
-        DocumentName = documentName;
         WordOccurences = wordOccurences;
-    }
-
-    public string GetDocumentName()
-    {
-        return DocumentName;
-    }
-
-    public IEnumerable<int> GetWordOccurences()
-    {
-        return WordOccurences;
-    }
-
-    public void AddWordOccurences(int index)
-    {
-        WordOccurences.Append(index);
     }
 }

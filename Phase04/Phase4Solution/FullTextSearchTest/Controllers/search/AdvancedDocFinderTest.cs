@@ -1,6 +1,8 @@
+using FullTextSearch.Controllers.Logic.Creator_Loader;
 using FullTextSearch.Controllers.search;
 using FullTextSearch.Controllers.search.Abstraction;
 using FullTextSearch.Controllers.search.StrategySet;
+using FullTextSearch.Model.AbstractClass;
 using FullTextSearch.Model.DataStructure;
 
 namespace FullTextSearchTest.Controllers.search;
@@ -13,13 +15,13 @@ public class AdvancedDocFinderTest
     public AdvancedDocFinderTest()
     {
         
-        Dictionary<string, IEnumerable<DocumentWordsStorage>> testDic = new Dictionary<string, IEnumerable<DocumentWordsStorage>>()
+        Dictionary<string, IEnumerable<WordInformation>> testDic = new Dictionary<string, IEnumerable<WordInformation>>()
         {
-            {"love", new List<DocumentWordsStorage>() { new DocumentWordsStorage("location", new List<int>(){0})}},
-            {"you", new List<DocumentWordsStorage>() { new DocumentWordsStorage("location", new List<int>(){1})}}
+            {"love", new List<WordInformation>() { new DocumentWordsStorage("location", new List<int>(){0})}},
+            {"you", new List<WordInformation>() { new DocumentWordsStorage("location", new List<int>(){1})}}
         };
         _index = new AdvancedInvertedIndex(testDic, "location");
-        _sut = new AdvancedDocFinder(_index);
+        _sut = new AdvancedDocFinder(_index, new DocCatcher());
     }
 
     [Theory]

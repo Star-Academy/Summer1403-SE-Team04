@@ -11,10 +11,8 @@ public class AdvancedQuerySearcher(IAdvancedInvertedIndexCatcher invertedIndexLo
 {
     public void ProcessQuery(string query)
     {
-        
         var result = invertedIndexLoader.Load().Select(invertedIndex =>
-            new WordSearcher(new AdvancedStrategy(new AdvancedDocFinder(invertedIndex, new DocCatcher()))).Search(query).ToList()).ToList();
-
+            new WordSearcher(new AdvancedStrategy(new AdvancedDocFinder(invertedIndex, new DocCatcher(),new SmallWordsRemover()))).Search(query).ToList()).ToList();
         new OutputHandler(OutputRendererKeeper.Instance.OutputRenderer).SendOutput(result.Union());
 
     }

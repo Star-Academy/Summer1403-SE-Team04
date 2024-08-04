@@ -14,12 +14,6 @@ public class AdvancedStrategySetFactory
         _strategySets = new Dictionary<StrategySetEnum, IStrategySet>
         {
             {
-                StrategySetEnum.MustExist, new MustExistSet(wordsArray, finder)
-            },
-            {
-                StrategySetEnum.MustNotExist, new MustNotExistSet(wordsArray, finder)
-            },
-            {
                 StrategySetEnum.AtLeastOneExist, new AtLeastOneExistSet(wordsArray, finder)
             },
             {

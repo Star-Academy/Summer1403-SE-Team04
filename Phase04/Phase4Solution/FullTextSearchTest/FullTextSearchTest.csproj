@@ -27,5 +27,11 @@
     <ItemGroup>
       <ProjectReference Include="..\FullTextSearch\FullTextSearch.csproj" />
     </ItemGroup>
+    <ItemGroup>
+        <ContentWithTargetPath Include="AssetTest\**">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+            <TargetPath>%(RecursiveDir)\AssetTest\%(Filename)%(Extension)</TargetPath>
+        </ContentWithTargetPath>
+    </ItemGroup>
 
 </Project>

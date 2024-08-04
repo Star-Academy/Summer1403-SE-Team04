@@ -1,4 +1,5 @@
 using FullTextSearch.Controllers.Abstraction;
+using FullTextSearch.Controllers.Logic;
 using FullTextSearch.Controllers.Logic.Creator_Loader;
 using FullTextSearch.Controllers.search;
 using FullTextSearch.Controllers.search.SearchStrategy;
@@ -14,7 +15,6 @@ public class AdvancedStrategyTest
 {
     private readonly AdvancedInvertedIndex _index;
     private readonly AdvancedStrategy _sut;
-    
     public AdvancedStrategyTest()
     {
         Dictionary<string, IEnumerable<DocInformation>> testDic = new Dictionary<string, IEnumerable<DocInformation>>()
@@ -25,7 +25,8 @@ public class AdvancedStrategyTest
         _index = new AdvancedInvertedIndex(testDic, "location");
         var cacher = Substitute.For<IDocCatcher>();
         cacher.Load().Returns(new List<Document>() { new Document("location", new List<string>() { "love","you" }) });
-        _sut = new AdvancedStrategy(new AdvancedDocFinder(_index, cacher));
+        _sut = new AdvancedStrategy(new AdvancedDocFinder(_index, cacher,new SmallWordsRemover()));
+        
     }
 
 

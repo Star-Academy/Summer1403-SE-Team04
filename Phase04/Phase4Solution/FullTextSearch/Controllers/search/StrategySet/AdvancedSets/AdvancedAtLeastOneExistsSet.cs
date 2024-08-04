@@ -6,7 +6,7 @@ namespace FullTextSearch.Controllers.search.StrategySet.AdvancedSets;
 
 public class AdvancedAtLeastOneExistsSet(string[] phrasesArray, IFinder finder) : IStrategySet
 {
-    public IEnumerable<string> GetValidDocs()
+    public List<string> GetValidDocs()
     {
         
         var atLeastOneExistsPhrases = phrasesArray.Where(phrase => phrase.StartsWith('+'))

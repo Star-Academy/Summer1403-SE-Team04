@@ -4,6 +4,6 @@ namespace FullTextSearch.Controllers.Logic.Abstraction;
 
 public interface IDocumentLoader
 {
-    IEnumerable<Document> LoadDocumentsList(string directoryPath,
+    List<Document> LoadDocumentsList(string directoryPath,
         List<IStringReformater> reformaters);
 }

@@ -17,10 +17,10 @@ public class AdvancedStrategyTest
     private readonly AdvancedStrategy _sut;
     public AdvancedStrategyTest()
     {
-        Dictionary<string, IEnumerable<DocInformation>> testDic = new Dictionary<string, IEnumerable<DocInformation>>()
+        Dictionary<string, List<DocumentWordStorage>> testDic = new Dictionary<string, List<DocumentWordStorage>>()
         {
-            {"love", new List<DocInformation>() { new DocumentDocsStorage("location", new List<int>(){0})}},
-            {"you", new List<DocInformation>() { new DocumentDocsStorage("location", new List<int>(){1})}}
+            {"love", new List<DocumentWordStorage>() { new DocumentWordStorage("location", new List<int>(){0})}},
+            {"you", new List<DocumentWordStorage>() { new DocumentWordStorage("location", new List<int>(){1})}}
         };
         _index = new AdvancedInvertedIndex(testDic, "location");
         var cacher = Substitute.For<IDocCatcher>();

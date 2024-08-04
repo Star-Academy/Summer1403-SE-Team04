@@ -19,6 +19,6 @@ internal class Program
         // var indexCreator = new InvertedIndexCreator(cacher, docLoader);
         var inputListener = new CliInputListener(advIndexcatcher);
         var outputPrinter = new OutputPrinter();
-        new ServiceStartupInitializer(inputListener, outputPrinter, new AdvanceInvertedIndexCreator(docCatcher,advIndexcatcher)).Init(indicesList);
+        new ServiceStartupInitializer(inputListener, outputPrinter, new AdvanceInvertedIndexCreator(docCatcher,advIndexcatcher,docLoader)).Init(indicesList);
     }
 }

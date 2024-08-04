@@ -6,7 +6,7 @@ namespace FullTextSearch.Controllers.search.StrategySet.BasicSets;
 
 public class AtLeastOneExistSet(string[] wordsArray, IFinder finder) : IStrategySet
 {
-    public IEnumerable<string> GetValidDocs()
+    public List<string> GetValidDocs()
     {
         var atLeastOneExistsWords = wordsArray.Where(word => word.StartsWith('+'))
             .Select(word => word.Substring(1));

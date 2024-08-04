@@ -23,10 +23,10 @@ public class AdvancedAtLeastOneExistSetTest
     {
         _cacher = Substitute.For<IDocCatcher>();
         _cacher.Load().Returns(new List<Document>() { new Document("location", new List<string>() { "love","you" }) });
-        Dictionary<string, IEnumerable<DocInformation>> testDic = new Dictionary<string, IEnumerable<DocInformation>>()
+        Dictionary<string, List<DocumentWordStorage>> testDic = new Dictionary<string, List<DocumentWordStorage>>()
         {
-            {"love", new List<DocInformation>() { new DocumentDocsStorage("location", new List<int>(){0})}},
-            {"you", new List<DocInformation>() { new DocumentDocsStorage("location", new List<int>(){1})}}
+            {"love", new List<DocumentWordStorage>() { new DocumentWordStorage("location", new List<int>(){0})}},
+            {"you", new List<DocumentWordStorage>() { new DocumentWordStorage("location", new List<int>(){1})}}
         };
         _index = new AdvancedInvertedIndex(testDic, "location");
         _advancedFinder = new AdvancedDocFinder(_index, _cacher,new SmallWordsRemover());

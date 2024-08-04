@@ -26,7 +26,7 @@ public class DocumentWordsEditorTest
             new("test", new[] { "a" })
         };
         _stringReformater.FixWordFormat(Arg.Any<string>()).Returns("a");
-        _garbageRemover.Remove(Arg.Any<IEnumerable<string>>()).Returns(new[] { "a" });
+        _garbageRemover.Remove(Arg.Any<List<string>>()).Returns(new[] { "a" });
         
         // Act
         testDoc = testDoc.EditWords(new List<IStringReformater> { _stringReformater }, _garbageRemover).ToList();

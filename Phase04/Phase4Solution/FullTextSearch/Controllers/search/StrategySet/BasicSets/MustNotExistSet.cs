@@ -7,7 +7,7 @@ namespace FullTextSearch.Controllers.search.StrategySet.BasicSets;
 
 public class MustNotExistSet(string[] wordsArray, IFinder finder) : IStrategySet
 {
-    public IEnumerable<string> GetValidDocs()
+    public List<string> GetValidDocs()
     {
         var mustNotExistWords = wordsArray.Where(word => word.StartsWith('-')).Select(word => word.Substring(1));
         return mustNotExistWords.Select(word => finder.Find(word).ToList())

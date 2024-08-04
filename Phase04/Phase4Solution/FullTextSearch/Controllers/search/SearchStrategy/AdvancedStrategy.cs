@@ -9,7 +9,7 @@ namespace FullTextSearch.Controllers.search.SearchStrategy;
 public class AdvancedStrategy(IAdvancedFinder finder) : ISearchStrategy
 {
     
-    public IEnumerable<string> Search(string query)
+    public List<string> Search(string query)
     {
         if (string.IsNullOrEmpty(query)) throw new NullOrEmptyQueryException();
         var inputPhrases =
@@ -18,7 +18,7 @@ public class AdvancedStrategy(IAdvancedFinder finder) : ISearchStrategy
         return GetValidDocuments(inputPhrases);
     }
 
-    private IEnumerable<string> GetValidDocuments(string[] phrases)
+    private List<string> GetValidDocuments(string[] phrases)
     {
         var factory = new AdvancedStrategySetFactory(phrases, finder);
         var advancedMustExist = factory.Create(StrategySetEnum.AdvancedMustExist).GetValidDocs();
@@ -28,13 +28,13 @@ public class AdvancedStrategy(IAdvancedFinder finder) : ISearchStrategy
         return CalculateValidDoc( advancedMustExist, advancedMustNotExist, advancedAtLeastOneExists);
     }
 
-    private IEnumerable<string> CalculateValidDoc( IEnumerable<string> mustExist, IEnumerable<string> mustNotExist,
-        IEnumerable<string> atLeastOneExists)
+    private List<string> CalculateValidDoc( List<string> mustExist, List<string> mustNotExist,
+        List<string> atLeastOneExists)
     {
         if (!mustExist.Any())
             return atLeastOneExists.Except(mustNotExist).ToList();
         if (!atLeastOneExists.Any())
             return mustExist.Except(mustNotExist).ToList();
-        return mustExist.Intersect(atLeastOneExists).Except(mustNotExist);
+        return mustExist.Intersect(atLeastOneExists).Except(mustNotExist).ToList();
     }
 }

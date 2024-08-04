@@ -8,7 +8,7 @@ namespace FullTextSearch.Controllers.search.SearchStrategy;
 
 public class TargetedStrategy(IFinder finder) : ISearchStrategy
 {
-    public IEnumerable<string> Search(string query)
+    public List<string> Search(string query)
     {
         if (string.IsNullOrEmpty(query)) throw new NullOrEmptyQueryException();
         var inputWords =
@@ -16,7 +16,7 @@ public class TargetedStrategy(IFinder finder) : ISearchStrategy
         return GetValidDocuments(inputWords);
     }
 
-    private IEnumerable<string> GetValidDocuments(string[] words)
+    private List<string> GetValidDocuments(string[] words)
     {
         var factory = new StrategySetFactory(words, finder);
         var mustExist = factory.Create(StrategySetEnum.MustExist).GetValidDocs();
@@ -25,13 +25,13 @@ public class TargetedStrategy(IFinder finder) : ISearchStrategy
         return CalculateValidDoc(mustExist, mustNotExist, atLeastOneExists);
     }
 
-    private IEnumerable<string> CalculateValidDoc(IEnumerable<string> mustExist, IEnumerable<string> mustNotExist,
-        IEnumerable<string> atLeastOneExists)
+    private List<string> CalculateValidDoc(List<string> mustExist, List<string> mustNotExist,
+        List<string> atLeastOneExists)
     {
         if (!mustExist.Any())
             return atLeastOneExists.Except(mustNotExist).ToList();
         if (!atLeastOneExists.Any())
             return mustExist.Except(mustNotExist).ToList();
-        return mustExist.Intersect(atLeastOneExists).Except(mustNotExist);
+        return mustExist.Intersect(atLeastOneExists).Except(mustNotExist).ToList();
     }
 }

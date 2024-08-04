@@ -4,7 +4,7 @@ namespace FullTextSearch.Controllers.Logic.DocumentsLoader;
 
 public static class WordsListFormatFixer
 {
-    public static IEnumerable<string> FixWordsList(this IEnumerable<string> documentWords,
+    public static IEnumerable<string> FixWordsList(this List<string> documentWords,
         List<IStringReformater> reformaters)
     {
         foreach (var word in documentWords)

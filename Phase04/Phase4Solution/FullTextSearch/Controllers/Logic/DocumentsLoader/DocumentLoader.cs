@@ -6,7 +6,7 @@ namespace FullTextSearch.Controllers.Logic.DocumentsLoader;
 
 public class DocumentLoader(IDocBuilder builder, IGarbageRemover remover ) : IDocumentLoader
 {
-    public IEnumerable<Document> LoadDocumentsList(string directoryPath,
+    public List<Document> LoadDocumentsList(string directoryPath,
         List<IStringReformater> reformaters)
     {
         var documents = Directory.GetFiles(directoryPath, "*.*", SearchOption.AllDirectories)

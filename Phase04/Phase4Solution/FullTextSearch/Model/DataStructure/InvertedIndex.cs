@@ -6,30 +6,30 @@ namespace FullTextSearch.Model.DataStructure;
 public class InvertedIndex
 {
     [JsonConstructor]
-    public InvertedIndex(Dictionary<string, IEnumerable<string>> invertedIndexMap, string directoryPath)
+    public InvertedIndex(Dictionary<string, List<string>> invertedIndexMap, string directoryPath)
     {
         InvertedIndexMap = invertedIndexMap;
         DirectoryPath = directoryPath;
     }
 
-    public InvertedIndex(IEnumerable<Document> documents, string directoryPath)
+    public InvertedIndex(List<Document> documents, string directoryPath)
     {
         InvertedIndexMap = BuildInvertedIndex(documents);
         DirectoryPath = directoryPath;
     }
 
-    [JsonInclude] public Dictionary<string, IEnumerable<string>> InvertedIndexMap { get; private set; }
+    [JsonInclude] public Dictionary<string, List<string>> InvertedIndexMap { get; private set; }
 
     [JsonInclude] public string DirectoryPath { get; private set; }
 
-    private Dictionary<string, IEnumerable<string>> BuildInvertedIndex(IEnumerable<Document> documents)
+    private Dictionary<string, List<string>> BuildInvertedIndex(List<Document> documents)
     {
         return documents
-            .SelectMany(doc => doc.Select(word => new { word, doc.DocName }))
+            .SelectMany(doc => doc.DocWords.Select(word => new { word, doc.DocName }))
             .GroupBy(x => x.word)
             .ToDictionary(
                 g => g.Key,
-                g => g.Select(x => x.DocName).Distinct());
+                g => g.Select(x => x.DocName).Distinct().ToList());
     }
 
     public override string ToString()

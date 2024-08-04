@@ -4,6 +4,6 @@ namespace FullTextSearch.Controllers.search.Abstraction;
 
 public interface IStrategySet
 {
-    IEnumerable<string> GetValidDocs();
+    List<string> GetValidDocs();
     StrategySetEnum GetName();
 }

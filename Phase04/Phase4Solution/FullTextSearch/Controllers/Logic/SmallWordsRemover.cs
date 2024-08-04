@@ -8,12 +8,12 @@ public class SmallWordsRemover : IGarbageRemover
     private static readonly HashSet<string> SmallWordsList =
         new TxtReader().Read(Resources.SmallWordsPath).ToHashSet();
 
-    public IEnumerable<string> Remove(IEnumerable<string>? wordsList)
+    public List<string> Remove(List<string>? wordsList)
     {
         if (wordsList==null)
         {
-            return Array.Empty<string>();
+            return new List<string>(Array.Empty<string>());
         }
-        return wordsList.Where(word => !SmallWordsList.Contains(word));
+        return wordsList.Where(word => !SmallWordsList.Contains(word)).ToList();
     }
 }

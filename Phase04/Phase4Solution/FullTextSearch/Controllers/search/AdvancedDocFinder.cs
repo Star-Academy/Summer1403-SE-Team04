@@ -9,17 +9,17 @@ namespace FullTextSearch.Controllers.search;
 
 public class AdvancedDocFinder(AdvancedInvertedIndex index, IDocCatcher documentCacher , IGarbageRemover remover) : IAdvancedFinder
 {
-    public IEnumerable<string>? Find(string phrase)
+    public List<string>? Find(string phrase)
     {
         var result = new List<string>();
         if (string.IsNullOrEmpty(phrase)) throw new NullOrEmptyQueryException();
-        var queryWordsList = remover.Remove(phrase.Split(' '));
+        var queryWordsList = remover.Remove(phrase.Split(' ').ToList());
         var documentsList = documentCacher.Load();
         var firstWordValidDocs = index.InvertedIndexMap.GetValueOrDefault(queryWordsList.ToList()[0]);
         if (firstWordValidDocs == null) return result;
         foreach (var docWordStorage in firstWordValidDocs.ToList())
         {
-            var occurences = ((DocumentDocsStorage)docWordStorage).WordOccurences.ToList();
+            var occurences = ((DocumentWordStorage)docWordStorage).WordOccurences.ToList();
             var selectedDoc = documentsList.FirstOrDefault(d => d.DocName == docWordStorage.DocName);
 
             foreach (var placement in occurences)

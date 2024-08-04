@@ -7,7 +7,7 @@ namespace FullTextSearch.Controllers.search.StrategySet.AdvancedSets;
 
 public class AdvancedMustNotExistSet(string[] phrasesArray, IFinder finder) : IStrategySet
 {
-    public IEnumerable<string> GetValidDocs()
+    public List<string> GetValidDocs()
     {
         var mustNotExistWords = phrasesArray
             .Where(phrase => phrase.StartsWith('-')).Select(phrase => phrase.Substring(1));

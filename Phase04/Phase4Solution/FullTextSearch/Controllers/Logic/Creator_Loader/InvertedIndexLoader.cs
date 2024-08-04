@@ -13,11 +13,6 @@ public class InvertedIndexCatcher : IInvertedIndexCatcher
     {
         IncludeFields = true
     };
-    private static readonly JsonSerializerOptions ReadOptions = new()
-    {
-        IncludeFields = true
-    };
-
     private static readonly JsonSerializerOptions WriteOptions = new()
     {
         WriteIndented = true,
@@ -28,13 +23,7 @@ public class InvertedIndexCatcher : IInvertedIndexCatcher
     {
         InvertedIndices.Add(index);
         File.WriteAllText(FilePath, "");
-        var json = File.ReadAllText(FilePath);
-        var indices = json == string.Empty
-            ? new List<InvertedIndex>()
-            : JsonSerializer.Deserialize<List<InvertedIndex>>(json, ReadOptions);
-
-        indices.Add(index);
-        var newJson = JsonSerializer.Serialize(indices, WriteOptions);
+        var newJson = JsonSerializer.Serialize(InvertedIndices, WriteOptions);
         File.WriteAllText(FilePath, newJson);
     }
 

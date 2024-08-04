@@ -13,8 +13,7 @@ public class AdvancedStrategy(IFinder finder) : ISearchStrategy
     {
         if (string.IsNullOrEmpty(query)) throw new NullOrEmptyQueryException();
         var inputPhrases =
-            query.SplitIntoFormattedWords(new List<IStringReformater> { new ToLower(), new ToRoot() });
-        // todo : split by ""
+            query.SplitIntoAdvanceFormattedWords(new List<IStringReformater> { new ToLower(), new ToRoot() });
         return GetValidDocuments(inputPhrases);
     }
 

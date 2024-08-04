@@ -1,9 +1,12 @@
+using FullTextSearch.Controllers.Abstraction;
 using FullTextSearch.Controllers.Logic.Creator_Loader;
 using FullTextSearch.Controllers.search;
 using FullTextSearch.Controllers.search.Abstraction;
 using FullTextSearch.Controllers.search.StrategySet;
+using FullTextSearch.Model;
 using FullTextSearch.Model.AbstractClass;
 using FullTextSearch.Model.DataStructure;
+using NSubstitute;
 
 namespace FullTextSearchTest.Controllers.search;
 
@@ -21,7 +24,9 @@ public class AdvancedDocFinderTest
             {"you", new List<WordInformation>() { new DocumentWordsStorage("location", new List<int>(){1})}}
         };
         _index = new AdvancedInvertedIndex(testDic, "location");
-        _sut = new AdvancedDocFinder(_index, new DocCatcher());
+        var cacher = Substitute.For<IDocCatcher>();
+        cacher.Load().Returns(new List<Document>() { new Document("location", new List<string>() { "love","you" }) });
+        _sut = new AdvancedDocFinder(_index, cacher);
     }
 
     [Theory]

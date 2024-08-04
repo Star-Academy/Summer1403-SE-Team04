@@ -26,10 +26,10 @@ public class AdvancedStrategySetFactory
                 StrategySetEnum.AdvancedMustExist, new AdvancedMustExistSet(wordsArray, finder)
             },
             {
-                StrategySetEnum.MustNotExist, new AdvancedMustNotExistSet(wordsArray, finder)
+                StrategySetEnum.AdvancedMustNotExist, new AdvancedMustNotExistSet(wordsArray, finder)
             },
             {
-                StrategySetEnum.AtLeastOneExist, new AdvancedAtLeastOneExistsSet(wordsArray, finder)
+                StrategySetEnum.AdvancedAtLeastOneExist, new AdvancedAtLeastOneExistsSet(wordsArray, finder)
             }
         };
     }

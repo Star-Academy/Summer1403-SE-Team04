@@ -21,6 +21,7 @@
     &lt;TestId&gt;xUnit::37C8A043-994E-47DD-8FCE-6984361D693E::net8.0::FullTextSearchTest.Controllers.search.StrategySet.AdvancedSets.AdvancedAtLeastOneExistSetTest&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;xUnit::37C8A043-994E-47DD-8FCE-6984361D693E::net8.0::FullTextSearchTest.Controllers.search.StrategySet.AdvancedSets.AdvancedMustExistSetTest&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;xUnit::37C8A043-994E-47DD-8FCE-6984361D693E::net8.0::FullTextSearchTest.Controllers.search.StrategySet.AdvancedSets.AdvancedMustNotExistSetTest&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::37C8A043-994E-47DD-8FCE-6984361D693E::net8.0::FullTextSearchTest.Controllers.Logic.StringProcessor.ToRootTest.FixWordsFormat_ShouldReturnRootedWord_IfNormalInput&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=52ad8ba2_002D2cd7_002D4ab0_002D8f0c_002D30343488a48f/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="Find_ShouldReturnList_WhenQueryExists" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;

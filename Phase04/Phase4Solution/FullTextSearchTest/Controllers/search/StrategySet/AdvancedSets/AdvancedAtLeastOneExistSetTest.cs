@@ -7,7 +7,6 @@ using FullTextSearch.Controllers.search.StrategySet;
 using FullTextSearch.Controllers.search.StrategySet.AdvancedSets;
 using FullTextSearch.Controllers.search.StrategySet.BasicSets;
 using FullTextSearch.Model;
-using FullTextSearch.Model.AbstractClass;
 using FullTextSearch.Model.DataStructure;
 using NSubstitute;
 

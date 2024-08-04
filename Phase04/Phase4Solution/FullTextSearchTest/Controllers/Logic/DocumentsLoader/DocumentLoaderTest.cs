@@ -27,11 +27,11 @@ public class DocumentLoaderTest
         var testPath = "AssetTest";
         var expected = new List<Document>
         {
-            new("mahdi", new[] { "ali", "alii" }), new("mahdi", new[] { "ali", "alii" })
+            new("mahdi", new List<string>() { "ali", "alii" }), new("mahdi", new List<string>() { "ali", "alii" })
         };
-        _garbageRemover.Remove(new[] { "ali", "alii" }).Returns(new[] { "ali", "alii" });
-        _docBuilder.Build(Arg.Any<string>()).Returns(new Document("mahdi", new[] { "ali", "alii" }));
-        _docBuilder.Build(Arg.Any<string>()).Returns(new Document("mahdi", new[] { "ali", "alii" }));
+        _garbageRemover.Remove(new List<string>() { "ali", "alii" }).Returns(new List<string>() { "ali", "alii" });
+        _docBuilder.Build(Arg.Any<string>()).Returns(new Document("mahdi", new List<string>(){ "ali", "alii" }));
+        _docBuilder.Build(Arg.Any<string>()).Returns(new Document("mahdi", new List<string>(){ "ali", "alii" }));
         // Act
         var actual = _sut.LoadDocumentsList(testPath, null);
         // Assert

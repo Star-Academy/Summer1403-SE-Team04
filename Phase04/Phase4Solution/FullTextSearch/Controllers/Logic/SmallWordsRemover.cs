@@ -8,7 +8,7 @@ public class SmallWordsRemover : IGarbageRemover
     private static readonly HashSet<string> SmallWordsList =
         new TxtReader().Read(Resources.SmallWordsPath).ToHashSet();
 
-    public List<string> Remove(List<string>? wordsList)
+    public List<string> Remove(List<string> wordsList)
     {
         if (wordsList==null)
         {

@@ -13,7 +13,7 @@ public class SmallWordsRemoverTest
         // Arrange
         var expected = new List<string>();
         // Act
-        var actual = new SmallWordsRemover().Remove(list);
+        var actual = new SmallWordsRemover().Remove(list.ToList());
         // Assert
         Assert.Equal(expected, actual);
     }
@@ -24,7 +24,7 @@ public class SmallWordsRemoverTest
         // Arrange
         var expected = new[] { "ali", "mamad", "is" };
         // Act
-        var actual = new SmallWordsRemover().Remove(new[] { "ali", "mamad", "doing", "is" });
+        var actual = new SmallWordsRemover().Remove(new List<string>() { "ali", "mamad", "doing", "is" });
         // Assert
         Assert.Equal(expected, actual);
     }

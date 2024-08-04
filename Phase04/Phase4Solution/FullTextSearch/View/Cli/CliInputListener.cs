@@ -7,7 +7,7 @@ using FullTextSearch.Model.DataStructure;
 
 namespace FullTextSearch.View.Cli;
 
-public class CliInputListener(IAdvancedInvertedIndexCatcher invertedIndexCatcher) : IInputListener
+public class CliInputListener(IAdvancedInvertedIndexCatcher invertedIndexCatcher , IDocCatcher docCatcher) : IInputListener
 {
     private const string ExitCommand = "exit";
 
@@ -23,7 +23,7 @@ public class CliInputListener(IAdvancedInvertedIndexCatcher invertedIndexCatcher
         var query = Console.ReadLine();
         while (query != ExitCommand)
         {
-            new QueryReceiver(new AdvancedQuerySearcher(invertedIndexCatcher)).GetQuery(query);
+            new QueryReceiver(new AdvancedQuerySearcher(invertedIndexCatcher,docCatcher)).GetQuery(query);
             OutputRendererKeeper.Instance.OutputRenderer.Render(
                 Resources.EnterWordMessage);
             query = Console.ReadLine();

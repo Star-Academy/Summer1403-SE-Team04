@@ -5,7 +5,6 @@ using FullTextSearch.Controllers.search;
 using FullTextSearch.Controllers.search.Abstraction;
 using FullTextSearch.Controllers.search.StrategySet;
 using FullTextSearch.Model;
-using FullTextSearch.Model.AbstractClass;
 using FullTextSearch.Model.DataStructure;
 using NSubstitute;
 

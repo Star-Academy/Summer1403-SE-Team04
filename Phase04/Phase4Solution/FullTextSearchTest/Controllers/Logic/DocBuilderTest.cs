@@ -33,8 +33,8 @@ public class DocBuilderTest
     public void Build_ShouldReturnNormalDoc_IfNormalInput()
     {
         // Arrange 
-        _txtReader.Read("mamad").Returns(new[] { "ali" });
-        var expected = new Document("mamad", new[] { "ali" });
+        _txtReader.Read("mamad").Returns(new List<string>() { "ali" });
+        var expected = new Document("mamad", new List<string>() { "ali" });
         // Act
         var actual = _docBuilder.Build("mamad");
         // Assert

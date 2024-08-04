@@ -42,7 +42,7 @@ public class DocCatcherTest
     public void Load_ShouldBeLoadTheObj_IfNotNullAdded()
     {
         //arrange
-        var doc = new Document("ali", new[] { "mahdi" });
+        var doc = new Document("ali", new List<string>() { "mahdi" });
         var expected = new List<Document>() { doc };
         //action
         _sut.Write(doc);

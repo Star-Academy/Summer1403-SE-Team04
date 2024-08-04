@@ -1,5 +1,6 @@
 using FullTextSearch.Controllers.Abstraction;
 using FullTextSearch.Controllers.Keepers;
+using FullTextSearch.Controllers.Logic.Creator_Loader;
 using FullTextSearch.Controllers.search;
 using FullTextSearch.Controllers.search.Abstraction;
 using FullTextSearch.Model.DataStructure;
@@ -18,7 +19,7 @@ public class AdvancedQuerySearcherTest
     {
         _invertedIndexLoader = Substitute.For<IAdvancedInvertedIndexCatcher>();
         _invertedIndexLoader.Load().Returns(new List<AdvancedInvertedIndex>());
-        _sut = new AdvancedQuerySearcher(_invertedIndexLoader);
+        _sut = new AdvancedQuerySearcher(_invertedIndexLoader,new DocCatcher());
     }
 
     [Fact]

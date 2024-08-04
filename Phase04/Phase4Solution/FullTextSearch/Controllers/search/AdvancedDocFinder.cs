@@ -19,8 +19,8 @@ public class AdvancedDocFinder(AdvancedInvertedIndex index, IDocCatcher document
         if (firstWordValidDocs == null) return result;
         foreach (var docWordStorage in firstWordValidDocs.ToList())
         {
-            var occurences = ((DocumentWordStorage)docWordStorage).WordOccurences.ToList();
-            var selectedDoc = documentsList.FirstOrDefault(d => d.DocName == docWordStorage.DocName);
+            var occurences = docWordStorage.WordOccurences;
+            var selectedDoc = documentsList.SingleOrDefault(d => d.DocName == docWordStorage.DocName);
 
             foreach (var placement in occurences)
             {

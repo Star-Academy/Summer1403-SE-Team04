@@ -1,11 +1,7 @@
-
 namespace FullTextSearch.Model.DataStructure;
 
 public class AdvancedInvertedIndex
 {
-    public Dictionary<string, List<DocumentWordStorage>> InvertedIndexMap { get; init; }
-    public string DirectoryPath { get; init; }
-
     public AdvancedInvertedIndex(List<Document> documents, string directoryPath)
     {
         InvertedIndexMap = BuildInvertedIndex(documents);
@@ -17,6 +13,9 @@ public class AdvancedInvertedIndex
         InvertedIndexMap = invertedIndexMap;
         DirectoryPath = directoryPath;
     }
+
+    public Dictionary<string, List<DocumentWordStorage>> InvertedIndexMap { get; init; }
+    public string DirectoryPath { get; init; }
 
     private Dictionary<string, List<DocumentWordStorage>> BuildInvertedIndex(List<Document> documents)
     {
@@ -33,17 +32,14 @@ public class AdvancedInvertedIndex
             foreach (var documentWordStorage in wordInformationList)
             {
                 var selectedDoc = documents.SingleOrDefault(d => d.DocName == documentWordStorage.DocName);
-                for (int i = 0; i < selectedDoc.DocWords.Count(); i++)
+                for (var i = 0; i < selectedDoc.DocWords.Count(); i++)
                 {
                     var docWord = selectedDoc.DocWords.ToList()[i];
-                    if (docWord == entry.Key)
-                    {
-                        documentWordStorage.WordOccurences.Add(i);
-                        // var selectedValue = entry.Value;
-                        // selectedValue.ToList()[s].addd(i);
-                        // entry.Value.
-                        // doxxx.TryAdd(entry.Key, selectedValue);
-                    }
+                    if (docWord == entry.Key) documentWordStorage.WordOccurences.Add(i);
+                    // var selectedValue = entry.Value;
+                    // selectedValue.ToList()[s].addd(i);
+                    // entry.Value.
+                    // doxxx.TryAdd(entry.Key, selectedValue);
                 }
             }
         }

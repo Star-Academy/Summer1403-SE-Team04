@@ -12,8 +12,7 @@ public class InvertedIndexCreator(IInvertedIndexCatcher catcher, IDocumentLoader
         var stringReformaters = new List<IStringReformater> { new ToLower(), new ToRoot() };
         var documents = documentLoader
             .LoadDocumentsList(directoryPath, stringReformaters);
-        var newIndex = new InvertedIndex(documents, directoryPath); 
+        var newIndex = new InvertedIndex(documents, directoryPath);
         catcher.Write(newIndex);
     }
-    
 }

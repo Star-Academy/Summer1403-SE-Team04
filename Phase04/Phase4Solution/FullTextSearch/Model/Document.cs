@@ -1,5 +1,3 @@
-using System.Collections;
-
 namespace FullTextSearch.Model;
 
 public class Document(string docName, List<string> docWords) : List<string>
@@ -11,21 +9,21 @@ public class Document(string docName, List<string> docWords) : List<string>
     {
         return DocWords.GetEnumerator();
     }
+
     public override bool Equals(object? obj)
     {
         try
         {
             if (typeof(object).IsSubclassOf(typeof(Document)))
             {
-                var testDoc = ((Document)obj);
+                var testDoc = (Document)obj;
                 if (DocName == testDoc.DocName)
                 {
                     var w1 = DocWords.ToList();
                     var w2 = testDoc.DocWords.ToList();
-                    for (int i = 0; i < DocWords.Count(); i++)
-                    {
-                        if (w1[i] != w2[i]) return false;
-                    }
+                    for (var i = 0; i < DocWords.Count(); i++)
+                        if (w1[i] != w2[i])
+                            return false;
                 }
 
                 return true;
@@ -34,6 +32,7 @@ public class Document(string docName, List<string> docWords) : List<string>
         catch (Exception e)
         {
         }
+
         return false;
     }
 }

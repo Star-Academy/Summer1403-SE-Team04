@@ -7,5 +7,5 @@ public enum StrategySetEnum
     AtLeastOneExist,
     AdvancedMustExist,
     AdvancedMustNotExist,
-    AdvancedAtLeastOneExist,
+    AdvancedAtLeastOneExist
 }

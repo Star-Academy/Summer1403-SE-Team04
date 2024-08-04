@@ -1,9 +1,7 @@
 using FullTextSearch.Controllers.Logic;
 using FullTextSearch.Controllers.search.Abstraction;
-using FullTextSearch.Model.DataStructure;
 
 namespace FullTextSearch.Controllers.search.StrategySet.BasicSets;
-
 
 public class MustExistSet(string[] wordsArray, IFinder finder) : IStrategySet
 {

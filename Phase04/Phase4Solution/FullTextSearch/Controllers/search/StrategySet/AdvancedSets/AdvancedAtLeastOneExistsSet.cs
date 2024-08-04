@@ -1,6 +1,5 @@
 using FullTextSearch.Controllers.Logic;
 using FullTextSearch.Controllers.search.Abstraction;
-using FullTextSearch.Model.DataStructure;
 
 namespace FullTextSearch.Controllers.search.StrategySet.AdvancedSets;
 
@@ -8,7 +7,6 @@ public class AdvancedAtLeastOneExistsSet(string[] phrasesArray, IFinder finder) 
 {
     public List<string> GetValidDocs()
     {
-        
         var atLeastOneExistsPhrases = phrasesArray.Where(phrase => phrase.StartsWith('+'))
             .Select(phrase => phrase.Substring(1));
 
@@ -16,7 +14,6 @@ public class AdvancedAtLeastOneExistsSet(string[] phrasesArray, IFinder finder) 
             .Select(phrase => finder.Find(phrase).ToList())
             .ToList()
             .Union();
-        
     }
 
     public StrategySetEnum GetName()

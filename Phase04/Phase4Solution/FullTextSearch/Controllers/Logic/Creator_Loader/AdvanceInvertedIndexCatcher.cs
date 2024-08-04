@@ -1,18 +1,20 @@
+using System.Text.Json;
 using FullTextSearch.Controllers.Abstraction;
 using FullTextSearch.Model.DataStructure;
-using System.Text.Json;
 
 namespace FullTextSearch.Controllers.Logic.Creator_Loader;
 
 public class AdvanceInvertedIndexCatcher : IAdvancedInvertedIndexCatcher
 {
-    public List<AdvancedInvertedIndex> AdvanceInvertedIndices = new List<AdvancedInvertedIndex>();
     private static readonly string FilePath = Resources.AdvanceInverIndexPath;
+
     private static readonly JsonSerializerOptions WriteOptions = new()
     {
         WriteIndented = true,
         IncludeFields = true
     };
+
+    public List<AdvancedInvertedIndex> AdvanceInvertedIndices = new();
 
     public bool Write(AdvancedInvertedIndex index)
     {

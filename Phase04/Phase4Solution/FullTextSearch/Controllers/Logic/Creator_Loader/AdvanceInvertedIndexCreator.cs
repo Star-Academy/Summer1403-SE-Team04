@@ -4,7 +4,10 @@ using FullTextSearch.Model.DataStructure;
 
 namespace FullTextSearch.Controllers.Logic.Creator_Loader;
 
-public class AdvanceInvertedIndexCreator(IDocCatcher docCatcher,IAdvancedInvertedIndexCatcher advancedInvertedIndexCatcher,IDocumentLoader documentLoader) : IAdvancedInvertedIndexCreator
+public class AdvanceInvertedIndexCreator(
+    IDocCatcher docCatcher,
+    IAdvancedInvertedIndexCatcher advancedInvertedIndexCatcher,
+    IDocumentLoader documentLoader) : IAdvancedInvertedIndexCreator
 {
     public AdvancedInvertedIndex CreateAdvancedInvertedIndex(string directoryPath)
     {

@@ -6,18 +6,20 @@ namespace FullTextSearch.Controllers.Logic.Creator_Loader;
 
 public class InvertedIndexCatcher : IInvertedIndexCatcher
 {
-    public List<InvertedIndex> InvertedIndices = new List<InvertedIndex>();
     private static readonly string FilePath = Resources.InvertedIndexDataPath;
 
     private static readonly JsonSerializerOptions? Options = new()
     {
         IncludeFields = true
     };
+
     private static readonly JsonSerializerOptions WriteOptions = new()
     {
         WriteIndented = true,
         IncludeFields = true
     };
+
+    public List<InvertedIndex> InvertedIndices = new();
 
     public void Write(InvertedIndex index)
     {
@@ -37,6 +39,4 @@ public class InvertedIndexCatcher : IInvertedIndexCatcher
         var json = File.ReadAllText(FilePath);
         InvertedIndices = JsonSerializer.Deserialize<List<InvertedIndex>>(json, Options).ToList();
     }
-    
-    
 }

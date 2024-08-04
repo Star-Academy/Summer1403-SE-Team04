@@ -5,7 +5,7 @@ using FullTextSearch.Model;
 
 namespace FullTextSearch.Controllers.Logic;
 
-public class DocBuilder(ITxtReader txtReader,IDocCatcher docCatcher) : IDocBuilder
+public class DocBuilder(ITxtReader txtReader, IDocCatcher docCatcher) : IDocBuilder
 {
     public Document Build(string? docPath)
     {

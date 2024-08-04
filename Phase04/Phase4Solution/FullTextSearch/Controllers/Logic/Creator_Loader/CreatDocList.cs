@@ -4,7 +4,7 @@ using FullTextSearch.Controllers.Logic.StringProcessor;
 
 namespace FullTextSearch.Controllers.Logic.Creator_Loader;
 
-public class CreatDocList(IDocumentLoader documentLoader,IDocCatcher docCatcher)
+public class CreatDocList(IDocumentLoader documentLoader, IDocCatcher docCatcher)
 {
     public void CreatDoc(string directoryPath)
     {

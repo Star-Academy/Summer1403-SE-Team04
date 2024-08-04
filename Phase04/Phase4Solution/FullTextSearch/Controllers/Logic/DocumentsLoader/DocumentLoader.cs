@@ -1,10 +1,9 @@
-using FullTextSearch.Controllers.Abstraction;
 using FullTextSearch.Controllers.Logic.Abstraction;
 using FullTextSearch.Model;
 
 namespace FullTextSearch.Controllers.Logic.DocumentsLoader;
 
-public class DocumentLoader(IDocBuilder builder, IGarbageRemover remover ) : IDocumentLoader
+public class DocumentLoader(IDocBuilder builder, IGarbageRemover remover) : IDocumentLoader
 {
     public List<Document> LoadDocumentsList(string directoryPath,
         List<IStringReformater> reformaters)

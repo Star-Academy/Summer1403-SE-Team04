@@ -10,10 +10,7 @@ public class SmallWordsRemover : IGarbageRemover
 
     public List<string> Remove(List<string> wordsList)
     {
-        if (wordsList==null)
-        {
-            return new List<string>(Array.Empty<string>());
-        }
+        if (wordsList == null) return new List<string>(Array.Empty<string>());
         return wordsList.Where(word => !SmallWordsList.Contains(word)).ToList();
     }
 }

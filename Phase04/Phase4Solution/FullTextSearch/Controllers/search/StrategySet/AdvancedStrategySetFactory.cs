@@ -1,7 +1,6 @@
 using FullTextSearch.Controllers.search.Abstraction;
 using FullTextSearch.Controllers.search.StrategySet.AdvancedSets;
 using FullTextSearch.Controllers.search.StrategySet.BasicSets;
-using FullTextSearch.Model.DataStructure;
 
 namespace FullTextSearch.Controllers.search.StrategySet;
 

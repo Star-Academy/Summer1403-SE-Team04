@@ -1,4 +1,3 @@
-using System.Diagnostics;
 using FullTextSearch.Controllers.Logic.Abstraction;
 using Porter2Stemmer;
 
@@ -17,6 +16,6 @@ public class ToRoot : IStringReformater
     {
         if (string.IsNullOrEmpty(phrase)) return string.Empty;
         var splittedWords = phrase.Split(' ');
-        return String.Join(' ', splittedWords.Select(w => Stemmer.Stem(w).Value));
+        return string.Join(' ', splittedWords.Select(w => Stemmer.Stem(w).Value));
     }
 }

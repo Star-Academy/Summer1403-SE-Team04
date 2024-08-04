@@ -12,18 +12,20 @@ public class AdvancedDocFinder(AdvancedInvertedIndex index, IDocCatcher document
     {
         var result = new List<string>();
         if (string.IsNullOrEmpty(phrase)) throw new NullOrEmptyQueryException();
-        var wordsList = phrase.Split(' ');
+        var queryWordsList = phrase.Split(' ');
         var documentsList = documentCacher.Load();
-        var firstWordDocs = index.InvertedIndexMap.GetValueOrDefault(wordsList[0]);
-        if (firstWordDocs == null) return result;
-        foreach (var docWordStorage in firstWordDocs.ToList())
+        var firstWordValidDocs = index.InvertedIndexMap.GetValueOrDefault(queryWordsList[0]);
+        if (firstWordValidDocs == null) return result;
+        foreach (var docWordStorage in firstWordValidDocs.ToList())
         {
-            var occurences = ((DocumentWordsStorage)docWordStorage).WordOccurences.ToList();
-            foreach (var indx in occurences)
+            var occurences = ((DocumentDocsStorage)docWordStorage).WordOccurences.ToList();
+            var selectedDoc = documentsList.FirstOrDefault(d => d.DocName == docWordStorage.DocName);
+
+            foreach (var placement in occurences)
             {
-                var selectedDoc = documentsList.FirstOrDefault(d => d.DocName == docWordStorage.DocName);
-                var resultPhrase = String.Join(" ", selectedDoc.DocWords.ToList().GetRange(indx, wordsList.Count() - 1));
-                if(resultPhrase == phrase)
+                var resultPhrase = string.Join(" ", selectedDoc.DocWords.ToList()
+                    .GetRange(placement, queryWordsList.Count()));
+                if(resultPhrase.Equals(phrase))
                     result.Add(selectedDoc.DocName);
             }
         }

@@ -1,6 +1,34 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=01a6ee37_002D4c95_002D403d_002D86fa_002Ddd195e8243b4/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="All tests from Solution" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
-  &lt;Solution /&gt;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=01a6ee37_002D4c95_002D403d_002D86fa_002Ddd195e8243b4/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="All tests from Solution" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;Solution /&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=2700a539_002Dc0d0_002D4633_002Da0d6_002D3294c48467a8/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="Find_ShouldReturnList_WhenQueryExists #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;xUnit::37C8A043-994E-47DD-8FCE-6984361D693E::net8.0::FullTextSearchTest.Controllers.search.AdvancedDocFinderTest.Find_ShouldReturnList_WhenQueryExists&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::37C8A043-994E-47DD-8FCE-6984361D693E::net8.0::FullTextSearchTest.Controllers.search.SearchStrategy.AdvancedStrategyTest.Search_ShouldReturnNonEmpty_WhereArgumentsAreValid&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=2b9c9a52_002Df7f8_002D48a7_002D8762_002Dff0a8e1d8e29/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="Search_ShouldReturnNonEmpty_WhereArgumentsAreValid #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;xUnit::37C8A043-994E-47DD-8FCE-6984361D693E::net8.0::FullTextSearchTest.Controllers.search.SearchStrategy.AdvancedStrategyTest.Search_ShouldReturnNonEmpty_WhereArgumentsAreValid&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=34e907b8_002Df98d_002D4785_002Da664_002D6c49713d8827/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="Find_ShouldReturnList_WhenQueryExists #3" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;xUnit::37C8A043-994E-47DD-8FCE-6984361D693E::net8.0::FullTextSearchTest.Controllers.search.AdvancedDocFinderTest.Find_ShouldReturnList_WhenQueryExists&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::37C8A043-994E-47DD-8FCE-6984361D693E::net8.0::FullTextSearchTest.Controllers.search.SearchStrategy.AdvancedStrategyTest.Search_ShouldReturnNonEmpty_WhereArgumentsAreValid&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=52ad8ba2_002D2cd7_002D4ab0_002D8f0c_002D30343488a48f/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="Find_ShouldReturnList_WhenQueryExists" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;xUnit::37C8A043-994E-47DD-8FCE-6984361D693E::net8.0::FullTextSearchTest.Controllers.search.AdvancedDocFinderTest.Find_ShouldReturnList_WhenQueryExists&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::37C8A043-994E-47DD-8FCE-6984361D693E::net8.0::FullTextSearchTest.Controllers.search.SearchStrategy.AdvancedStrategyTest.Search_ShouldReturnNonEmpty_WhereArgumentsAreValid&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=bb3838f0_002D1b80_002D4f0c_002D863e_002D4389e30cd234/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="Search_ShouldReturnNonEmpty_WhereArgumentsAreValid" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;xUnit::37C8A043-994E-47DD-8FCE-6984361D693E::net8.0::FullTextSearchTest.Controllers.search.SearchStrategy.AdvancedStrategyTest.Search_ShouldReturnNonEmpty_WhereArgumentsAreValid&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
 	
 	

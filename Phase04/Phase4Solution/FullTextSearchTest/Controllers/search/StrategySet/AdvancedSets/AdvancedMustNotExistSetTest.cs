@@ -16,10 +16,10 @@ public class AdvancedMustNotExistSetTest
     private AdvancedMustNotExistSet _sut;
     public AdvancedMustNotExistSetTest()
     {
-        Dictionary<string, IEnumerable<WordInformation>> testDic = new Dictionary<string, IEnumerable<WordInformation>>()
+        Dictionary<string, IEnumerable<DocInformation>> testDic = new Dictionary<string, IEnumerable<DocInformation>>()
         {
-            {"love", new List<WordInformation>() { new DocumentWordsStorage("location", new List<int>(){0})}},
-            {"you", new List<WordInformation>() { new DocumentWordsStorage("location", new List<int>(){1})}}
+            {"love", new List<DocInformation>() { new DocumentDocsStorage("location", new List<int>(){0})}},
+            {"you", new List<DocInformation>() { new DocumentDocsStorage("location", new List<int>(){1})}}
         };
         _index = new AdvancedInvertedIndex(testDic, "location");
     }

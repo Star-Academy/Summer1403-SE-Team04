@@ -6,7 +6,7 @@ using FullTextSearch.Model.DataStructure;
 
 namespace FullTextSearch.Controllers.search.SearchStrategy;
 
-public class AdvancedStrategy(IFinder finder) : ISearchStrategy
+public class AdvancedStrategy(IAdvancedFinder finder) : ISearchStrategy
 {
     
     public IEnumerable<string> Search(string query)

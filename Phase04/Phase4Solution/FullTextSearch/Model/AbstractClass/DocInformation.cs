@@ -1,10 +1,10 @@
 namespace FullTextSearch.Model.AbstractClass;
 
-public abstract class WordInformation
+public abstract class DocInformation
 {
    public string DocName { get; init; }
 
-   protected WordInformation(string docName)
+   protected DocInformation(string docName)
    {
       DocName = docName;
    }

@@ -14,17 +14,17 @@ public class AdvancedStrategyTest
 {
     private readonly AdvancedInvertedIndex _index;
     private readonly AdvancedStrategy _sut;
-
+    
     public AdvancedStrategyTest()
     {
-        Dictionary<string, IEnumerable<WordInformation>> testDic = new Dictionary<string, IEnumerable<WordInformation>>()
+        Dictionary<string, IEnumerable<DocInformation>> testDic = new Dictionary<string, IEnumerable<DocInformation>>()
         {
-            {"love", new List<WordInformation>() { new DocumentWordsStorage("location", new List<int>(){0})}},
-            {"you", new List<WordInformation>() { new DocumentWordsStorage("location", new List<int>(){1})}}
+            {"love", new List<DocInformation>() { new DocumentDocsStorage("location", new List<int>(){0})}},
+            {"you", new List<DocInformation>() { new DocumentDocsStorage("location", new List<int>(){1})}}
         };
         _index = new AdvancedInvertedIndex(testDic, "location");
         var cacher = Substitute.For<IDocCatcher>();
-        cacher.Load().Returns(new List<Document>() { new Document("location", new List<string>() { "love you" }) });
+        cacher.Load().Returns(new List<Document>() { new Document("location", new List<string>() { "love","you" }) });
         _sut = new AdvancedStrategy(new AdvancedDocFinder(_index, cacher));
     }
 
@@ -57,7 +57,7 @@ public class AdvancedStrategyTest
     public void Search_ShouldReturnNonEmpty_WhereArgumentsAreValid()
     {
         // Arrange
-        var query = "love you";
+        var query = "\"love you\"";
         // Act
         var actual = _sut.Search(query);
         // Assert

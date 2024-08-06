@@ -1,6 +1,4 @@
-using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using SearchAPI.Models;
 
 namespace SearchAPI.Controllers;
 [Route("api/[controller]")]
@@ -15,8 +13,8 @@ public class HomeController : Controller
     }
     
     [HttpGet]
-    public IActionResult Index()
+    public IActionResult Index([FromBody]string query)
     {
-        return NotFound();
+        
     }
 }

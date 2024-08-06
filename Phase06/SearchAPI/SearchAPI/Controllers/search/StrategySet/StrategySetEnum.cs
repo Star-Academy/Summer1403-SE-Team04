@@ -1,4 +1,4 @@
-namespace FullTextSearch.Controllers.search.StrategySet;
+namespace SearchAPI.Controllers.search.StrategySet;
 
 public enum StrategySetEnum
 {

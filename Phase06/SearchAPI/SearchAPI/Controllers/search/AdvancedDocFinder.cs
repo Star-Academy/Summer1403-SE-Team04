@@ -1,11 +1,11 @@
-using FullTextSearch.Controllers.Abstraction;
-using FullTextSearch.Controllers.Logic.Abstraction;
-using FullTextSearch.Controllers.search.Abstraction;
-using FullTextSearch.Controllers.search.StrategySet;
-using FullTextSearch.Model;
-using FullTextSearch.Model.DataStructure;
+using SearchAPI.Controllers.Abstraction;
+using SearchAPI.Controllers.Logic.Abstraction;
+using SearchAPI.Controllers.search.Abstraction;
+using SearchAPI.Controllers.search.StrategySet;
+using SearchAPI.Model;
+using SearchAPI.Model.DataStructure;
 
-namespace FullTextSearch.Controllers.search;
+namespace SearchAPI.Controllers.search;
 
 public class AdvancedDocFinder(AdvancedInvertedIndex index, IDocCatcher documentCacher, IGarbageRemover remover)
     : IAdvancedFinder

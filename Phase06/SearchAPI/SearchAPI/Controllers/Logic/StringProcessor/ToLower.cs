@@ -1,6 +1,6 @@
-using FullTextSearch.Controllers.Logic.Abstraction;
+using SearchAPI.Controllers.Logic.Abstraction;
 
-namespace FullTextSearch.Controllers.Logic.StringProcessor;
+namespace SearchAPI.Controllers.Logic.StringProcessor;
 
 public class ToLower : IStringReformater
 {

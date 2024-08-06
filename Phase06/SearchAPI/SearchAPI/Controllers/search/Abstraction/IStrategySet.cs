@@ -1,6 +1,6 @@
-using FullTextSearch.Controllers.search.StrategySet;
+using SearchAPI.Controllers.search.StrategySet;
 
-namespace FullTextSearch.Controllers.search.Abstraction;
+namespace SearchAPI.Controllers.search.Abstraction;
 
 public interface IStrategySet
 {

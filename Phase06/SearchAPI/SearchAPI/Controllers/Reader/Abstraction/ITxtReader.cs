@@ -1,4 +1,4 @@
-namespace FullTextSearch.Controllers.Reader.Abstraction;
+namespace SearchAPI.Controllers.Reader.Abstraction;
 
 public interface ITxtReader
 {

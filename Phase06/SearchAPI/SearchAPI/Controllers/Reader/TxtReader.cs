@@ -1,7 +1,7 @@
 using System.Text.RegularExpressions;
-using FullTextSearch.Controllers.Reader.Abstraction;
+using SearchAPI.Controllers.Reader.Abstraction;
 
-namespace FullTextSearch.Controllers.Reader;
+namespace SearchAPI.Controllers.Reader;
 
 public class TxtReader : ITxtReader
 {

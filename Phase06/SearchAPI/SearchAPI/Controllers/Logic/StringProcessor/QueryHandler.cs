@@ -1,8 +1,8 @@
 using System.Text.RegularExpressions;
-using FullTextSearch.Controllers.Logic.Abstraction;
-using FullTextSearch.Controllers.Logic.DocumentsLoader;
+using SearchAPI.Controllers.Logic.Abstraction;
+using SearchAPI.Controllers.Logic.DocumentsLoader;
 
-namespace FullTextSearch.Controllers.Logic.StringProcessor;
+namespace SearchAPI.Controllers.Logic.StringProcessor;
 
 public static class QueryHandler
 {

@@ -1,8 +1,8 @@
-using FullTextSearch.Controllers.Abstraction;
-using FullTextSearch.Controllers.Logic.Abstraction;
-using FullTextSearch.Model.DataStructure;
+using SearchAPI.Controllers.Abstraction;
+using SearchAPI.Controllers.Logic.Abstraction;
+using SearchAPI.Model.DataStructure;
 
-namespace FullTextSearch.Controllers.Logic.Creator_Loader;
+namespace SearchAPI.Controllers.Logic.Creator_Loader;
 
 public class AdvanceInvertedIndexCreator(
     IDocCatcher docCatcher,

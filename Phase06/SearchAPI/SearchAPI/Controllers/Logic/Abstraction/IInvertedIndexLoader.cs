@@ -1,6 +1,6 @@
-using FullTextSearch.Model.DataStructure;
+using SearchAPI.Model.DataStructure;
 
-namespace FullTextSearch.Controllers.Logic.Abstraction;
+namespace SearchAPI.Controllers.Logic.Abstraction;
 
 public interface IInvertedIndexLoader
 {

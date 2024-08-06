@@ -1,6 +1,6 @@
-using FullTextSearch.Model;
+using SearchAPI.Model;
 
-namespace FullTextSearch.Controllers.Logic.Abstraction;
+namespace SearchAPI.Controllers.Logic.Abstraction;
 
 public interface IDocumentLoader
 {

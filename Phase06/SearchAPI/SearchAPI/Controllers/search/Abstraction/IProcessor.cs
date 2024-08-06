@@ -1,6 +1,6 @@
-namespace FullTextSearch.Controllers.search.Abstraction;
+namespace SearchAPI.Controllers.search.Abstraction;
 
 public interface IProcessor
 {
-    void ProcessQuery(string query);
+    List<string> ProcessQuery(string query);
 }

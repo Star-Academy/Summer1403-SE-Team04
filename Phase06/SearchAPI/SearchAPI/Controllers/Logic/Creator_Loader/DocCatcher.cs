@@ -1,7 +1,7 @@
-using FullTextSearch.Controllers.Abstraction;
-using FullTextSearch.Model;
+using SearchAPI.Controllers.Abstraction;
+using SearchAPI.Model;
 
-namespace FullTextSearch.Controllers.Logic.Creator_Loader;
+namespace SearchAPI.Controllers.Logic.Creator_Loader;
 
 public class DocCatcher : IDocCatcher
 {

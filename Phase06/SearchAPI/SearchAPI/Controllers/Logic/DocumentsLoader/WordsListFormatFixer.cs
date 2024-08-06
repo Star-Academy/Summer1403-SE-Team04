@@ -1,6 +1,6 @@
-using FullTextSearch.Controllers.Logic.Abstraction;
+using SearchAPI.Controllers.Logic.Abstraction;
 
-namespace FullTextSearch.Controllers.Logic.DocumentsLoader;
+namespace SearchAPI.Controllers.Logic.DocumentsLoader;
 
 public static class WordsListFormatFixer
 {

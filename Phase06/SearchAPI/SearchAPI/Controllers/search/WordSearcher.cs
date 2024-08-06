@@ -1,7 +1,7 @@
-using FullTextSearch.Controllers.search.Abstraction;
-using FullTextSearch.Controllers.search.StrategySet;
+using SearchAPI.Controllers.search.Abstraction;
+using SearchAPI.Controllers.search.StrategySet;
 
-namespace FullTextSearch.Controllers.search;
+namespace SearchAPI.Controllers.search;
 
 public class WordSearcher(ISearchStrategy strategy) : ISearchAble
 {

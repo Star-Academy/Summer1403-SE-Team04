@@ -1,7 +1,7 @@
-using FullTextSearch.Controllers.Logic.Abstraction;
-using FullTextSearch.Model;
+using SearchAPI.Controllers.Logic.Abstraction;
+using SearchAPI.Model;
 
-namespace FullTextSearch.Controllers.Logic.DocumentsLoader;
+namespace SearchAPI.Controllers.Logic.DocumentsLoader;
 
 public class DocumentLoader(IDocBuilder builder, IGarbageRemover remover) : IDocumentLoader
 {

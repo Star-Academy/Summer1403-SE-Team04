@@ -1,6 +1,6 @@
-using FullTextSearch.Model.DataStructure;
+using SearchAPI.Model.DataStructure;
 
-namespace FullTextSearch.Controllers.Abstraction;
+namespace SearchAPI.Controllers.Abstraction;
 
 public interface IAdvancedInvertedIndexCatcher
 {

@@ -1,8 +1,9 @@
 using System.Text.Json;
-using FullTextSearch.Controllers.Abstraction;
-using FullTextSearch.Model.DataStructure;
+using FullTextSearch;
+using SearchAPI.Controllers.Abstraction;
+using SearchAPI.Model.DataStructure;
 
-namespace FullTextSearch.Controllers.Logic.Creator_Loader;
+namespace SearchAPI.Controllers.Logic.Creator_Loader;
 
 public class AdvanceInvertedIndexCatcher : IAdvancedInvertedIndexCatcher
 {

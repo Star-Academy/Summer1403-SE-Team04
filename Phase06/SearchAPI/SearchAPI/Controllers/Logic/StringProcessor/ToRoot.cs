@@ -1,7 +1,7 @@
-using FullTextSearch.Controllers.Logic.Abstraction;
-using Porter2Stemmer;
+using SearchAPI.Controllers.Logic.Abstraction;
+using Porter2StemmerStandard;
 
-namespace FullTextSearch.Controllers.Logic.StringProcessor;
+namespace SearchAPI.Controllers.Logic.StringProcessor;
 
 public class ToRoot : IStringReformater
 {

@@ -11,6 +11,7 @@
       <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
       <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
       <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="6.0.0-preview.4.21253.5" />
+      <PackageReference Include="Porter2StemmerStandard" Version="1.1.0" />
       <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="6.7.0" />
       <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="6.7.0" />
     </ItemGroup>

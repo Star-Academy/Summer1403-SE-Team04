@@ -1,7 +1,7 @@
 using System.Text;
 using System.Text.Json.Serialization;
 
-namespace FullTextSearch.Model.DataStructure;
+namespace SearchAPI.Model.DataStructure;
 
 public class InvertedIndex
 {

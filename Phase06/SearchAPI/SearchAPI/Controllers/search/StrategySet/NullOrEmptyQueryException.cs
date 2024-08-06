@@ -1,4 +1,6 @@
-namespace FullTextSearch.Controllers.search.StrategySet;
+using FullTextSearch;
+
+namespace SearchAPI.Controllers.search.StrategySet;
 
 public class NullOrEmptyQueryException : Exception
 {

@@ -1,9 +1,9 @@
-using FullTextSearch.Controllers.Logic.Abstraction;
-using FullTextSearch.Controllers.Logic.StringProcessor;
-using FullTextSearch.Controllers.search.Abstraction;
-using FullTextSearch.Controllers.search.StrategySet;
+using SearchAPI.Controllers.Logic.Abstraction;
+using SearchAPI.Controllers.Logic.StringProcessor;
+using SearchAPI.Controllers.search.Abstraction;
+using SearchAPI.Controllers.search.StrategySet;
 
-namespace FullTextSearch.Controllers.search.SearchStrategy;
+namespace SearchAPI.Controllers.search.SearchStrategy;
 
 public class AdvancedStrategy(IAdvancedFinder finder) : ISearchStrategy
 {

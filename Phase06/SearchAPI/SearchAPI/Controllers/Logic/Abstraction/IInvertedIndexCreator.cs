@@ -1,4 +1,4 @@
-namespace FullTextSearch.Controllers.Logic.Abstraction;
+namespace SearchAPI.Controllers.Logic.Abstraction;
 
 public interface IInvertedIndexCreator
 {

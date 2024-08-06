@@ -1,4 +1,4 @@
-namespace FullTextSearch.Controllers.Abstraction;
+namespace SearchAPI.Controllers.Abstraction;
 
 public interface IOutputHandler
 {

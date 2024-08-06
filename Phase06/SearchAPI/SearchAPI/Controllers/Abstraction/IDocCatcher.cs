@@ -1,6 +1,6 @@
-using FullTextSearch.Model;
+using SearchAPI.Model;
 
-namespace FullTextSearch.Controllers.Abstraction;
+namespace SearchAPI.Controllers.Abstraction;
 
 public interface IDocCatcher
 {

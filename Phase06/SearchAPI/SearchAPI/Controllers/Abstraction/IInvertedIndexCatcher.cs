@@ -1,6 +1,6 @@
-using FullTextSearch.Controllers.Logic.Abstraction;
+using SearchAPI.Controllers.Logic.Abstraction;
 
-namespace FullTextSearch.Controllers.Abstraction;
+namespace SearchAPI.Controllers.Abstraction;
 
 public interface IInvertedIndexCatcher : IInvertedIndexWriter, IInvertedIndexLoader
 {

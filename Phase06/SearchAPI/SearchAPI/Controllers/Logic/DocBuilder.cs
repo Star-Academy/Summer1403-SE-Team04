@@ -1,9 +1,9 @@
-using FullTextSearch.Controllers.Abstraction;
-using FullTextSearch.Controllers.Logic.Abstraction;
-using FullTextSearch.Controllers.Reader.Abstraction;
-using FullTextSearch.Model;
+using SearchAPI.Controllers.Abstraction;
+using SearchAPI.Controllers.Logic.Abstraction;
+using SearchAPI.Controllers.Reader.Abstraction;
+using SearchAPI.Model;
 
-namespace FullTextSearch.Controllers.Logic;
+namespace SearchAPI.Controllers.Logic;
 
 public class DocBuilder(ITxtReader txtReader, IDocCatcher docCatcher) : IDocBuilder
 {

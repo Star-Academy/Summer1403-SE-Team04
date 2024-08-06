@@ -1,4 +1,4 @@
-namespace FullTextSearch.Model.DataStructure;
+namespace SearchAPI.Model.DataStructure;
 
 public class DocumentWordStorage
 {

@@ -1,4 +1,4 @@
-namespace FullTextSearch.Model;
+namespace SearchAPI.Model;
 
 public class Document(string docName, List<string> docWords) : List<string>
 {

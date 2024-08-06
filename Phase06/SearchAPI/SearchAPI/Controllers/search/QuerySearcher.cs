@@ -1,18 +1,16 @@
-using FullTextSearch.Controllers.Abstraction;
-using FullTextSearch.Controllers.Keepers;
-using FullTextSearch.Controllers.Logic;
-using FullTextSearch.Controllers.search.Abstraction;
-using FullTextSearch.Controllers.search.SearchStrategy;
+using SearchAPI.Controllers.Abstraction;
+using SearchAPI.Controllers.Logic;
+using SearchAPI.Controllers.search.Abstraction;
+using SearchAPI.Controllers.search.SearchStrategy;
 
-namespace FullTextSearch.Controllers.search;
+namespace SearchAPI.Controllers.search;
 
 public class QuerySearcher(IInvertedIndexCatcher invertedIndexLoader) : IBasicProcessor
 {
-    public void ProcessQuery(string query)
+    public List<string> ProcessQuery(string query)
     {
         var result = invertedIndexLoader.Load().Select(invertedIndex =>
             new WordSearcher(new TargetedStrategy(new DocFinder(invertedIndex))).Search(query).ToList()).ToList();
-
-        new OutputHandler(OutputRendererKeeper.Instance.OutputRenderer).SendOutput(result.Union());
+        return result.Union();
     }
 }

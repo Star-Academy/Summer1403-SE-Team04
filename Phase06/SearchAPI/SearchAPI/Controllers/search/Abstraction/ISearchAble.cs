@@ -1,4 +1,4 @@
-namespace FullTextSearch.Controllers.search.Abstraction;
+namespace SearchAPI.Controllers.search.Abstraction;
 
 public interface ISearchAble
 {

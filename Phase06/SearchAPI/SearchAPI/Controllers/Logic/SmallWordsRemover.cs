@@ -1,7 +1,8 @@
-using FullTextSearch.Controllers.Logic.Abstraction;
-using FullTextSearch.Controllers.Reader;
+using FullTextSearch;
+using SearchAPI.Controllers.Logic.Abstraction;
+using SearchAPI.Controllers.Reader;
 
-namespace FullTextSearch.Controllers.Logic;
+namespace SearchAPI.Controllers.Logic;
 
 public class SmallWordsRemover : IGarbageRemover
 {

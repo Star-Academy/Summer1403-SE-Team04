@@ -1,8 +1,8 @@
-using FullTextSearch.Controllers.search.Abstraction;
-using FullTextSearch.Controllers.search.StrategySet.AdvancedSets;
-using FullTextSearch.Controllers.search.StrategySet.BasicSets;
+using SearchAPI.Controllers.search.Abstraction;
+using SearchAPI.Controllers.search.StrategySet.AdvancedSets;
+using SearchAPI.Controllers.search.StrategySet.BasicSets;
 
-namespace FullTextSearch.Controllers.search.StrategySet;
+namespace SearchAPI.Controllers.search.StrategySet;
 
 public class AdvancedStrategySetFactory
 {

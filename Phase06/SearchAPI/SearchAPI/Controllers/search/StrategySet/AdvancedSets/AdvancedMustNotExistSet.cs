@@ -1,7 +1,7 @@
-using FullTextSearch.Controllers.Logic;
-using FullTextSearch.Controllers.search.Abstraction;
+using SearchAPI.Controllers.Logic;
+using SearchAPI.Controllers.search.Abstraction;
 
-namespace FullTextSearch.Controllers.search.StrategySet.AdvancedSets;
+namespace SearchAPI.Controllers.search.StrategySet.AdvancedSets;
 
 public class AdvancedMustNotExistSet(string[] phrasesArray, IFinder finder) : IStrategySet
 {

@@ -1,9 +1,9 @@
-using FullTextSearch.Controllers.Abstraction;
-using FullTextSearch.Controllers.Logic.Abstraction;
-using FullTextSearch.Controllers.Logic.StringProcessor;
-using FullTextSearch.Model.DataStructure;
+using SearchAPI.Controllers.Abstraction;
+using SearchAPI.Controllers.Logic.Abstraction;
+using SearchAPI.Controllers.Logic.StringProcessor;
+using SearchAPI.Model.DataStructure;
 
-namespace FullTextSearch.Controllers.Logic.Creator_Loader;
+namespace SearchAPI.Controllers.Logic.Creator_Loader;
 
 public class InvertedIndexCreator(IInvertedIndexCatcher catcher, IDocumentLoader documentLoader) : IInvertedIndexCreator
 {

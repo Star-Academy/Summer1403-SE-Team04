@@ -1,4 +1,4 @@
-namespace FullTextSearch.Controllers.Reader;
+namespace SearchAPI.Controllers.Reader;
 
 public class FileProcessingException : Exception
 {

@@ -2,3 +2,4 @@
 SearchAPI/bin
 SearchAPI/obj
 SearchAPI/appsettings.Development.json
+SearchAPI/Assets/files/*

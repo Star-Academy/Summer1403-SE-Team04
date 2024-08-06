@@ -1,10 +1,16 @@
-var builder = WebApplication.CreateBuilder(args);
+using Microsoft.OpenApi.Models;
 
+var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddSwaggerGen(c =>
+    c.SwaggerDoc("v1", new OpenApiInfo() { Title = "fullTextSearchApi", Version = "v1" })
+);
+builder.Services.AddEndpointsApiExplorer();
 // Add services to the container.
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllers();
 
 var app = builder.Build();
-
+app.UseSwagger();
+app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "FullTextSearch"));
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
@@ -15,9 +21,9 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
+app.UseDeveloperExceptionPage();
 
 app.UseRouting();
-
 app.UseAuthorization();
 
 app.MapControllerRoute(

@@ -1,0 +1,4 @@
+.idea
+SearchAPI/bin
+SearchAPI/obj
+SearchAPI/appsettings.Development.json

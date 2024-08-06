@@ -14,5 +14,18 @@
       <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="6.7.0" />
       <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="6.7.0" />
     </ItemGroup>
-
+    <ItemGroup>
+        <ContentWithTargetPath Include="Assets\files\**">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+            <TargetPath>%(RecursiveDir)\Assets\files\%(Filename)%(Extension)</TargetPath>
+        </ContentWithTargetPath>
+        <ContentWithTargetPath Include="Assets\**">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+            <TargetPath>%(RecursiveDir)\Assets\%(Filename)%(Extension)</TargetPath>
+        </ContentWithTargetPath>
+        <ContentWithTargetPath Include="Program.cs">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+            <TargetPath>\Program.cs</TargetPath>
+        </ContentWithTargetPath>
+    </ItemGroup>
 </Project>

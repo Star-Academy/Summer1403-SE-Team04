@@ -5,6 +5,40 @@ using SearchAPI.Controllers.Logic.Creator_Loader;
 using SearchAPI.Controllers.Logic.DocumentsLoader;
 using SearchAPI.Controllers.Reader;
 using Microsoft.OpenApi.Models;
+using SearchAPI.Controllers.Abstraction;
+using SearchAPI.Controllers.Logic.Abstraction;
+using SearchAPI.Controllers.Logic.StringProcessor;
+using SearchAPI.Controllers.Reader.Abstraction;
+using SearchAPI.Controllers.search;
+using SearchAPI.Controllers.search.Abstraction;
+using SearchAPI.Controllers.search.SearchStrategy;
+using SearchAPI.Controllers.search.StrategySet.AdvancedSets;
+using Microsoft.Extensions.DependencyInjection;
+var serviceProvider = new ServiceCollection().AddSingleton<IDocCatcher, DocCatcher>()
+    .AddSingleton<IAdvancedInvertedIndexCatcher, AdvanceInvertedIndexCatcher>()
+    .AddSingleton<IDocumentLoader, DocumentLoader>()
+    .AddSingleton<IInitializer, ServiceStartupInitializer>()
+    .AddSingleton<IDocBuilder, DocBuilder>()
+    .AddSingleton<IGarbageRemover, SmallWordsRemover>()
+    .AddKeyedSingleton<IStringReformater, ToLower>("lower")
+    .AddKeyedSingleton<IStringReformater, ToRoot>("root")
+    .AddSingleton<ITxtReader, TxtReader>()
+    .AddSingleton<IAdvancedFinder,AdvancedDocFinder>()
+    .AddSingleton<IAdvancedProcessor, AdvancedQuerySearcher>()
+    .AddSingleton<ISearchAble,WordSearcher>()
+    .AddSingleton<ISearchStrategy, AdvancedStrategy>()
+    .AddKeyedSingleton<IStrategySet, AdvancedAtLeastOneExistsSet>("aoe")
+    .AddKeyedSingleton<IStrategySet, AdvancedMustExistSet>("me")
+    .AddKeyedSingleton<IStrategySet, AdvancedMustNotExistSet>("mne").BuildServiceProvider();
+
+var docCatcher = new DocCatcher();
+var advIndexcatcher = new AdvanceInvertedIndexCatcher();
+var docLoader =  serviceProvider.GetRequiredService<IDocumentLoader>();
+var a = docLoader.LoadDocumentsList(Resources.DocumentsPath,new List<IStringReformater>());
+var indicesList = new List<string> { Resources.DocumentsPath };
+// var indexCreator = new InvertedIndexCreator(cacher, docLoader);
+new ServiceStartupInitializer(
+    new AdvanceInvertedIndexCreator(docCatcher, advIndexcatcher, docLoader)).Init(indicesList);
 
 
 var builder = WebApplication.CreateBuilder(args);

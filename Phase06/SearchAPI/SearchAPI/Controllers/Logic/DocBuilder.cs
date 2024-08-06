@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Mvc;
 using SearchAPI.Controllers.Abstraction;
 using SearchAPI.Controllers.Logic.Abstraction;
 using SearchAPI.Controllers.Reader.Abstraction;
@@ -5,7 +6,7 @@ using SearchAPI.Model;
 
 namespace SearchAPI.Controllers.Logic;
 
-public class DocBuilder(ITxtReader txtReader, IDocCatcher docCatcher) : IDocBuilder
+public class DocBuilder([FromServices]ITxtReader txtReader,[FromServices] IDocCatcher docCatcher) : IDocBuilder
 {
     public Document Build(string? docPath)
     {

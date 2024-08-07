@@ -16,7 +16,7 @@ public class AdvanceInvertedIndexCatcherTest
     [Fact]
     public void Write_ShouldBeTheSame_IfNullAdded()
     {
-        //arrange
+        //Ar
         var expected = _sut.AdvanceInvertedIndices;
         //action
         _sut.Write(null);
@@ -27,7 +27,7 @@ public class AdvanceInvertedIndexCatcherTest
     [Fact]
     public void Write_ShouldBeAddTheObj_IfNotNullAdded()
     {
-        //arrange
+        //Arrange
         var docList = new List<Document>() { new Document("ali", new List<string>() { "mamad" }) };
         var advInvert = new AdvancedInvertedIndex(docList, "mahdi");
         var expected = new List<AdvancedInvertedIndex>(){advInvert};
@@ -41,7 +41,7 @@ public class AdvanceInvertedIndexCatcherTest
     [Fact]
     public void Load_ShouldBeLoadTheObj_IfNotNullAdded()
     {
-        //arrange
+        //Arrange
         var docList = new List<Document>() { new Document("ali", new List<string>() { "mamad" }) };
         var advInvert = new AdvancedInvertedIndex(docList, "mahdi");
         var expected = new List<AdvancedInvertedIndex>() { advInvert };

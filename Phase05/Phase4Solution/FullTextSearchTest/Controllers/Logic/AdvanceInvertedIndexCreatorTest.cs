@@ -23,7 +23,7 @@ public class AdvanceInvertedIndexCreatorTest
     [Fact]
     public void CreateAdvancedInvertedIndex_shouldCallDocCatcherLoad_ifCallTheMethod()
     {
-        //arrange
+        //Arrange
         string path = "testPath";
         _docCatcher.Load().Returns(new List<Document>());
         _advancedInvertedIndexCatcher.Write(Arg.Any<AdvancedInvertedIndex>()).Returns(true);
@@ -35,7 +35,7 @@ public class AdvanceInvertedIndexCreatorTest
     [Fact]
     public void CreateAdvancedInvertedIndex_shouldCallAdvInvetedIndexWriteMethod_ifCallTheMethod()
     {
-        //arrange
+        //Arrange
         var path = "testPath";
         _docCatcher.Load().Returns(new List<Document>());
         _advancedInvertedIndexCatcher.Write(Arg.Any<AdvancedInvertedIndex>()).Returns(true);

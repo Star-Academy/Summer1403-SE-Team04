@@ -10,7 +10,7 @@ Phase04/Phase4Solution/FullTextSearch/Assets/files
 mvcPaint
 testCase.txt
 Phase03/FullTextSearch/Folder.DotSettings.user
-
+*.DotSettings.user
 Phase05/Phase4Solution/.idea
 Phase05/Phase4Solution/FullTextSearchTest/bin
 Phase05/Phase4Solution/FullTextSearchTest/obj

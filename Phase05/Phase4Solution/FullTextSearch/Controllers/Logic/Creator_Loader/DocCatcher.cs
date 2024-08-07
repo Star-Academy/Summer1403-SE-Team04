@@ -5,7 +5,7 @@ namespace FullTextSearch.Controllers.Logic.Creator_Loader;
 
 public class DocCatcher : IDocCatcher
 {
-    private readonly List<Document> _documentList = new();
+    public readonly List<Document> _documentList = new();
 
     public void Write(Document document)
     {

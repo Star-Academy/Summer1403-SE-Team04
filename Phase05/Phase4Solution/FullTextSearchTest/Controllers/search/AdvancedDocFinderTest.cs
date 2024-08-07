@@ -34,8 +34,7 @@ public class AdvancedDocFinderTest
     [InlineData("")]
     public void Find_ShouldThrowsException_WhenQueryIsInvalid(string query)
     {
-        // Arrange
-        // Act
+        // Arrange        // Act
         var action = () => _sut.Find(query);
         // Assert
         Assert.Throws<NullOrEmptyQueryException>(action);

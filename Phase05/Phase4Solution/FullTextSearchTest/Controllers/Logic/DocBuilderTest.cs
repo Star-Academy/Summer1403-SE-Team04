@@ -22,7 +22,6 @@ public class DocBuilderTest
     [InlineData("")]
     public void Build_ShouldReturnNull_IfPathIsNullOrEmpty(string path)
     {
-        // Arrange 
         // Act
         var result = _docBuilder.Build(path);
         // Assert

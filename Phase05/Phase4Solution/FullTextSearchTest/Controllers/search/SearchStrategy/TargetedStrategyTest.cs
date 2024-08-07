@@ -27,7 +27,7 @@ public class TargetedStrategyTest
 
     public void Search_ShouldThrowException_WhereArgumentsAreInvalid(string query)
     {
-        // Arrange
+ 
         // Act
         var actual = () => _sut.Search(query);
         // Assert

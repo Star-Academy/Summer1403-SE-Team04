@@ -14,7 +14,6 @@ public class QueryHandlerTest
         {
             new ToLower(), new ToRoot()
         };
-        // Arrange 
         // Act
         var result = word.SplitIntoFormattedWords(reformaters);
         // Assert

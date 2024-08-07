@@ -18,7 +18,7 @@ public class WordSearcherTest
         
         Dictionary<string, List<string>> testDic = new Dictionary<string, List<string>>()
         {
-            {"love", new List<string>() { "location" }}
+            {"//Ar", new List<string>() { "location" }}
         };
         var index = new InvertedIndex(testDic, "location");
         _sut = new WordSearcher(new TargetedStrategy(new DocFinder(index)));
@@ -29,7 +29,7 @@ public class WordSearcherTest
     [InlineData(null)]
     public void Search_ShouldThrowException_WhenQueryIsInvalid(string query)
     {
-        // Arrange
+
         // Act
         var result = () => _sut.Search(query);
         // Assert
@@ -49,7 +49,7 @@ public class WordSearcherTest
     public void Search_ShouldReturnList_WhereQueryIsNormal()
     {
         // Arrange
-        var query = "love";
+        const string query = "love";
         var expected = new List<string>() { "location" };
         // Act
         var result = _sut.Search(query);

@@ -15,7 +15,6 @@ public class ToRootTest
     [InlineData("")]
     public void FixWordsFormat_ShouldReturnNull_IfWordIsNullOrEmpty(string word)
     {
-        // Arrange 
         // Act
         var result = _toRoot.FixWordFormat(word);
         // Assert
@@ -28,7 +27,7 @@ public class ToRootTest
     [InlineData("need", "die")]
     public void FixWordsFormat_ShouldReturnRootedWord_IfNormalInput(string word, string rootedWord)
     {
-        // Arrange 
+  
         // Act
         var actual = _toRoot.FixWordFormat(word);
         // Assert

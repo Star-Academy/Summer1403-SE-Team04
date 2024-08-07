@@ -26,7 +26,7 @@ public class DocFinderTest
     [InlineData("")]
     public void Find_ShouldThrowsException_WhenQueryIsInvalid(string query)
     {
-        // Arrange
+      
         // Act
         var action = () => _sut.Find(query);
         // Assert

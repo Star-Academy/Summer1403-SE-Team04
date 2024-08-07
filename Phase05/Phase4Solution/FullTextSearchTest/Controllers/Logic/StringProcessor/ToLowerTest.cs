@@ -14,7 +14,6 @@ public class ToLowerTest
     [InlineData("")]
     public void FixWordsFormat_ShouldReturnNull_IfWordIsNullOrEmpty(string word)
     {
-        // Arrange 
         // Act
         var result = _toLower.FixWordFormat(word);
         // Assert
@@ -27,7 +26,6 @@ public class ToLowerTest
     [InlineData("Died", "died")]
     public void FixWordsFormat_ShouldReturnRootedWord_IfNormalInput(string word, string root)
     {
-        // Arrange 
         // Act
         var actual = _toLower.FixWordFormat(word);
         // Assert

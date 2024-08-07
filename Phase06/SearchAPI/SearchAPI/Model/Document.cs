@@ -1,6 +1,6 @@
 namespace SearchAPI.Model;
 
-public class Document(string docName, List<string> docWords) : List<string>
+public class Document(string docName, List<string> docWords) 
 {
     public string DocName { get; init; } = docName;
     public List<string> DocWords { get; init; } = docWords;

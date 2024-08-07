@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Mvc;
 using SearchAPI.Controllers.Logic.Abstraction;
 using SearchAPI.Controllers.Logic.StringProcessor;
 using SearchAPI.Controllers.search.Abstraction;
@@ -5,7 +6,7 @@ using SearchAPI.Controllers.search.StrategySet;
 
 namespace SearchAPI.Controllers.search.SearchStrategy;
 
-public class AdvancedStrategy(IAdvancedFinder finder) : ISearchStrategy
+public class AdvancedStrategy([FromServices] IAdvancedFinder finder) : ISearchStrategy
 {
     public List<string> Search(string query)
     {

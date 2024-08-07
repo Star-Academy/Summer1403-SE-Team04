@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Mvc;
 using SearchAPI.Controllers.Abstraction;
 using SearchAPI.Controllers.Logic.Abstraction;
 using SearchAPI.Controllers.search.Abstraction;

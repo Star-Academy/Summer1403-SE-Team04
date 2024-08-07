@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Mvc;
 using SearchAPI.Controllers.search.Abstraction;
 using SearchAPI.Controllers.search.StrategySet.BasicSets;
 

@@ -5,13 +5,13 @@ using SearchAPI.Controllers.search.StrategySet;
 
 namespace SearchAPI.Controllers.search.SearchStrategy;
 
-public class TargetedStrategy(IFinder finder) : ISearchStrategy
+public class TargetedStrategy(IFinder finder , List<IStringReformater> reformaters) : ISearchStrategy
 {
     public List<string> Search(string query)
     {
         if (string.IsNullOrEmpty(query)) throw new NullOrEmptyQueryException();
         var inputWords =
-            query.SplitIntoFormattedWords(new List<IStringReformater> { new ToLower(), new ToRoot() });
+            query.SplitIntoFormattedWords(reformaters);
         return GetValidDocuments(inputWords);
     }
 

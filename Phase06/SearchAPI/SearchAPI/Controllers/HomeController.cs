@@ -19,9 +19,10 @@ public class HomeController : Controller
     }
 
     [HttpGet("{query}")]
-    public ActionResult<List<string>> Index(string query)
+    public IActionResult Index(string query)
     {
         if (String.IsNullOrEmpty(query)) return BadRequest();
+        return Ok(new List<string>());
         // var a = new AdvancedQuerySearcher(advIndexcatcher, docCatcher).ProcessQuery(query);
         // if (!a.Any()) return NotFound();
         return null;

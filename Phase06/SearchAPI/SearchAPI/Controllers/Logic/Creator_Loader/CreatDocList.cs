@@ -1,15 +1,15 @@
+using Microsoft.AspNetCore.Mvc;
 using SearchAPI.Controllers.Abstraction;
 using SearchAPI.Controllers.Logic.Abstraction;
 using SearchAPI.Controllers.Logic.StringProcessor;
 
 namespace SearchAPI.Controllers.Logic.Creator_Loader;
 
-public class CreatDocList(IDocumentLoader documentLoader, IDocCatcher docCatcher)
+public class CreatDocList([FromServices]IDocumentLoader documentLoader)
 {
-    public void CreatDoc(string directoryPath)
+    public void CreatDoc(string directoryPath,List<IStringReformater> reformaters)
     {
-        var reformaters = new List<IStringReformater> { new ToLower(), new ToRoot() };
         var documents = documentLoader
-            .LoadDocumentsList(directoryPath, reformaters);
+            .LoadDocumentsList(directoryPath,reformaters);
     }
 }

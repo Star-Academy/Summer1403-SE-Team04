@@ -12,8 +12,6 @@ using SearchAPI.Controllers.Reader.Abstraction;
 using SearchAPI.Controllers.search;
 using SearchAPI.Controllers.search.Abstraction;
 using SearchAPI.Controllers.search.SearchStrategy;
-using SearchAPI.Controllers.search.StrategySet.AdvancedSets;
-using Microsoft.Extensions.DependencyInjection;
 var serviceProvider = new ServiceCollection().AddSingleton<IDocCatcher, DocCatcher>()
     .AddSingleton<IAdvancedInvertedIndexCatcher, AdvanceInvertedIndexCatcher>()
     .AddSingleton<IDocumentLoader, DocumentLoader>()
@@ -27,9 +25,7 @@ var serviceProvider = new ServiceCollection().AddSingleton<IDocCatcher, DocCatch
     .AddSingleton<IAdvancedProcessor, AdvancedQuerySearcher>()
     .AddSingleton<ISearchAble,WordSearcher>()
     .AddSingleton<ISearchStrategy, AdvancedStrategy>()
-    .AddKeyedSingleton<IStrategySet, AdvancedAtLeastOneExistsSet>("aoe")
-    .AddKeyedSingleton<IStrategySet, AdvancedMustExistSet>("me")
-    .AddKeyedSingleton<IStrategySet, AdvancedMustNotExistSet>("mne").BuildServiceProvider();
+    .BuildServiceProvider();
 
 var docCatcher = new DocCatcher();
 var advIndexcatcher = new AdvanceInvertedIndexCatcher();

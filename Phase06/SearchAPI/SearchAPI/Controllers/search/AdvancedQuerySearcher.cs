@@ -7,12 +7,12 @@ using SearchAPI.Controllers.search.SearchStrategy;
 
 namespace SearchAPI.Controllers.search;
 
-public class AdvancedQuerySearcher([FromServices] IAdvancedInvertedIndexCatcher invertedIndexLoader, [FromServices] IDocCatcher documentCacher,[FromServices] IGarbageRemover remover)
+public class AdvancedQuerySearcher([FromServices] IAdvancedInvertedIndexCatcher invertedIndexCatcher, [FromServices] IDocCatcher documentCacher,[FromServices] IGarbageRemover remover)
     : IAdvancedProcessor
 {
     public List<string> ProcessQuery(string query)
     {
-        var result = invertedIndexLoader.Load().Select(invertedIndex =>
+        var result = invertedIndexCatcher.Load().Select(invertedIndex =>
             new WordSearcher(
                     new AdvancedStrategy(new AdvancedDocFinder(invertedIndex, documentCacher, remover)))
                 .Search(query).ToList()).ToList();

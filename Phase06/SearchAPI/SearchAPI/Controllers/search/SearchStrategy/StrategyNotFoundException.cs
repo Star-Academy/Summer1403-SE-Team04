@@ -1,4 +1,4 @@
-using FullTextSearch;
+using SearchAPI;
 
 namespace SearchAPI.Controllers.search.SearchStrategy;
 

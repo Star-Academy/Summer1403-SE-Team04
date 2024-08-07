@@ -1,4 +1,4 @@
-using FullTextSearch;
+using SearchAPI;
 using SearchAPI.Controllers.Logic.Abstraction;
 using SearchAPI.Controllers.Reader;
 

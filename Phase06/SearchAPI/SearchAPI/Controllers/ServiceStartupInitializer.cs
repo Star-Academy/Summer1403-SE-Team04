@@ -1,4 +1,4 @@
-using FullTextSearch;
+using SearchAPI;
 using Microsoft.AspNetCore.Mvc;
 using SearchAPI.Controllers.Abstraction;
 using SearchAPI.Controllers.Logic.Abstraction;

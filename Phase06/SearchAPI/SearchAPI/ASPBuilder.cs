@@ -1,19 +1,19 @@
 using Microsoft.OpenApi.Models;
 
-namespace FullTextSearch;
+namespace SearchAPI;
 
 public class AspBuilder(WebApplicationBuilder builder)
 {
     public void Build()
     {
         builder.Services.AddSwaggerGen(c =>
-            c.SwaggerDoc("v1", new OpenApiInfo() { Title = "fullTextSearchApi", Version = "v1" })
+            c.SwaggerDoc("v1", new OpenApiInfo() { Title = "SearchAPIApi", Version = "v1" })
         );
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddControllers();
         var app = builder.Build();
         app.UseSwagger();
-        app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "FullTextSearch"));
+        app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "SearchAPI"));
         if (!app.Environment.IsDevelopment())
         {
             app.UseExceptionHandler("/Home/Error");

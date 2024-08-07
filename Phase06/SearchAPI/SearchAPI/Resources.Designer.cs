@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace FullTextSearch {
+namespace SearchAPI {
     using System;
     
     

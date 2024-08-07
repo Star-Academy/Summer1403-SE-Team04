@@ -11,13 +11,13 @@ using SearchAPI.Controllers.search;
 using SearchAPI.Controllers.search.Abstraction;
 using SearchAPI.Controllers.search.SearchStrategy;
 
-namespace FullTextSearch;
+namespace SearchAPI;
 
-public class ServiceBuilder(ServiceCollection serviceCollection)
+public class ServiceBuilder(WebApplicationBuilder builder)
 {
     public ServiceProvider Build()
     {
-        return serviceCollection.AddSingleton<IDocCatcher, DocCatcher>()
+        return builder.Services.AddSingleton<IDocCatcher, DocCatcher>()
             .AddSingleton<IAdvancedInvertedIndexCatcher, AdvanceInvertedIndexCatcher>()
             .AddSingleton<IAdvancedInvertedIndexCreator, AdvanceInvertedIndexCreator>()
             .AddSingleton<IDocumentLoader, DocumentLoader>()
@@ -27,10 +27,9 @@ public class ServiceBuilder(ServiceCollection serviceCollection)
             .AddKeyedSingleton<IStringReformater, ToLower>("lower")
             .AddKeyedSingleton<IStringReformater, ToRoot>("root")
             .AddSingleton<ITxtReader, TxtReader>()
-            .AddSingleton<IAdvancedFinder,AdvancedDocFinder>()
             .AddSingleton<IAdvancedProcessor, AdvancedQuerySearcher>()
-            .AddSingleton<ISearchAble,WordSearcher>()
-            .AddSingleton<ISearchStrategy, AdvancedStrategy>()
+            //.AddSingleton<ISearchAble,WordSearcher>()
+            //.AddSingleton<ISearchStrategy, AdvancedStrategy>()
             .BuildServiceProvider();
     }
 }

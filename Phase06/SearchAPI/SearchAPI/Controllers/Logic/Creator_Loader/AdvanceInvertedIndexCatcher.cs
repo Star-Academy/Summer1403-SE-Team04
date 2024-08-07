@@ -15,7 +15,7 @@ public class AdvanceInvertedIndexCatcher : IAdvancedInvertedIndexCatcher
         IncludeFields = true
     };
 
-    public List<AdvancedInvertedIndex> AdvanceInvertedIndices = new();
+    private List<AdvancedInvertedIndex> AdvanceInvertedIndices = new();
 
     public bool Write(AdvancedInvertedIndex index)
     {
@@ -23,11 +23,14 @@ public class AdvanceInvertedIndexCatcher : IAdvancedInvertedIndexCatcher
         File.WriteAllText(FilePath, "");
         var newJson = JsonSerializer.Serialize(AdvanceInvertedIndices, WriteOptions);
         File.WriteAllText(FilePath, newJson);
+        Console.WriteLine(this.GetHashCode());
+        Console.WriteLine(AdvanceInvertedIndices.Count);
         return true;
     }
 
     public List<AdvancedInvertedIndex>? Load()
     {
+        Console.WriteLine(AdvanceInvertedIndices.Count);
         return AdvanceInvertedIndices;
     }
 }

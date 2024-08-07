@@ -8,8 +8,8 @@ namespace SearchAPI.Controllers;
 [ApiController]
 public class HomeController([FromServices] IAdvancedProcessor advancedQuerySearcher) : Controller
 {
-    [HttpGet("{query}")]
-    public IActionResult Index(string query)
+    [HttpGet]
+    public IActionResult Index([FromQuery(Name = "search_query")] string query)
     {
         if (String.IsNullOrEmpty(query)) return BadRequest();
         var a = advancedQuerySearcher.ProcessQuery(query);

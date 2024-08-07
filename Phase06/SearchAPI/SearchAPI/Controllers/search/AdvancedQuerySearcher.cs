@@ -7,7 +7,7 @@ using SearchAPI.Controllers.search.SearchStrategy;
 
 namespace SearchAPI.Controllers.search;
 
-public class AdvancedQuerySearcher([FromServices]ISearchStrategy searchStrategy,[FromServices] IAdvancedInvertedIndexCatcher invertedIndexLoader, [FromServices] IDocCatcher documentCacher,[FromServices] IGarbageRemover remover)
+public class AdvancedQuerySearcher([FromServices]ISearchStrategy searchStrategy,[FromServices] IAdvancedInvertedIndexCatcher invertedIndexLoader)
     : IAdvancedProcessor
 {
     public List<string> ProcessQuery(string query) 

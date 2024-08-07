@@ -1,14 +1,35 @@
+using System.Text.Json;
+using SearchAPI.Model.Database;
+
 namespace SearchAPI.Model;
 
-public class Document(string docName, List<string> docWords) 
+public class Document
 {
-    public string DocName { get; init; } = docName;
-    public List<string> DocWords { get; init; } = docWords;
+    public string DocName { get; init; }
+    public List<string> DocWords { get; init; }
+
+    public Document(string docName, List<string> docWords)
+    {
+        DocName = docName;
+        DocWords = DocWords;
+    }
+
+    public Document(DocDataStore docDataStore)
+    {
+        DocName = docDataStore.name;
+        DocWords = JsonSerializer.Deserialize<List<string>>(docDataStore.WordsListJson, WriteOptions);
+    }
 
     public IEnumerator<string> GetEnumerator()
     {
         return DocWords.GetEnumerator();
     }
+
+    private static readonly JsonSerializerOptions WriteOptions = new()
+    {
+        WriteIndented = true,
+        IncludeFields = true
+    };
 
     public override bool Equals(object? obj)
     {

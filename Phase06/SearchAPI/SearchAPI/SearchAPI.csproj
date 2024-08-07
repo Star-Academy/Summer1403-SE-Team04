@@ -11,6 +11,11 @@
       <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
       <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
       <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="6.0.0-preview.4.21253.5" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.7">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      </PackageReference>
+      <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.0.0-preview.3" />
       <PackageReference Include="Porter2StemmerStandard" Version="1.1.0" />
       <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="6.7.0" />
       <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="6.7.0" />

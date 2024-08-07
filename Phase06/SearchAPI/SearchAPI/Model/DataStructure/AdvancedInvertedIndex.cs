@@ -1,11 +1,27 @@
+using System.Text.Json;
+using SearchAPI.Controllers.Logic.Creator_Loader;
+using SearchAPI.Model.Database;
+
 namespace SearchAPI.Model.DataStructure;
 
 public class AdvancedInvertedIndex
 {
+    private static readonly JsonSerializerOptions WriteOptions = new()
+    {
+        WriteIndented = true,
+        IncludeFields = true
+    };
     public AdvancedInvertedIndex(List<Document> documents, string directoryPath)
     {
         InvertedIndexMap = BuildInvertedIndex(documents);
         DirectoryPath = directoryPath;
+    }
+
+    public AdvancedInvertedIndex(InvertedIndexDataStore invertedIndexDataStore)
+    {
+        DirectoryPath = invertedIndexDataStore.DirectoryPath;
+        InvertedIndexMap = JsonSerializer.Deserialize<Dictionary<string, List<DocumentWordStorage>>>
+            (invertedIndexDataStore.DicJson,WriteOptions);
     }
 
     public AdvancedInvertedIndex(Dictionary<string, List<DocumentWordStorage>> invertedIndexMap, string directoryPath)

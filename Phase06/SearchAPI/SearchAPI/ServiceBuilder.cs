@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using SearchAPI.Controllers;
 using SearchAPI.Controllers.Abstraction;
 using SearchAPI.Controllers.Logic;
@@ -10,6 +11,7 @@ using SearchAPI.Controllers.Reader.Abstraction;
 using SearchAPI.Controllers.search;
 using SearchAPI.Controllers.search.Abstraction;
 using SearchAPI.Controllers.search.SearchStrategy;
+using SearchAPI.Model.Database;
 
 namespace SearchAPI;
 
@@ -17,7 +19,10 @@ public class ServiceBuilder(WebApplicationBuilder builder)
 {
     public ServiceProvider Build()
     {
-        return builder.Services.AddSingleton<IDocCatcher, DocCatcher>()
+        var co = Environment.GetEnvironmentVariable("Server=localhost;Port=5432;Database=FullTextSearchDb;User Id=postgres;Password=1274542332Mz;");
+        return builder.Services.AddDbContext<FullTextSearchDbContext>(o =>
+                o.UseNpgsql(co))
+            .AddSingleton<IDocCatcher, DocCatcher>()
             .AddSingleton<IAdvancedInvertedIndexCatcher, AdvanceInvertedIndexCatcher>()
             .AddSingleton<IAdvancedInvertedIndexCreator, AdvanceInvertedIndexCreator>()
             .AddSingleton<IDocumentLoader, DocumentLoader>()
@@ -29,7 +34,6 @@ public class ServiceBuilder(WebApplicationBuilder builder)
             .AddSingleton<ITxtReader, TxtReader>()
             .AddSingleton<IAdvancedProcessor, AdvancedQuerySearcher>()
             .AddSingleton<IAdvancedFinder, AdvancedDocFinder>()
-            //.AddSingleton<ISearchAble,WordSearcher>()
             .AddSingleton<ISearchStrategy, AdvancedStrategy>()
             .BuildServiceProvider();
     }

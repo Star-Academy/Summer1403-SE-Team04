@@ -1,20 +1,26 @@
 using SearchAPI.Controllers.Abstraction;
 using SearchAPI.Model;
+using SearchAPI.Model.Database;
 
 namespace SearchAPI.Controllers.Logic.Creator_Loader;
 
-public class DocCatcher : IDocCatcher
+public class DocCatcher(FullTextSearchDbContext context) : IDocCatcher
 {
-    private readonly List<Document> _documentList = new();
-
     public void Write(Document document)
     {
-        if (document == null) return;
-        _documentList.Add(document);
+        try
+        {
+            context.Add(new DocDataStore(document));
+            context.SaveChanges();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine("add Fail");
+        }
     }
 
     public List<Document> Load()
     {
-        return _documentList;
+        return context.DocDataStores.Select(d => new Document(d)).ToList();
     }
 }

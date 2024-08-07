@@ -1,36 +1,31 @@
 using System.Text.Json;
 using SearchAPI;
 using SearchAPI.Controllers.Abstraction;
+using SearchAPI.Model.Database;
 using SearchAPI.Model.DataStructure;
 
 namespace SearchAPI.Controllers.Logic.Creator_Loader;
 
-public class AdvanceInvertedIndexCatcher : IAdvancedInvertedIndexCatcher
+public class AdvanceInvertedIndexCatcher(FullTextSearchDbContext context) : IAdvancedInvertedIndexCatcher
 {
     private static readonly string FilePath = Resources.AdvanceInverIndexPath;
 
-    private static readonly JsonSerializerOptions WriteOptions = new()
-    {
-        WriteIndented = true,
-        IncludeFields = true
-    };
-
-    private List<AdvancedInvertedIndex> AdvanceInvertedIndices = new();
-
     public bool Write(AdvancedInvertedIndex index)
     {
-        AdvanceInvertedIndices.Add(index);
-        File.WriteAllText(FilePath, "");
-        var newJson = JsonSerializer.Serialize(AdvanceInvertedIndices, WriteOptions);
-        File.WriteAllText(FilePath, newJson);
-        Console.WriteLine(this.GetHashCode());
-        Console.WriteLine(AdvanceInvertedIndices.Count);
-        return true;
+        try
+        {
+            context.Add(new InvertedIndexDataStore(index));
+            context.SaveChanges();
+            return true;
+        }
+        catch (Exception e)
+        {
+            return false;
+        }
     }
 
     public List<AdvancedInvertedIndex>? Load()
     {
-        Console.WriteLine(AdvanceInvertedIndices.Count);
-        return AdvanceInvertedIndices;
+        return context.InvertedIndexDataStores.Select(i => new AdvancedInvertedIndex(i)).ToList();
     }
 }

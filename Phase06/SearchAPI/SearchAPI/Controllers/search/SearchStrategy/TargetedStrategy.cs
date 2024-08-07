@@ -5,9 +5,9 @@ using SearchAPI.Controllers.search.StrategySet;
 
 namespace SearchAPI.Controllers.search.SearchStrategy;
 
-public class TargetedStrategy(IFinder finder , List<IStringReformater> reformaters) : ISearchStrategy
+public class TargetedStrategy(IFinder finder , List<IStringReformater> reformaters) //: ISearchStrategy
 {
-    public List<string> Search(string query)
+    /*public List<string> Search(string query)
     {
         if (string.IsNullOrEmpty(query)) throw new NullOrEmptyQueryException();
         var inputWords =
@@ -32,5 +32,5 @@ public class TargetedStrategy(IFinder finder , List<IStringReformater> reformate
         if (!atLeastOneExists.Any())
             return mustExist.Except(mustNotExist).ToList();
         return mustExist.Intersect(atLeastOneExists).Except(mustNotExist).ToList();
-    }
+    }*/
 }

@@ -8,16 +8,16 @@ using SearchAPI.Model.DataStructure;
 
 namespace SearchAPI.Controllers.search;
 
-public class AdvancedDocFinder(AdvancedInvertedIndex index, IDocCatcher documentCacher, IGarbageRemover remover)
+public class AdvancedDocFinder([FromServices] IDocCatcher documentCacher,[FromServices] IGarbageRemover remover)
     : IAdvancedFinder
 {
-    public List<string>? Find(string phrase)
+    public List<string>? Find(AdvancedInvertedIndex index, string phrase)
     {
         ValidatePhrase(phrase);
 
         var queryWordsList = PrepareQueryWords(phrase);
         var documentsList = LoadDocuments();
-        var firstWordValidDocs = GetFirstWordValidDocuments(queryWordsList);
+        var firstWordValidDocs = GetFirstWordValidDocuments(index, queryWordsList);
 
         if (firstWordValidDocs == null) return new List<string>();
 
@@ -40,7 +40,7 @@ public class AdvancedDocFinder(AdvancedInvertedIndex index, IDocCatcher document
         return documentCacher.Load();
     }
 
-    private List<DocumentWordStorage>? GetFirstWordValidDocuments(List<string> queryWordsList)
+    private List<DocumentWordStorage>? GetFirstWordValidDocuments(AdvancedInvertedIndex index, List<string> queryWordsList)
     {
         return index.InvertedIndexMap.GetValueOrDefault(queryWordsList.FirstOrDefault());
     }

@@ -1,9 +1,10 @@
 using SearchAPI.Controllers.Logic;
 using SearchAPI.Controllers.search.Abstraction;
+using SearchAPI.Model.DataStructure;
 
 namespace SearchAPI.Controllers.search.StrategySet.BasicSets;
 
-public class AtLeastOneExistSet(string[] wordsArray, IFinder finder) : IStrategySet
+public class AtLeastOneExistSet(string[] wordsArray,AdvancedInvertedIndex invertedIndex, IFinder finder) : IStrategySet
 {
     public List<string> GetValidDocs()
     {
@@ -11,7 +12,7 @@ public class AtLeastOneExistSet(string[] wordsArray, IFinder finder) : IStrategy
             .Select(word => word.Substring(1));
 
         return atLeastOneExistsWords
-            .Select(word => finder.Find(word).ToList())
+            .Select(word => finder.Find(invertedIndex, word).ToList())
             .ToList()
             .Union();
     }

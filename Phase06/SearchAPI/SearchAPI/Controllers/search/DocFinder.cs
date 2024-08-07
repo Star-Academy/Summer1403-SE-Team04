@@ -6,7 +6,7 @@ namespace SearchAPI.Controllers.search;
 
 public class DocFinder(InvertedIndex index) : IBasicFinder
 {
-    public List<string>? Find(string word)
+    public List<string>? Find(AdvancedInvertedIndex invertedIndex,string word)
     {
         if (string.IsNullOrEmpty(word)) throw new NullOrEmptyQueryException();
         var result = index.InvertedIndexMap.GetValueOrDefault(word);

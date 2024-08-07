@@ -3,23 +3,24 @@ using SearchAPI.Controllers.Logic.Abstraction;
 using SearchAPI.Controllers.Logic.StringProcessor;
 using SearchAPI.Controllers.search.Abstraction;
 using SearchAPI.Controllers.search.StrategySet;
+using SearchAPI.Model.DataStructure;
 
 namespace SearchAPI.Controllers.search.SearchStrategy;
 
 public class AdvancedStrategy([FromServices] IAdvancedFinder finder) : ISearchStrategy
 {
-    public List<string> Search(string query)
+    public List<string> Search(string query,AdvancedInvertedIndex invertedIndex)
     {
         if (string.IsNullOrEmpty(query)) throw new NullOrEmptyQueryException();
         var inputPhrases =
             query.SplitIntoAdvanceFormattedWords(new List<IStringReformater> { new ToLower(), new ToRoot() });
 
-        return GetValidDocuments(inputPhrases);
+        return GetValidDocuments(inputPhrases,invertedIndex);
     }
 
-    private List<string> GetValidDocuments(string[] phrases)
+    private List<string> GetValidDocuments(string[] phrases,AdvancedInvertedIndex invertedIndex)
     {
-        var factory = new AdvancedStrategySetFactory(phrases, finder);
+        var factory = new AdvancedStrategySetFactory(phrases,invertedIndex, finder);
         var advancedMustExist = factory.Create(StrategySetEnum.AdvancedMustExist).GetValidDocs();
         var advancedMustNotExist = factory.Create(StrategySetEnum.AdvancedMustNotExist).GetValidDocs();
         var advancedAtLeastOneExists = factory.Create(StrategySetEnum.AdvancedAtLeastOneExist).GetValidDocs();

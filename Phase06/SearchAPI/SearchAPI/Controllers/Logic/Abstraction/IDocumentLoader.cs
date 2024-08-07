@@ -4,6 +4,5 @@ namespace SearchAPI.Controllers.Logic.Abstraction;
 
 public interface IDocumentLoader
 {
-    List<Document> LoadDocumentsList(string directoryPath,
-        List<IStringReformater> reformaters);
+    List<Document> LoadDocumentsList(string directoryPath, List<IStringReformater> reformaters);
 }

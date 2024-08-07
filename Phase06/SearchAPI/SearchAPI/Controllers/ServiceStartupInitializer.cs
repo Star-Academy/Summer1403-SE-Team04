@@ -1,16 +1,17 @@
 using FullTextSearch;
+using Microsoft.AspNetCore.Mvc;
 using SearchAPI.Controllers.Abstraction;
 using SearchAPI.Controllers.Logic.Abstraction;
 
 namespace SearchAPI.Controllers;
 
 public class ServiceStartupInitializer(
-    IAdvancedInvertedIndexCreator indexCreator
+    [FromServices]IAdvancedInvertedIndexCreator indexCreator
 ) : IInitializer
 {
-    public void Init(List<string> directoryList)
+    public void Init(List<string> directoryList,List<IStringReformater> reformaters)
     {
         File.WriteAllText(Resources.AdvanceInverIndexPath, string.Empty);
-        directoryList.ForEach(path => indexCreator.CreateAdvancedInvertedIndex(path));
+        directoryList.ForEach(path => indexCreator.CreateAdvancedInvertedIndex(path,reformaters));
     }
 }

@@ -7,15 +7,13 @@ using SearchAPI.Controllers.search.SearchStrategy;
 
 namespace SearchAPI.Controllers.search;
 
-public class AdvancedQuerySearcher([FromServices] IAdvancedInvertedIndexCatcher invertedIndexLoader, [FromServices] IDocCatcher documentCacher,[FromServices] IGarbageRemover remover)
+public class AdvancedQuerySearcher([FromServices]ISearchStrategy searchStrategy,[FromServices] IAdvancedInvertedIndexCatcher invertedIndexLoader, [FromServices] IDocCatcher documentCacher,[FromServices] IGarbageRemover remover)
     : IAdvancedProcessor
 {
-    public List<string> ProcessQuery(string query)
+    public List<string> ProcessQuery(string query) 
     {
         var result = invertedIndexLoader.Load().Select(invertedIndex =>
-            new WordSearcher(
-                    new AdvancedStrategy(new AdvancedDocFinder(invertedIndex, documentCacher, remover)))
-                .Search(query).ToList()).ToList();
+            new WordSearcher(searchStrategy).Search(query, invertedIndex)).ToList();
         return result.Union();
     }
 }

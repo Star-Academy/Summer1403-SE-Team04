@@ -28,8 +28,9 @@ public class ServiceBuilder(WebApplicationBuilder builder)
             .AddKeyedSingleton<IStringReformater, ToRoot>("root")
             .AddSingleton<ITxtReader, TxtReader>()
             .AddSingleton<IAdvancedProcessor, AdvancedQuerySearcher>()
+            .AddSingleton<IAdvancedFinder, AdvancedDocFinder>()
             //.AddSingleton<ISearchAble,WordSearcher>()
-            //.AddSingleton<ISearchStrategy, AdvancedStrategy>()
+            .AddSingleton<ISearchStrategy, AdvancedStrategy>()
             .BuildServiceProvider();
     }
 }

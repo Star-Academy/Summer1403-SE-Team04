@@ -16,7 +16,7 @@ public class Document
 
     public Document(DocDataStore docDataStore)
     {
-        DocName = docDataStore.name;
+        DocName = docDataStore.Name;
         DocWords = JsonSerializer.Deserialize<List<string>>(docDataStore.WordsListJson, WriteOptions);
     }
 

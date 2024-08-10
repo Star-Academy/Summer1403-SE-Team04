@@ -19,7 +19,7 @@ public class ServiceBuilder(WebApplicationBuilder builder)
 {
     public ServiceProvider Build()
     {
-        var co = Environment.GetEnvironmentVariable("Server=localhost;Port=5432;Database=FullTextSearchDb;User Id=postgres;Password=1274542332Mz;");
+        var co = ("Host=localhost;Database=FullTextSearchDb;Username=postgres;Password=1274542332Mz");
         return builder.Services.AddDbContext<FullTextSearchDbContext>(o =>
                 o.UseNpgsql(co))
             .AddSingleton<IDocCatcher, DocCatcher>()

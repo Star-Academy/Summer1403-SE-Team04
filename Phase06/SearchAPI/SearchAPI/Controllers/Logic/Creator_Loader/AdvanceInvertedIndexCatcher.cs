@@ -10,11 +10,19 @@ public class AdvanceInvertedIndexCatcher(FullTextSearchDbContext context) : IAdv
 {
     private static readonly string FilePath = Resources.AdvanceInverIndexPath;
 
+    private static readonly JsonSerializerOptions WriteOptions = new()
+    {
+        WriteIndented = true,
+        IncludeFields = true
+    };
+
     public bool Write(AdvancedInvertedIndex index)
     {
         try
         {
-            context.Add(new InvertedIndexDataStore(index));
+            var DirectoryPath = index.DirectoryPath;
+            var DicJson = JsonSerializer.Serialize(index.InvertedIndexMap, WriteOptions);
+            context.Add(new InvertedIndexDataStore() { DirectoryPath = DirectoryPath, DicJson = DicJson });
             context.SaveChanges();
             return true;
         }

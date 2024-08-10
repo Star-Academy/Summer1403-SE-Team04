@@ -1,3 +1,4 @@
+using System.Text.Json;
 using SearchAPI.Controllers.Abstraction;
 using SearchAPI.Model;
 using SearchAPI.Model.Database;
@@ -10,7 +11,9 @@ public class DocCatcher(FullTextSearchDbContext context) : IDocCatcher
     {
         try
         {
-            context.Add(new DocDataStore(document));
+            var name = document.DocName;
+            var WordsListJson = JsonSerializer.Serialize(document.DocWords);
+            context.Add(new DocDataStore(){Name = name,WordsListJson = WordsListJson});
             context.SaveChanges();
         }
         catch (Exception e)

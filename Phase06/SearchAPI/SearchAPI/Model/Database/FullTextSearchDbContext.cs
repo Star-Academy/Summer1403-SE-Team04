@@ -2,18 +2,16 @@ using Microsoft.EntityFrameworkCore;
 
 namespace SearchAPI.Model.Database;
 
-public class FullTextSearchDbContext : Microsoft.EntityFrameworkCore.DbContext
+public class FullTextSearchDbContext : DbContext
 {
     public DbSet<InvertedIndexDataStore> InvertedIndexDataStores { get; set; }
     public DbSet<DocDataStore> DocDataStores { get; set; }
 
-    public FullTextSearchDbContext(DbContextOptions<FullTextSearchDbContext> options) : base(options)
-    {
-    }
+    public FullTextSearchDbContext(DbContextOptions options) : base(options) {}
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<InvertedIndexDataStore>().HasKey(i => i.DirectoryPath);
-        modelBuilder.Entity<DocDataStore>().HasKey(d => d.name);
+        modelBuilder.Entity<DocDataStore>().HasKey(d => d.Name);
     }
 }

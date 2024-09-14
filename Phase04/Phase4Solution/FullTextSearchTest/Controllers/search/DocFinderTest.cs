@@ -13,7 +13,7 @@ public class DocFinderTest
     public DocFinderTest()
     {
         
-        Dictionary<string, IEnumerable<string>> testDic = new Dictionary<string, IEnumerable<string>>()
+        Dictionary<string, List<string>> testDic = new Dictionary<string, List<string>>()
         {
             {"love", new List<string>() { "location" }}
         };

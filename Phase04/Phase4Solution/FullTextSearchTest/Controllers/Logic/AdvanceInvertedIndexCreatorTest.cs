@@ -7,16 +7,18 @@ using NSubstitute;
 
 namespace FullTextSearchTest.Controllers.Logic;
 
-public class AdvanceInvertedIndexCreatorTest 
+public class AdvanceInvertedIndexCreatorTest
 {
+    private IDocumentLoader _documentLoader;
     private readonly AdvanceInvertedIndexCreator _sut;
     private IDocCatcher _docCatcher;
     private IAdvancedInvertedIndexCatcher _advancedInvertedIndexCatcher;
     public AdvanceInvertedIndexCreatorTest()
     {
         _docCatcher = Substitute.For<IDocCatcher>();
+        _documentLoader = Substitute.For<IDocumentLoader>();
         _advancedInvertedIndexCatcher = Substitute.For<IAdvancedInvertedIndexCatcher>();
-        _sut = new AdvanceInvertedIndexCreator(_docCatcher,_advancedInvertedIndexCatcher);
+        _sut = new AdvanceInvertedIndexCreator(_docCatcher,_advancedInvertedIndexCatcher,_documentLoader);
     }
     [Fact]
     public void CreateAdvancedInvertedIndex_shouldCallDocCatcherLoad_ifCallTheMethod()

@@ -1,9 +1,12 @@
+using FullTextSearch.Controllers.Abstraction;
+using FullTextSearch.Controllers.Logic;
 using FullTextSearch.Controllers.Logic.Creator_Loader;
 using FullTextSearch.Controllers.search;
 using FullTextSearch.Controllers.search.Abstraction;
 using FullTextSearch.Controllers.search.StrategySet;
-using FullTextSearch.Model.AbstractClass;
+using FullTextSearch.Model;
 using FullTextSearch.Model.DataStructure;
+using NSubstitute;
 
 namespace FullTextSearchTest.Controllers.search;
 
@@ -15,13 +18,15 @@ public class AdvancedDocFinderTest
     public AdvancedDocFinderTest()
     {
         
-        Dictionary<string, IEnumerable<WordInformation>> testDic = new Dictionary<string, IEnumerable<WordInformation>>()
+        Dictionary<string, List<DocumentWordStorage>> testDic = new Dictionary<string, List<DocumentWordStorage>>()
         {
-            {"love", new List<WordInformation>() { new DocumentWordsStorage("location", new List<int>(){0})}},
-            {"you", new List<WordInformation>() { new DocumentWordsStorage("location", new List<int>(){1})}}
+            {"love", new List<DocumentWordStorage>() { new DocumentWordStorage("location", new List<int>(){0})}},
+            {"you", new List<DocumentWordStorage>() { new DocumentWordStorage("location", new List<int>(){1})}}
         };
         _index = new AdvancedInvertedIndex(testDic, "location");
-        _sut = new AdvancedDocFinder(_index, new DocCatcher());
+        var cacher = Substitute.For<IDocCatcher>();
+        cacher.Load().Returns(new List<Document>() { new Document("location", new List<string>() { "love","you" }) });
+        _sut = new AdvancedDocFinder(_index, cacher,new SmallWordsRemover());
     }
 
     [Theory]
